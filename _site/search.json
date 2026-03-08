@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "visualizations.html",
+    "href": "visualizations.html",
+    "title": "Análisis y visualizaciones",
+    "section": "",
+    "text": "Aquí se presenta una visualización comparando la dosis media entre diferentes estructuras anatómicas."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras",
+    "href": "visualizations.html#pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras",
+    "title": "Análisis y visualizaciones",
+    "section": "",
+    "text": "Aquí se presenta una visualización comparando la dosis media entre diferentes estructuras anatómicas."
+  },
+  {
+    "objectID": "visualizations.html#interpretación",
+    "href": "visualizations.html#interpretación",
+    "title": "Análisis y visualizaciones",
+    "section": "Interpretación",
+    "text": "Interpretación\nEsta gráfica permite identificar cuáles estructuras reciben mayores niveles de radiación y cuánta variabilidad existe entre pacientes."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo",
+    "href": "visualizations.html#pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 2: ¿Qué diferencias existen entre tumores y órganos de riesgo?",
+    "text": "Pregunta 2: ¿Qué diferencias existen entre tumores y órganos de riesgo?\nSe compara la dosis media entre estructuras objetivo y órganos sanos."
+  },
+  {
+    "objectID": "visualizations.html#interpretación-1",
+    "href": "visualizations.html#interpretación-1",
+    "title": "Análisis y visualizaciones",
+    "section": "Interpretación",
+    "text": "Interpretación\nLa visualización busca mostrar si el tratamiento logra priorizar la dosis sobre el tumor mientras limita la exposición de tejidos sanos."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-3-cómo-varía-la-dosis-entre-pacientes",
+    "href": "visualizations.html#pregunta-3-cómo-varía-la-dosis-entre-pacientes",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 3: ¿Cómo varía la dosis entre pacientes?",
+    "text": "Pregunta 3: ¿Cómo varía la dosis entre pacientes?\nSe explora la variabilidad inter-paciente mediante una visualización comparativa."
+  },
+  {
+    "objectID": "visualizations.html#interpretación-2",
+    "href": "visualizations.html#interpretación-2",
+    "title": "Análisis y visualizaciones",
+    "section": "Interpretación",
+    "text": "Interpretación\nEsto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-4-existe-relación-entre-volumen-y-dosis",
+    "href": "visualizations.html#pregunta-4-existe-relación-entre-volumen-y-dosis",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 4: ¿Existe relación entre volumen y dosis?",
+    "text": "Pregunta 4: ¿Existe relación entre volumen y dosis?\nSe analiza la relación entre el tamaño de una estructura y la dosis media recibida."
+  },
+  {
+    "objectID": "visualizations.html#interpretación-3",
+    "href": "visualizations.html#interpretación-3",
+    "title": "Análisis y visualizaciones",
+    "section": "Interpretación",
+    "text": "Interpretación\nEste análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Análisis visual de la distribución de dosis en radioterapia",
+    "section": "",
+    "text": "En radioterapia, el objetivo es administrar suficiente dosis al tumor mientras se protege a los órganos sanos cercanos.\nEste proyecto utiliza el dataset OpenKBP para explorar visualmente cómo se distribuye la dosis entre distintas estructuras anatómicas."
+  },
+  {
+    "objectID": "index.html#contexto-del-problema",
+    "href": "index.html#contexto-del-problema",
+    "title": "Análisis visual de la distribución de dosis en radioterapia",
+    "section": "",
+    "text": "En radioterapia, el objetivo es administrar suficiente dosis al tumor mientras se protege a los órganos sanos cercanos.\nEste proyecto utiliza el dataset OpenKBP para explorar visualmente cómo se distribuye la dosis entre distintas estructuras anatómicas."
+  },
+  {
+    "objectID": "data_cleaning.html",
+    "href": "data_cleaning.html",
+    "title": "Limpieza y preparación de datos",
+    "section": "",
+    "text": "En esta sección se documenta el proceso de preparación del dataset OpenKBP para el análisis visual."
+  },
+  {
+    "objectID": "data_cleaning.html#carga-del-dataset",
+    "href": "data_cleaning.html#carga-del-dataset",
+    "title": "Limpieza y preparación de datos",
+    "section": "",
+    "text": "En esta sección se documenta el proceso de preparación del dataset OpenKBP para el análisis visual."
+  },
+  {
+    "objectID": "data_cleaning.html#exploración-inicial",
+    "href": "data_cleaning.html#exploración-inicial",
+    "title": "Limpieza y preparación de datos",
+    "section": "Exploración inicial",
+    "text": "Exploración inicial\nPrimero identificamos:\n\npacientes disponibles\nestructuras anatómicas\nvariables relevantes\nformato original de los archivos"
+  },
+  {
+    "objectID": "data_cleaning.html#problemas-detectados",
+    "href": "data_cleaning.html#problemas-detectados",
+    "title": "Limpieza y preparación de datos",
+    "section": "Problemas detectados",
+    "text": "Problemas detectados\nAl trabajar con OpenKBP, los datos no están inicialmente en formato tabular listo para visualización. Fue necesario resumir información por paciente y por estructura anatómica."
+  },
+  {
+    "objectID": "data_cleaning.html#decisiones-de-limpieza",
+    "href": "data_cleaning.html#decisiones-de-limpieza",
+    "title": "Limpieza y preparación de datos",
+    "section": "Decisiones de limpieza",
+    "text": "Decisiones de limpieza\nSe realizaron las siguientes transformaciones:\n\nestandarización de nombres de estructuras\nseparación entre estructuras objetivo y órganos de riesgo\ncálculo de métricas resumidas:\n\ndosis media\ndosis máxima\nvolumen de la estructura"
+  },
+  {
+    "objectID": "data_cleaning.html#dataset-final",
+    "href": "data_cleaning.html#dataset-final",
+    "title": "Limpieza y preparación de datos",
+    "section": "Dataset final",
+    "text": "Dataset final\nEl resultado final es una tabla con variables como:\n\npatient_id\nstructure_name\nstructure_type\nvolume\nmean_dose\nmax_dose"
+  },
+  {
+    "objectID": "data_cleaning.html#justificación",
+    "href": "data_cleaning.html#justificación",
+    "title": "Limpieza y preparación de datos",
+    "section": "Justificación",
+    "text": "Justificación\nEstas decisiones permiten transformar datos médicos complejos en una estructura adecuada para análisis visual y comparación entre pacientes."
+  }
+]

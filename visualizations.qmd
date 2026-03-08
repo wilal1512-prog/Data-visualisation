@@ -1,0 +1,41 @@
+---
+title: "Análisis y visualizaciones"
+---
+
+## Pregunta 1: ¿Cómo se distribuye la dosis entre estructuras?
+
+Aquí se presenta una visualización comparando la dosis media entre diferentes estructuras anatómicas.
+
+## Interpretación
+
+Esta gráfica permite identificar cuáles estructuras reciben mayores niveles de radiación y cuánta variabilidad existe entre pacientes.
+
+---
+
+## Pregunta 2: ¿Qué diferencias existen entre tumores y órganos de riesgo?
+
+Se compara la dosis media entre estructuras objetivo y órganos sanos.
+
+## Interpretación
+
+La visualización busca mostrar si el tratamiento logra priorizar la dosis sobre el tumor mientras limita la exposición de tejidos sanos.
+
+---
+
+## Pregunta 3: ¿Cómo varía la dosis entre pacientes?
+
+Se explora la variabilidad inter-paciente mediante una visualización comparativa.
+
+## Interpretación
+
+Esto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación.
+
+---
+
+## Pregunta 4: ¿Existe relación entre volumen y dosis?
+
+Se analiza la relación entre el tamaño de una estructura y la dosis media recibida.
+
+## Interpretación
+
+Este análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis.

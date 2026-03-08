@@ -1,0 +1,46 @@
+---
+title: "Limpieza y preparación de datos"
+---
+
+## Carga del dataset
+
+En esta sección se documenta el proceso de preparación del dataset OpenKBP para el análisis visual.
+
+## Exploración inicial
+
+Primero identificamos:
+
+- pacientes disponibles
+- estructuras anatómicas
+- variables relevantes
+- formato original de los archivos
+
+## Problemas detectados
+
+Al trabajar con OpenKBP, los datos no están inicialmente en formato tabular listo para visualización. Fue necesario resumir información por paciente y por estructura anatómica.
+
+## Decisiones de limpieza
+
+Se realizaron las siguientes transformaciones:
+
+- estandarización de nombres de estructuras
+- separación entre estructuras objetivo y órganos de riesgo
+- cálculo de métricas resumidas:
+  - dosis media
+  - dosis máxima
+  - volumen de la estructura
+
+## Dataset final
+
+El resultado final es una tabla con variables como:
+
+- `patient_id`
+- `structure_name`
+- `structure_type`
+- `volume`
+- `mean_dose`
+- `max_dose`
+
+## Justificación
+
+Estas decisiones permiten transformar datos médicos complejos en una estructura adecuada para análisis visual y comparación entre pacientes.

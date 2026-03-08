@@ -1,0 +1,9 @@
+---
+title: "Análisis visual de la distribución de dosis en radioterapia"
+---
+
+## Contexto del problema
+
+En radioterapia, el objetivo es administrar suficiente dosis al tumor mientras se protege a los órganos sanos cercanos.
+
+Este proyecto utiliza el dataset **OpenKBP** para explorar visualmente cómo se distribuye la dosis entre distintas estructuras anatómicas.

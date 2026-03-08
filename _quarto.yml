@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - index.qmd
+    - data_cleaning.qmd
+    - visualizations.qmd
 
 website:
   title: "OpenKBP Data Visualization"
