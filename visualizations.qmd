@@ -2,7 +2,90 @@
 title: "Análisis y visualizaciones"
 ---
 
-## Pregunta 1: ¿Cómo se distribuye la dosis entre estructuras?
+
+## Pregunta 1: ¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?
+
+
+Para responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.
+
+
+
+```{python}
+#| echo: false
+import pandas as pd
+import altair as alt
+
+df = pd.read_csv("data/processed/dose_summary.csv")
+
+# extremos
+max_point = df.loc[df["max_dose"].idxmax()]
+min_point = df.loc[df["max_dose"].idxmin()]
+
+df["tipo"] = "normal"
+df.loc[df.index == max_point.name, "tipo"] = "maximo"
+df.loc[df.index == min_point.name, "tipo"] = "minimo"
+
+# nombres para la leyenda
+df["tipo"] = df["tipo"].replace({
+    "normal": "Normal",
+    "maximo": "Máximo",
+    "minimo": "Mínimo"
+})
+
+base = alt.Chart(df).encode(
+    x=alt.X("mean_dose:Q", title="Dosis media (cGy)", scale=alt.Scale(domain=[52, 60])),
+    y=alt.Y("max_dose:Q", title="Dosis máxima (cGy)", scale=alt.Scale(domain=[145,170]))
+)
+
+points = base.mark_circle(size=80).encode(
+    color=alt.Color(
+        "tipo:N",
+        title="Dato",
+        scale=alt.Scale(
+            domain=["Normal","Máximo","Mínimo"],
+            range=["steelblue","red","green"]
+        )
+    ),
+    tooltip=[
+        alt.Tooltip("patient:N", title="Paciente"),
+        alt.Tooltip("mean_dose:Q", title="Dosis media (cGy)", format=".2f"),
+        alt.Tooltip("max_dose:Q", title="Dosis máxima (cGy)", format=".2f")
+    ]
+)
+
+confidence = base.transform_regression(
+    "mean_dose","max_dose",extent=[52,60]
+).mark_area(opacity=0.18,color="gray")
+
+trend = base.transform_regression(
+    "mean_dose","max_dose",extent=[52,60]
+).mark_line(color="black",size=3)
+
+labels = alt.Chart(df[df["tipo"]!="Normal"]).mark_text(
+    dx=7,
+    dy=-7,
+    fontSize=12,
+    fontWeight="bold"
+).encode(
+    x="mean_dose:Q",
+    y="max_dose:Q",
+    text="patient:N"
+)
+
+chart = alt.layer(confidence, points, trend, labels).properties(
+    title="Relación entre dosis media y dosis máxima por paciente",
+    width=650,
+    height=450
+).interactive()
+
+chart
+```
+
+### Interpretación
+
+La visualización sugiere una relación positiva moderada entre la dosis media y la dosis máxima. En general, los pacientes con mayor dosis media tienden a presentar valores más altos de dosis máxima. La línea de tendencia resume este patrón general, mientras que la banda sombreada ayuda a representar la incertidumbre alrededor de la regresión. Además, se destacan los pacientes con valores extremos, lo que facilita identificar posibles casos atípicos dentro del conjunto analizado.
+
+## Pregunta 2: ¿Cómo se distribuye la dosis entre los pacientes?
 
 Aquí se presenta una visualización comparando la dosis media entre diferentes estructuras anatómicas.
 
@@ -12,7 +95,7 @@ Esta gráfica permite identificar cuáles estructuras reciben mayores niveles de
 
 ---
 
-## Pregunta 2: ¿Qué diferencias existen entre tumores y órganos de riesgo?
+## Pregunta 3: ¿Qué diferencias existen entre tumores y órganos de riesgo?
 
 Se compara la dosis media entre estructuras objetivo y órganos sanos.
 
@@ -22,7 +105,7 @@ La visualización busca mostrar si el tratamiento logra priorizar la dosis sobre
 
 ---
 
-## Pregunta 3: ¿Cómo varía la dosis entre pacientes?
+## Pregunta 4: ¿Cómo varía la dosis entre pacientes?
 
 Se explora la variabilidad inter-paciente mediante una visualización comparativa.
 
@@ -32,7 +115,7 @@ Esto permite evaluar si existen patrones consistentes o diferencias importantes 
 
 ---
 
-## Pregunta 4: ¿Existe relación entre volumen y dosis?
+## Pregunta 5: ¿Existe relación entre volumen y dosis?
 
 Se analiza la relación entre el tamaño de una estructura y la dosis media recibida.
 

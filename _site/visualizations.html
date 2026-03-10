@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -68,6 +68,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 
 
 <link rel="stylesheet" href="styles.css">
@@ -118,14 +124,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras" id="toc-pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras" class="nav-link active" data-scroll-target="#pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras">Pregunta 1: ¿Cómo se distribuye la dosis entre estructuras?</a></li>
+  <li><a href="#pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia" id="toc-pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia" class="nav-link active" data-scroll-target="#pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia">Pregunta 1: ¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?</a>
+  <ul class="collapse">
   <li><a href="#interpretación" id="toc-interpretación" class="nav-link" data-scroll-target="#interpretación">Interpretación</a></li>
-  <li><a href="#pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo" id="toc-pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo" class="nav-link" data-scroll-target="#pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo">Pregunta 2: ¿Qué diferencias existen entre tumores y órganos de riesgo?</a></li>
+  </ul></li>
+  <li><a href="#pregunta-2-cómo-se-distribuye-la-dosis-entre-los-pacientes" id="toc-pregunta-2-cómo-se-distribuye-la-dosis-entre-los-pacientes" class="nav-link" data-scroll-target="#pregunta-2-cómo-se-distribuye-la-dosis-entre-los-pacientes">Pregunta 2: ¿Cómo se distribuye la dosis entre los pacientes?</a></li>
   <li><a href="#interpretación-1" id="toc-interpretación-1" class="nav-link" data-scroll-target="#interpretación-1">Interpretación</a></li>
-  <li><a href="#pregunta-3-cómo-varía-la-dosis-entre-pacientes" id="toc-pregunta-3-cómo-varía-la-dosis-entre-pacientes" class="nav-link" data-scroll-target="#pregunta-3-cómo-varía-la-dosis-entre-pacientes">Pregunta 3: ¿Cómo varía la dosis entre pacientes?</a></li>
+  <li><a href="#pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo" id="toc-pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo" class="nav-link" data-scroll-target="#pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo">Pregunta 3: ¿Qué diferencias existen entre tumores y órganos de riesgo?</a></li>
   <li><a href="#interpretación-2" id="toc-interpretación-2" class="nav-link" data-scroll-target="#interpretación-2">Interpretación</a></li>
-  <li><a href="#pregunta-4-existe-relación-entre-volumen-y-dosis" id="toc-pregunta-4-existe-relación-entre-volumen-y-dosis" class="nav-link" data-scroll-target="#pregunta-4-existe-relación-entre-volumen-y-dosis">Pregunta 4: ¿Existe relación entre volumen y dosis?</a></li>
+  <li><a href="#pregunta-4-cómo-varía-la-dosis-entre-pacientes" id="toc-pregunta-4-cómo-varía-la-dosis-entre-pacientes" class="nav-link" data-scroll-target="#pregunta-4-cómo-varía-la-dosis-entre-pacientes">Pregunta 4: ¿Cómo varía la dosis entre pacientes?</a></li>
   <li><a href="#interpretación-3" id="toc-interpretación-3" class="nav-link" data-scroll-target="#interpretación-3">Interpretación</a></li>
+  <li><a href="#pregunta-5-existe-relación-entre-volumen-y-dosis" id="toc-pregunta-5-existe-relación-entre-volumen-y-dosis" class="nav-link" data-scroll-target="#pregunta-5-existe-relación-entre-volumen-y-dosis">Pregunta 5: ¿Existe relación entre volumen y dosis?</a></li>
+  <li><a href="#interpretación-4" id="toc-interpretación-4" class="nav-link" data-scroll-target="#interpretación-4">Interpretación</a></li>
   </ul>
 </nav>
     </div>
@@ -151,39 +161,119 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras">Pregunta 1: ¿Cómo se distribuye la dosis entre estructuras?</h2>
+<section id="pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia">Pregunta 1: ¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?</h2>
+<p>Para responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.</p>
+<div id="c7f1662e" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+
+<style>
+  #altair-viz-83373a2b53b649628acab48f27c09167.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-83373a2b53b649628acab48f27c09167.vega-embed details,
+  #altair-viz-83373a2b53b649628acab48f27c09167.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-83373a2b53b649628acab48f27c09167"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-83373a2b53b649628acab48f27c09167") {
+      outputDiv = document.getElementById("altair-viz-83373a2b53b649628acab48f27c09167");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-3558ed69902b92984917232007335d7e"}, "mark": {"type": "area", "color": "gray", "opacity": 0.18}, "encoding": {"x": {"field": "mean_dose", "scale": {"domain": [52, 60]}, "title": "Dosis media (cGy)", "type": "quantitative"}, "y": {"field": "max_dose", "scale": {"domain": [145, 170]}, "title": "Dosis m\u00e1xima (cGy)", "type": "quantitative"}}, "name": "view_53372c081f7bedc9_0", "transform": [{"on": "mean_dose", "regression": "max_dose", "extent": [52, 60]}]}, {"data": {"name": "data-3558ed69902b92984917232007335d7e"}, "mark": {"type": "circle", "size": 80}, "encoding": {"color": {"field": "tipo", "scale": {"domain": ["Normal", "M\u00e1ximo", "M\u00ednimo"], "range": ["steelblue", "red", "green"]}, "title": "Dato", "type": "nominal"}, "tooltip": [{"field": "patient", "title": "Paciente", "type": "nominal"}, {"field": "mean_dose", "format": ".2f", "title": "Dosis media (cGy)", "type": "quantitative"}, {"field": "max_dose", "format": ".2f", "title": "Dosis m\u00e1xima (cGy)", "type": "quantitative"}], "x": {"field": "mean_dose", "scale": {"domain": [52, 60]}, "title": "Dosis media (cGy)", "type": "quantitative"}, "y": {"field": "max_dose", "scale": {"domain": [145, 170]}, "title": "Dosis m\u00e1xima (cGy)", "type": "quantitative"}}}, {"data": {"name": "data-3558ed69902b92984917232007335d7e"}, "mark": {"type": "line", "color": "black", "size": 3}, "encoding": {"x": {"field": "mean_dose", "scale": {"domain": [52, 60]}, "title": "Dosis media (cGy)", "type": "quantitative"}, "y": {"field": "max_dose", "scale": {"domain": [145, 170]}, "title": "Dosis m\u00e1xima (cGy)", "type": "quantitative"}}, "transform": [{"on": "mean_dose", "regression": "max_dose", "extent": [52, 60]}]}, {"data": {"name": "data-5a6ea0873854eafa00e103e24d75b110"}, "mark": {"type": "text", "dx": 7, "dy": -7, "fontSize": 12, "fontWeight": "bold"}, "encoding": {"text": {"field": "patient", "type": "nominal"}, "x": {"field": "mean_dose", "type": "quantitative"}, "y": {"field": "max_dose", "type": "quantitative"}}}], "height": 450, "params": [{"name": "param_1e9efca18e7a2868", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales", "views": ["view_53372c081f7bedc9_0"]}], "title": "Relaci\u00f3n entre dosis media y dosis m\u00e1xima por paciente", "width": 650, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-3558ed69902b92984917232007335d7e": [{"patient": "pt_1", "mean_dose": 53.332157141773855, "max_dose": 149.9941, "tipo": "Normal"}, {"patient": "pt_10", "mean_dose": 57.046847854939045, "max_dose": 165.0903, "tipo": "Normal"}, {"patient": "pt_100", "mean_dose": 55.7034777638584, "max_dose": 148.7599, "tipo": "Normal"}, {"patient": "pt_101", "mean_dose": 55.17039256673196, "max_dose": 148.7457, "tipo": "Normal"}, {"patient": "pt_102", "mean_dose": 56.18890983515018, "max_dose": 165.1824, "tipo": "Normal"}, {"patient": "pt_103", "mean_dose": 53.975452694399, "max_dose": 159.8379, "tipo": "Normal"}, {"patient": "pt_104", "mean_dose": 54.16460816998261, "max_dose": 153.2449, "tipo": "Normal"}, {"patient": "pt_105", "mean_dose": 55.26698541097816, "max_dose": 158.1536, "tipo": "Normal"}, {"patient": "pt_106", "mean_dose": 57.98707772158355, "max_dose": 160.379, "tipo": "Normal"}, {"patient": "pt_107", "mean_dose": 55.53586116808237, "max_dose": 151.9468, "tipo": "Normal"}, {"patient": "pt_108", "mean_dose": 54.81074406605593, "max_dose": 156.4971, "tipo": "Normal"}, {"patient": "pt_109", "mean_dose": 57.366594804818185, "max_dose": 158.0906, "tipo": "Normal"}, {"patient": "pt_11", "mean_dose": 52.99482386598459, "max_dose": 151.5821, "tipo": "Normal"}, {"patient": "pt_110", "mean_dose": 56.16515465101512, "max_dose": 158.6687, "tipo": "Normal"}, {"patient": "pt_111", "mean_dose": 53.17453260234721, "max_dose": 154.9097, "tipo": "Normal"}, {"patient": "pt_112", "mean_dose": 56.533485961746806, "max_dose": 157.7592, "tipo": "Normal"}, {"patient": "pt_113", "mean_dose": 54.49158133765137, "max_dose": 153.6445, "tipo": "Normal"}, {"patient": "pt_114", "mean_dose": 56.690629145113625, "max_dose": 150.5006, "tipo": "Normal"}, {"patient": "pt_115", "mean_dose": 56.18731030729954, "max_dose": 156.9393, "tipo": "Normal"}, {"patient": "pt_116", "mean_dose": 54.55972760212727, "max_dose": 151.8954, "tipo": "Normal"}, {"patient": "pt_117", "mean_dose": 55.12492825937604, "max_dose": 148.4543, "tipo": "Normal"}, {"patient": "pt_118", "mean_dose": 54.22102175987554, "max_dose": 153.2583, "tipo": "Normal"}, {"patient": "pt_119", "mean_dose": 54.74517867623494, "max_dose": 145.3675, "tipo": "Normal"}, {"patient": "pt_12", "mean_dose": 54.45277147602982, "max_dose": 153.4933, "tipo": "Normal"}, {"patient": "pt_120", "mean_dose": 53.13305730942696, "max_dose": 154.91, "tipo": "Normal"}, {"patient": "pt_121", "mean_dose": 53.65086042957648, "max_dose": 156.5353, "tipo": "Normal"}, {"patient": "pt_122", "mean_dose": 56.19597613976847, "max_dose": 153.2761, "tipo": "Normal"}, {"patient": "pt_123", "mean_dose": 54.39930305317091, "max_dose": 151.7661, "tipo": "Normal"}, {"patient": "pt_124", "mean_dose": 55.12561010325478, "max_dose": 145.2259, "tipo": "Normal"}, {"patient": "pt_125", "mean_dose": 55.084943884392594, "max_dose": 151.4495, "tipo": "Normal"}, {"patient": "pt_126", "mean_dose": 55.297386845882414, "max_dose": 145.3287, "tipo": "Normal"}, {"patient": "pt_127", "mean_dose": 55.98991433583876, "max_dose": 151.5876, "tipo": "Normal"}, {"patient": "pt_128", "mean_dose": 54.10563794103744, "max_dose": 161.4377, "tipo": "Normal"}, {"patient": "pt_129", "mean_dose": 55.34796446276552, "max_dose": 158.2432, "tipo": "Normal"}, {"patient": "pt_13", "mean_dose": 54.346422471965454, "max_dose": 143.7812, "tipo": "Normal"}, {"patient": "pt_130", "mean_dose": 53.78418985171291, "max_dose": 153.3917, "tipo": "Normal"}, {"patient": "pt_131", "mean_dose": 56.82160962897531, "max_dose": 156.6817, "tipo": "Normal"}, {"patient": "pt_132", "mean_dose": 54.978590652176806, "max_dose": 143.7811, "tipo": "Normal"}, {"patient": "pt_133", "mean_dose": 54.81680000041862, "max_dose": 156.9126, "tipo": "Normal"}, {"patient": "pt_134", "mean_dose": 55.68575624836462, "max_dose": 157.0175, "tipo": "Normal"}, {"patient": "pt_135", "mean_dose": 55.24071146418624, "max_dose": 160.4694, "tipo": "Normal"}, {"patient": "pt_136", "mean_dose": 54.53583144905105, "max_dose": 155.5303, "tipo": "Normal"}, {"patient": "pt_137", "mean_dose": 51.98521932702585, "max_dose": 149.969, "tipo": "Normal"}, {"patient": "pt_138", "mean_dose": 56.001884012950505, "max_dose": 165.0047, "tipo": "Normal"}, {"patient": "pt_139", "mean_dose": 55.25078725918259, "max_dose": 143.8463, "tipo": "Normal"}, {"patient": "pt_14", "mean_dose": 55.02205587510654, "max_dose": 157.1426, "tipo": "Normal"}, {"patient": "pt_140", "mean_dose": 56.29367241625909, "max_dose": 156.3884, "tipo": "Normal"}, {"patient": "pt_141", "mean_dose": 55.599774476483496, "max_dose": 151.9593, "tipo": "Normal"}, {"patient": "pt_142", "mean_dose": 55.59429914146843, "max_dose": 158.6541, "tipo": "Normal"}, {"patient": "pt_143", "mean_dose": 55.86500423373864, "max_dose": 130.3498, "tipo": "M\u00ednimo"}, {"patient": "pt_144", "mean_dose": 54.91951563363323, "max_dose": 148.6064, "tipo": "Normal"}, {"patient": "pt_145", "mean_dose": 55.49712124529475, "max_dose": 155.2238, "tipo": "Normal"}, {"patient": "pt_146", "mean_dose": 54.1625941766976, "max_dose": 149.9618, "tipo": "Normal"}, {"patient": "pt_147", "mean_dose": 56.47853133537631, "max_dose": 155.5284, "tipo": "Normal"}, {"patient": "pt_148", "mean_dose": 54.968702321211005, "max_dose": 155.0932, "tipo": "Normal"}, {"patient": "pt_149", "mean_dose": 53.025263198155365, "max_dose": 153.2581, "tipo": "Normal"}, {"patient": "pt_15", "mean_dose": 58.32564530931397, "max_dose": 173.2606, "tipo": "Normal"}, {"patient": "pt_150", "mean_dose": 54.36480987654935, "max_dose": 145.5602, "tipo": "Normal"}, {"patient": "pt_151", "mean_dose": 54.00067085183668, "max_dose": 164.6051, "tipo": "Normal"}, {"patient": "pt_152", "mean_dose": 54.99012293724264, "max_dose": 140.6577, "tipo": "Normal"}, {"patient": "pt_153", "mean_dose": 55.9843570980051, "max_dose": 156.9762, "tipo": "Normal"}, {"patient": "pt_154", "mean_dose": 54.05391362163101, "max_dose": 154.9102, "tipo": "Normal"}, {"patient": "pt_155", "mean_dose": 55.42784422413399, "max_dose": 151.7414, "tipo": "Normal"}, {"patient": "pt_156", "mean_dose": 52.2308694187202, "max_dose": 146.7052, "tipo": "Normal"}, {"patient": "pt_157", "mean_dose": 55.60850751773439, "max_dose": 147.0951, "tipo": "Normal"}, {"patient": "pt_158", "mean_dose": 53.04177790857239, "max_dose": 149.9944, "tipo": "Normal"}, {"patient": "pt_159", "mean_dose": 51.42031736490848, "max_dose": 164.676, "tipo": "Normal"}, {"patient": "pt_16", "mean_dose": 52.73253216243802, "max_dose": 151.6078, "tipo": "Normal"}, {"patient": "pt_160", "mean_dose": 55.64916376391094, "max_dose": 159.9359, "tipo": "Normal"}, {"patient": "pt_161", "mean_dose": 57.630172059836354, "max_dose": 161.906, "tipo": "Normal"}, {"patient": "pt_162", "mean_dose": 55.90993789548122, "max_dose": 158.7666, "tipo": "Normal"}, {"patient": "pt_163", "mean_dose": 52.74715735019663, "max_dose": 149.9948, "tipo": "Normal"}, {"patient": "pt_164", "mean_dose": 53.60416624597219, "max_dose": 153.1817, "tipo": "Normal"}, {"patient": "pt_165", "mean_dose": 54.020483688786605, "max_dose": 154.7949, "tipo": "Normal"}, {"patient": "pt_166", "mean_dose": 52.44858107207429, "max_dose": 150.0073, "tipo": "Normal"}, {"patient": "pt_167", "mean_dose": 53.45446472029754, "max_dose": 158.1355, "tipo": "Normal"}, {"patient": "pt_168", "mean_dose": 55.09589839265888, "max_dose": 147.9151, "tipo": "Normal"}, {"patient": "pt_169", "mean_dose": 52.07096738163223, "max_dose": 151.6327, "tipo": "Normal"}, {"patient": "pt_17", "mean_dose": 58.95068046004905, "max_dose": 166.6558, "tipo": "Normal"}, {"patient": "pt_170", "mean_dose": 53.15375793766831, "max_dose": 136.9793, "tipo": "Normal"}, {"patient": "pt_171", "mean_dose": 53.73817594427089, "max_dose": 154.8074, "tipo": "Normal"}, {"patient": "pt_172", "mean_dose": 56.059066237077445, "max_dose": 148.7216, "tipo": "Normal"}, {"patient": "pt_173", "mean_dose": 53.981684041313045, "max_dose": 150.2559, "tipo": "Normal"}, {"patient": "pt_174", "mean_dose": 56.17999245106747, "max_dose": 160.1023, "tipo": "Normal"}, {"patient": "pt_175", "mean_dose": 56.3880641105509, "max_dose": 159.9103, "tipo": "Normal"}, {"patient": "pt_176", "mean_dose": 55.499555215899086, "max_dose": 151.7779, "tipo": "Normal"}, {"patient": "pt_177", "mean_dose": 53.510874032574016, "max_dose": 151.6762, "tipo": "Normal"}, {"patient": "pt_178", "mean_dose": 53.444211572186205, "max_dose": 151.6074, "tipo": "Normal"}, {"patient": "pt_179", "mean_dose": 58.0900216632262, "max_dose": 170.2243, "tipo": "Normal"}, {"patient": "pt_18", "mean_dose": 53.557974290918615, "max_dose": 154.9219, "tipo": "Normal"}, {"patient": "pt_180", "mean_dose": 55.29914360206689, "max_dose": 155.1316, "tipo": "Normal"}, {"patient": "pt_181", "mean_dose": 52.8067515261341, "max_dose": 149.9935, "tipo": "Normal"}, {"patient": "pt_182", "mean_dose": 56.67122088691158, "max_dose": 149.8469, "tipo": "Normal"}, {"patient": "pt_183", "mean_dose": 54.72292601128213, "max_dose": 158.1869, "tipo": "Normal"}, {"patient": "pt_184", "mean_dose": 54.10445819743016, "max_dose": 147.0964, "tipo": "Normal"}, {"patient": "pt_185", "mean_dose": 55.26604083088942, "max_dose": 161.5712, "tipo": "Normal"}, {"patient": "pt_186", "mean_dose": 57.00133064034997, "max_dose": 161.6511, "tipo": "Normal"}, {"patient": "pt_187", "mean_dose": 54.89770186583706, "max_dose": 148.7975, "tipo": "Normal"}, {"patient": "pt_188", "mean_dose": 53.38909775217018, "max_dose": 153.2204, "tipo": "Normal"}, {"patient": "pt_189", "mean_dose": 53.378978085213774, "max_dose": 148.3434, "tipo": "Normal"}, {"patient": "pt_19", "mean_dose": 55.57684217014059, "max_dose": 153.7137, "tipo": "Normal"}, {"patient": "pt_190", "mean_dose": 54.66261710599853, "max_dose": 146.9675, "tipo": "Normal"}, {"patient": "pt_191", "mean_dose": 55.93771481622113, "max_dose": 155.4687, "tipo": "Normal"}, {"patient": "pt_192", "mean_dose": 54.638382972174185, "max_dose": 159.7353, "tipo": "Normal"}, {"patient": "pt_193", "mean_dose": 55.66360960165908, "max_dose": 148.7214, "tipo": "Normal"}, {"patient": "pt_194", "mean_dose": 53.67602834268781, "max_dose": 159.9189, "tipo": "Normal"}, {"patient": "pt_195", "mean_dose": 53.53636447838815, "max_dose": 151.569, "tipo": "Normal"}, {"patient": "pt_196", "mean_dose": 54.19880163340645, "max_dose": 151.6198, "tipo": "Normal"}, {"patient": "pt_197", "mean_dose": 53.244124280381925, "max_dose": 149.9537, "tipo": "Normal"}, {"patient": "pt_198", "mean_dose": 54.06128695206249, "max_dose": 154.8457, "tipo": "Normal"}, {"patient": "pt_199", "mean_dose": 56.48737937027301, "max_dose": 150.497, "tipo": "Normal"}, {"patient": "pt_2", "mean_dose": 56.74970284615976, "max_dose": 158.7146, "tipo": "Normal"}, {"patient": "pt_20", "mean_dose": 56.56855931784416, "max_dose": 146.8773, "tipo": "Normal"}, {"patient": "pt_200", "mean_dose": 56.382436809455, "max_dose": 158.6798, "tipo": "Normal"}, {"patient": "pt_21", "mean_dose": 55.16756819381156, "max_dose": 148.4768, "tipo": "Normal"}, {"patient": "pt_22", "mean_dose": 54.77728481622685, "max_dose": 151.8942, "tipo": "Normal"}, {"patient": "pt_23", "mean_dose": 56.64069697113204, "max_dose": 156.8767, "tipo": "Normal"}, {"patient": "pt_24", "mean_dose": 54.95848547584636, "max_dose": 148.6817, "tipo": "Normal"}, {"patient": "pt_25", "mean_dose": 55.69443448191464, "max_dose": 159.8377, "tipo": "Normal"}, {"patient": "pt_26", "mean_dose": 54.87042046575828, "max_dose": 146.8765, "tipo": "Normal"}, {"patient": "pt_27", "mean_dose": 55.284486963055855, "max_dose": 147.3535, "tipo": "Normal"}, {"patient": "pt_28", "mean_dose": 55.330445665159, "max_dose": 158.383, "tipo": "Normal"}, {"patient": "pt_29", "mean_dose": 54.909728989604176, "max_dose": 156.644, "tipo": "Normal"}, {"patient": "pt_3", "mean_dose": 55.24723776850019, "max_dose": 151.8203, "tipo": "Normal"}, {"patient": "pt_30", "mean_dose": 54.738603981198125, "max_dose": 148.541, "tipo": "Normal"}, {"patient": "pt_31", "mean_dose": 55.28555606118932, "max_dose": 145.2257, "tipo": "Normal"}, {"patient": "pt_32", "mean_dose": 56.21185119901466, "max_dose": 170.3396, "tipo": "Normal"}, {"patient": "pt_33", "mean_dose": 54.14655252523699, "max_dose": 153.246, "tipo": "Normal"}, {"patient": "pt_34", "mean_dose": 54.93340254703018, "max_dose": 153.5344, "tipo": "Normal"}, {"patient": "pt_35", "mean_dose": 55.59910821763422, "max_dose": 155.1727, "tipo": "Normal"}, {"patient": "pt_36", "mean_dose": 53.84080243274536, "max_dose": 154.8841, "tipo": "Normal"}, {"patient": "pt_37", "mean_dose": 53.09129966568504, "max_dose": 151.6455, "tipo": "Normal"}, {"patient": "pt_38", "mean_dose": 54.327502452158896, "max_dose": 209.4591, "tipo": "M\u00e1ximo"}, {"patient": "pt_39", "mean_dose": 55.682749500715566, "max_dose": 160.0229, "tipo": "Normal"}, {"patient": "pt_4", "mean_dose": 55.86907591746852, "max_dose": 157.016, "tipo": "Normal"}, {"patient": "pt_40", "mean_dose": 53.67639870425756, "max_dose": 147.1065, "tipo": "Normal"}, {"patient": "pt_41", "mean_dose": 55.28024084331464, "max_dose": 157.0405, "tipo": "Normal"}, {"patient": "pt_42", "mean_dose": 54.92405803213852, "max_dose": 145.3385, "tipo": "Normal"}, {"patient": "pt_43", "mean_dose": 54.46324446496367, "max_dose": 152.1749, "tipo": "Normal"}, {"patient": "pt_44", "mean_dose": 57.0688678064689, "max_dose": 170.2885, "tipo": "Normal"}, {"patient": "pt_45", "mean_dose": 54.8130773479728, "max_dose": 150.0381, "tipo": "Normal"}, {"patient": "pt_46", "mean_dose": 55.178465352663885, "max_dose": 152.0767, "tipo": "Normal"}, {"patient": "pt_47", "mean_dose": 56.4724477487071, "max_dose": 161.3602, "tipo": "Normal"}, {"patient": "pt_48", "mean_dose": 54.53273175569542, "max_dose": 159.774, "tipo": "Normal"}, {"patient": "pt_49", "mean_dose": 55.11903275264251, "max_dose": 153.2842, "tipo": "Normal"}, {"patient": "pt_5", "mean_dose": 52.15156387270721, "max_dose": 143.3299, "tipo": "Normal"}, {"patient": "pt_50", "mean_dose": 56.73486629786338, "max_dose": 166.718, "tipo": "Normal"}, {"patient": "pt_51", "mean_dose": 53.53028697851357, "max_dose": 141.7781, "tipo": "Normal"}, {"patient": "pt_52", "mean_dose": 53.67209741193626, "max_dose": 157.9222, "tipo": "Normal"}, {"patient": "pt_53", "mean_dose": 55.430184832422704, "max_dose": 156.9627, "tipo": "Normal"}, {"patient": "pt_54", "mean_dose": 55.06221976321355, "max_dose": 148.8497, "tipo": "Normal"}, {"patient": "pt_55", "mean_dose": 54.779320294062366, "max_dose": 152.1371, "tipo": "Normal"}, {"patient": "pt_56", "mean_dose": 55.02701142800466, "max_dose": 150.3077, "tipo": "Normal"}, {"patient": "pt_57", "mean_dose": 53.26953184923976, "max_dose": 149.9432, "tipo": "Normal"}, {"patient": "pt_58", "mean_dose": 54.73937745800283, "max_dose": 150.538, "tipo": "Normal"}, {"patient": "pt_59", "mean_dose": 55.6243556414813, "max_dose": 146.8275, "tipo": "Normal"}, {"patient": "pt_6", "mean_dose": 55.569029611486, "max_dose": 174.5069, "tipo": "Normal"}, {"patient": "pt_60", "mean_dose": 55.80137398504701, "max_dose": 160.0883, "tipo": "Normal"}, {"patient": "pt_61", "mean_dose": 55.86124989244888, "max_dose": 148.7475, "tipo": "Normal"}, {"patient": "pt_62", "mean_dose": 55.28951559565439, "max_dose": 150.0899, "tipo": "Normal"}, {"patient": "pt_63", "mean_dose": 56.220423516471485, "max_dose": 157.0047, "tipo": "Normal"}, {"patient": "pt_64", "mean_dose": 52.1480199627003, "max_dose": 153.1987, "tipo": "Normal"}, {"patient": "pt_65", "mean_dose": 55.29465568739836, "max_dose": 155.3513, "tipo": "Normal"}, {"patient": "pt_66", "mean_dose": 55.53228351806423, "max_dose": 145.5337, "tipo": "Normal"}, {"patient": "pt_67", "mean_dose": 55.18157916834146, "max_dose": 174.987, "tipo": "Normal"}, {"patient": "pt_68", "mean_dose": 55.424503663550816, "max_dose": 146.929, "tipo": "Normal"}, {"patient": "pt_69", "mean_dose": 56.18253140376194, "max_dose": 165.0417, "tipo": "Normal"}, {"patient": "pt_7", "mean_dose": 55.29595265311103, "max_dose": 147.8258, "tipo": "Normal"}, {"patient": "pt_70", "mean_dose": 53.69364504776511, "max_dose": 154.9227, "tipo": "Normal"}, {"patient": "pt_71", "mean_dose": 53.21141976595952, "max_dose": 151.8677, "tipo": "Normal"}, {"patient": "pt_72", "mean_dose": 54.25121525433727, "max_dose": 147.0299, "tipo": "Normal"}, {"patient": "pt_73", "mean_dose": 56.28668732255659, "max_dose": 159.5775, "tipo": "Normal"}, {"patient": "pt_74", "mean_dose": 53.04379788301255, "max_dose": 154.935, "tipo": "Normal"}, {"patient": "pt_75", "mean_dose": 56.56044785331908, "max_dose": 153.6236, "tipo": "Normal"}, {"patient": "pt_76", "mean_dose": 55.03258670813528, "max_dose": 156.6683, "tipo": "Normal"}, {"patient": "pt_77", "mean_dose": 52.67054765201051, "max_dose": 151.6068, "tipo": "Normal"}, {"patient": "pt_78", "mean_dose": 54.418059017197706, "max_dose": 150.4872, "tipo": "Normal"}, {"patient": "pt_79", "mean_dose": 53.19212117582651, "max_dose": 156.5229, "tipo": "Normal"}, {"patient": "pt_8", "mean_dose": 55.169312770852514, "max_dose": 155.0688, "tipo": "Normal"}, {"patient": "pt_80", "mean_dose": 53.18446513054759, "max_dose": 151.646, "tipo": "Normal"}, {"patient": "pt_81", "mean_dose": 55.77812202979643, "max_dose": 158.3729, "tipo": "Normal"}, {"patient": "pt_82", "mean_dose": 55.55153353796821, "max_dose": 147.2231, "tipo": "Normal"}, {"patient": "pt_83", "mean_dose": 55.79038618390132, "max_dose": 156.7093, "tipo": "Normal"}, {"patient": "pt_84", "mean_dose": 55.07338806415422, "max_dose": 141.9629, "tipo": "Normal"}, {"patient": "pt_85", "mean_dose": 52.48000474872666, "max_dose": 192.5672, "tipo": "Normal"}, {"patient": "pt_86", "mean_dose": 53.62620533071726, "max_dose": 153.233, "tipo": "Normal"}, {"patient": "pt_87", "mean_dose": 55.880140292141526, "max_dose": 148.5291, "tipo": "Normal"}, {"patient": "pt_88", "mean_dose": 55.93634412456623, "max_dose": 171.5805, "tipo": "Normal"}, {"patient": "pt_89", "mean_dose": 57.23104089236773, "max_dose": 148.2957, "tipo": "Normal"}, {"patient": "pt_9", "mean_dose": 55.85956198873276, "max_dose": 155.4392, "tipo": "Normal"}, {"patient": "pt_90", "mean_dose": 53.09351241913324, "max_dose": 151.6463, "tipo": "Normal"}, {"patient": "pt_91", "mean_dose": 54.423477419978, "max_dose": 149.9179, "tipo": "Normal"}, {"patient": "pt_92", "mean_dose": 54.81485892692663, "max_dose": 159.8378, "tipo": "Normal"}, {"patient": "pt_93", "mean_dose": 52.94028403680208, "max_dose": 154.8974, "tipo": "Normal"}, {"patient": "pt_94", "mean_dose": 54.43942626723498, "max_dose": 154.9784, "tipo": "Normal"}, {"patient": "pt_95", "mean_dose": 56.44545531286796, "max_dose": 155.0323, "tipo": "Normal"}, {"patient": "pt_96", "mean_dose": 55.07662631696351, "max_dose": 145.6358, "tipo": "Normal"}, {"patient": "pt_97", "mean_dose": 54.04201647876991, "max_dose": 159.786, "tipo": "Normal"}, {"patient": "pt_98", "mean_dose": 55.21577305087023, "max_dose": 156.926, "tipo": "Normal"}, {"patient": "pt_99", "mean_dose": 55.92727651386184, "max_dose": 165.9736, "tipo": "Normal"}], "data-5a6ea0873854eafa00e103e24d75b110": [{"patient": "pt_143", "mean_dose": 55.86500423373864, "max_dose": 130.3498, "tipo": "M\u00ednimo"}, {"patient": "pt_38", "mean_dose": 54.327502452158896, "max_dose": 209.4591, "tipo": "M\u00e1ximo"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<section id="interpretación" class="level3">
+<h3 class="anchored" data-anchor-id="interpretación">Interpretación</h3>
+<p>La visualización sugiere una relación positiva moderada entre la dosis media y la dosis máxima. En general, los pacientes con mayor dosis media tienden a presentar valores más altos de dosis máxima. La línea de tendencia resume este patrón general, mientras que la banda sombreada ayuda a representar la incertidumbre alrededor de la regresión. Además, se destacan los pacientes con valores extremos, lo que facilita identificar posibles casos atípicos dentro del conjunto analizado.</p>
+</section>
+</section>
+<section id="pregunta-2-cómo-se-distribuye-la-dosis-entre-los-pacientes" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2-cómo-se-distribuye-la-dosis-entre-los-pacientes">Pregunta 2: ¿Cómo se distribuye la dosis entre los pacientes?</h2>
 <p>Aquí se presenta una visualización comparando la dosis media entre diferentes estructuras anatómicas.</p>
-</section>
-<section id="interpretación" class="level2">
-<h2 class="anchored" data-anchor-id="interpretación">Interpretación</h2>
-<p>Esta gráfica permite identificar cuáles estructuras reciben mayores niveles de radiación y cuánta variabilidad existe entre pacientes.</p>
-<hr>
-</section>
-<section id="pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo">Pregunta 2: ¿Qué diferencias existen entre tumores y órganos de riesgo?</h2>
-<p>Se compara la dosis media entre estructuras objetivo y órganos sanos.</p>
 </section>
 <section id="interpretación-1" class="level2">
 <h2 class="anchored" data-anchor-id="interpretación-1">Interpretación</h2>
-<p>La visualización busca mostrar si el tratamiento logra priorizar la dosis sobre el tumor mientras limita la exposición de tejidos sanos.</p>
+<p>Esta gráfica permite identificar cuáles estructuras reciben mayores niveles de radiación y cuánta variabilidad existe entre pacientes.</p>
 <hr>
 </section>
-<section id="pregunta-3-cómo-varía-la-dosis-entre-pacientes" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-3-cómo-varía-la-dosis-entre-pacientes">Pregunta 3: ¿Cómo varía la dosis entre pacientes?</h2>
-<p>Se explora la variabilidad inter-paciente mediante una visualización comparativa.</p>
+<section id="pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo">Pregunta 3: ¿Qué diferencias existen entre tumores y órganos de riesgo?</h2>
+<p>Se compara la dosis media entre estructuras objetivo y órganos sanos.</p>
 </section>
 <section id="interpretación-2" class="level2">
 <h2 class="anchored" data-anchor-id="interpretación-2">Interpretación</h2>
-<p>Esto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación.</p>
+<p>La visualización busca mostrar si el tratamiento logra priorizar la dosis sobre el tumor mientras limita la exposición de tejidos sanos.</p>
 <hr>
 </section>
-<section id="pregunta-4-existe-relación-entre-volumen-y-dosis" class="level2">
-<h2 class="anchored" data-anchor-id="pregunta-4-existe-relación-entre-volumen-y-dosis">Pregunta 4: ¿Existe relación entre volumen y dosis?</h2>
-<p>Se analiza la relación entre el tamaño de una estructura y la dosis media recibida.</p>
+<section id="pregunta-4-cómo-varía-la-dosis-entre-pacientes" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-4-cómo-varía-la-dosis-entre-pacientes">Pregunta 4: ¿Cómo varía la dosis entre pacientes?</h2>
+<p>Se explora la variabilidad inter-paciente mediante una visualización comparativa.</p>
 </section>
 <section id="interpretación-3" class="level2">
 <h2 class="anchored" data-anchor-id="interpretación-3">Interpretación</h2>
+<p>Esto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación.</p>
+<hr>
+</section>
+<section id="pregunta-5-existe-relación-entre-volumen-y-dosis" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-5-existe-relación-entre-volumen-y-dosis">Pregunta 5: ¿Existe relación entre volumen y dosis?</h2>
+<p>Se analiza la relación entre el tamaño de una estructura y la dosis media recibida.</p>
+</section>
+<section id="interpretación-4" class="level2">
+<h2 class="anchored" data-anchor-id="interpretación-4">Interpretación</h2>
 <p>Este análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis.</p>
 
 
