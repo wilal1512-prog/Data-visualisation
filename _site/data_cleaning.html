@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -195,7 +230,101 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="justificación" class="level2">
 <h2 class="anchored" data-anchor-id="justificación">Justificación</h2>
-<p>Estas decisiones permiten transformar datos médicos complejos en una estructura adecuada para análisis visual y comparación entre pacientes.</p>
+<div id="f4ef7c13" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ruta_base <span class="op">=</span> Path(<span class="vs">r"C:</span><span class="er">\</span><span class="vs">Users</span><span class="er">\</span><span class="vs">psiqg</span><span class="ch">\.</span><span class="vs">virtual_documents</span><span class="dv">\d</span><span class="vs">ata_visualization</span><span class="dv">\D</span><span class="vs">ata Visualization</span><span class="dv">\D</span><span class="vs">ata-visualisation</span><span class="dv">\D</span><span class="vs">ata-visualisation</span><span class="dv">\d</span><span class="vs">ata</span><span class="ch">\r</span><span class="vs">aw</span><span class="er">\</span><span class="vs">openkbp</span><span class="er">\</span><span class="vs">provided-data</span><span class="ch">\t</span><span class="vs">est-pats"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>salida <span class="op">=</span> Path(<span class="vs">r"C:</span><span class="er">\</span><span class="vs">Users</span><span class="er">\</span><span class="vs">psiqg</span><span class="ch">\.</span><span class="vs">virtual_documents</span><span class="dv">\d</span><span class="vs">ata_visualization</span><span class="dv">\D</span><span class="vs">ata Visualization</span><span class="dv">\D</span><span class="vs">ata-visualisation</span><span class="dv">\D</span><span class="vs">ata-visualisation</span><span class="dv">\d</span><span class="vs">ata</span><span class="er">\</span><span class="vs">processed</span><span class="er">\</span><span class="vs">openkbp_structure_doses</span><span class="dv">.</span><span class="vs">csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Ruta usada:"</span>, ruta_base)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Existe:"</span>, os.path.exists(ruta_base))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>N_VOXELS <span class="op">=</span> <span class="dv">128</span> <span class="op">*</span> <span class="dv">128</span> <span class="op">*</span> <span class="dv">128</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>estructuras <span class="op">=</span> [</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Brainstem"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SpinalCord"</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LeftParotid"</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RightParotid"</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PTV56"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PTV63"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"PTV70"</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>salida.parent.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cargar_sparse_csv(path, n_voxels<span class="op">=</span>N_VOXELS, default_value<span class="op">=</span><span class="fl">0.0</span>):</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(path, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    arr <span class="op">=</span> np.full(n_voxels, default_value, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"data"</span> <span class="kw">in</span> df.columns:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        indices <span class="op">=</span> df.index.astype(<span class="bu">int</span>).to_numpy()</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        valores <span class="op">=</span> df[<span class="st">"data"</span>].fillna(<span class="dv">1</span>).astype(<span class="bu">float</span>).to_numpy()</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        arr[indices] <span class="op">=</span> valores</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        indices <span class="op">=</span> df.index.astype(<span class="bu">int</span>).to_numpy()</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        arr[indices] <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arr</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>resultados <span class="op">=</span> []</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> paciente <span class="kw">in</span> os.listdir(ruta_base):</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    carpeta_paciente <span class="op">=</span> ruta_base <span class="op">/</span> paciente</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> carpeta_paciente.is_dir():</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    dose_path <span class="op">=</span> carpeta_paciente <span class="op">/</span> <span class="st">"dose.csv"</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> dose_path.exists():</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    dose <span class="op">=</span> cargar_sparse_csv(dose_path, default_value<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> estructura <span class="kw">in</span> estructuras:</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        estructura_path <span class="op">=</span> carpeta_paciente <span class="op">/</span> <span class="ss">f"</span><span class="sc">{</span>estructura<span class="sc">}</span><span class="ss">.csv"</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> estructura_path.exists():</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>        mask <span class="op">=</span> cargar_sparse_csv(estructura_path, default_value<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>        voxels <span class="op">=</span> dose[mask <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(voxels) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>        resultados.append({</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>            <span class="st">"patient"</span>: paciente,</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>            <span class="st">"structure"</span>: estructura,</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>            <span class="st">"mean_dose"</span>: <span class="bu">float</span>(np.mean(voxels)),</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>            <span class="st">"max_dose"</span>: <span class="bu">float</span>(np.<span class="bu">max</span>(voxels))</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>df_total <span class="op">=</span> pd.DataFrame(resultados)</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>df_total.to_csv(salida, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Archivo creado:"</span>, salida.exists())</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Archivo guardado en:"</span>, salida)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_total.head())</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_total.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Ruta usada: C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\raw\openkbp\provided-data\test-pats
+Existe: True
+Archivo creado: True
+Archivo guardado en: C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\processed\openkbp_structure_doses.csv
+  patient     structure  mean_dose  max_dose
+0  pt_241     Brainstem   3.661239    25.675
+1  pt_241    SpinalCord  19.096967    34.281
+2  pt_241   LeftParotid  27.276652    59.921
+3  pt_241  RightParotid  25.205656    57.650
+4  pt_241         PTV56  59.478529    65.504
+(607, 4)</code></pre>
+</div>
+</div>
 
 
 </section>

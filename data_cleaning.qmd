@@ -43,4 +43,85 @@ El resultado final es una tabla con variables como:
 
 ## Justificación
 
-Estas decisiones permiten transformar datos médicos complejos en una estructura adecuada para análisis visual y comparación entre pacientes.
+```{python}
+import os
+import pandas as pd
+import numpy as np
+from pathlib import Path
+
+ruta_base = Path(r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\raw\openkbp\provided-data\test-pats")
+salida = Path(r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\processed\openkbp_structure_doses.csv")
+
+print("Ruta usada:", ruta_base)
+print("Existe:", os.path.exists(ruta_base))
+
+N_VOXELS = 128 * 128 * 128
+
+estructuras = [
+    "Brainstem",
+    "SpinalCord",
+    "LeftParotid",
+    "RightParotid",
+    "PTV56",
+    "PTV63",
+    "PTV70"
+]
+
+salida.parent.mkdir(parents=True, exist_ok=True)
+
+def cargar_sparse_csv(path, n_voxels=N_VOXELS, default_value=0.0):
+    df = pd.read_csv(path, index_col=0)
+
+    arr = np.full(n_voxels, default_value, dtype=float)
+
+    if "data" in df.columns:
+        indices = df.index.astype(int).to_numpy()
+        valores = df["data"].fillna(1).astype(float).to_numpy()
+        arr[indices] = valores
+    else:
+        indices = df.index.astype(int).to_numpy()
+        arr[indices] = 1.0
+
+    return arr
+
+resultados = []
+
+for paciente in os.listdir(ruta_base):
+    carpeta_paciente = ruta_base / paciente
+
+    if not carpeta_paciente.is_dir():
+        continue
+
+    dose_path = carpeta_paciente / "dose.csv"
+    if not dose_path.exists():
+        continue
+
+    dose = cargar_sparse_csv(dose_path, default_value=0.0)
+
+    for estructura in estructuras:
+        estructura_path = carpeta_paciente / f"{estructura}.csv"
+
+        if not estructura_path.exists():
+            continue
+
+        mask = cargar_sparse_csv(estructura_path, default_value=0.0)
+        voxels = dose[mask > 0]
+
+        if len(voxels) == 0:
+            continue
+
+        resultados.append({
+            "patient": paciente,
+            "structure": estructura,
+            "mean_dose": float(np.mean(voxels)),
+            "max_dose": float(np.max(voxels))
+        })
+
+df_total = pd.DataFrame(resultados)
+df_total.to_csv(salida, index=False)
+
+print("Archivo creado:", salida.exists())
+print("Archivo guardado en:", salida)
+print(df_total.head())
+print(df_total.shape)
+```

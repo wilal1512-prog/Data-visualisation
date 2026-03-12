@@ -4,63 +4,77 @@
     "href": "visualizations.html",
     "title": "Análisis y visualizaciones",
     "section": "",
-    "text": "Para responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.\n\n\n\n\n\n\n\n\n\n\nLa visualización sugiere una relación positiva moderada entre la dosis media y la dosis máxima. En general, los pacientes con mayor dosis media tienden a presentar valores más altos de dosis máxima. La línea de tendencia resume este patrón general, mientras que la banda sombreada ayuda a representar la incertidumbre alrededor de la regresión. Además, se destacan los pacientes con valores extremos, lo que facilita identificar posibles casos atípicos dentro del conjunto analizado."
+    "text": "¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?\nPara responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.\n\n\nNúmero de Pacientes : 204"
   },
   {
-    "objectID": "visualizations.html#pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras",
-    "href": "visualizations.html#pregunta-1-cómo-se-distribuye-la-dosis-entre-estructuras",
+    "objectID": "visualizations.html#pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia",
+    "href": "visualizations.html#pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia",
     "title": "Análisis y visualizaciones",
     "section": "",
-    "text": "Aquí se presenta una visualización comparando la dosis media entre diferentes estructuras anatómicas."
+    "text": "Para responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.\n\n\nNúmero de Pacientes : 204"
   },
   {
     "objectID": "visualizations.html#interpretación",
     "href": "visualizations.html#interpretación",
     "title": "Análisis y visualizaciones",
     "section": "Interpretación",
-    "text": "Interpretación\nEsta gráfica permite identificar cuáles estructuras reciben mayores niveles de radiación y cuánta variabilidad existe entre pacientes."
+    "text": "Interpretación\nEsto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación."
   },
   {
-    "objectID": "visualizations.html#pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo",
-    "href": "visualizations.html#pregunta-2-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo",
+    "objectID": "visualizations.html#la-visualización-muestra-cómo-se-distribuye-la-dosis-media-entre-los-pacientes-para-distintas-estructuras-anatómicas-del-dataset-openkbp.-los-volúmenes-objetivo-ptv70-ptv63-y-ptv56-reciben-las-dosis-más-altas-con-valores-aproximados-entre-6774-gy-para-ptv70-6371-gy-para-ptv63-y-5365-gy-para-ptv56-lo-cual-es-consistente-con-su-función-terapéutica-en-radioterapia.-en-contraste-los-órganos-de-riesgo-presentan-dosis-menores-brainstem-se-sitúa-aproximadamente-entre-0-y-30-gy-mientras-que-spinalcord-se-mantiene-entre-5-y-30-gy.-las-glándulas-parótidas-leftparotid-y-rightparotid-muestran-mayor-variabilidad-con-valores-entre-20-y-60-gy-reflejando-diferencias-anatómicas-y-de-planificación-entre-pacientes.-estos-resultados-evidencian-cómo-la-radiación-se-concentra-en-los-volúmenes-tumorales-mientras-se-intenta-limitar-la-exposición-en-estructuras-críticas.",
+    "href": "visualizations.html#la-visualización-muestra-cómo-se-distribuye-la-dosis-media-entre-los-pacientes-para-distintas-estructuras-anatómicas-del-dataset-openkbp.-los-volúmenes-objetivo-ptv70-ptv63-y-ptv56-reciben-las-dosis-más-altas-con-valores-aproximados-entre-6774-gy-para-ptv70-6371-gy-para-ptv63-y-5365-gy-para-ptv56-lo-cual-es-consistente-con-su-función-terapéutica-en-radioterapia.-en-contraste-los-órganos-de-riesgo-presentan-dosis-menores-brainstem-se-sitúa-aproximadamente-entre-0-y-30-gy-mientras-que-spinalcord-se-mantiene-entre-5-y-30-gy.-las-glándulas-parótidas-leftparotid-y-rightparotid-muestran-mayor-variabilidad-con-valores-entre-20-y-60-gy-reflejando-diferencias-anatómicas-y-de-planificación-entre-pacientes.-estos-resultados-evidencian-cómo-la-radiación-se-concentra-en-los-volúmenes-tumorales-mientras-se-intenta-limitar-la-exposición-en-estructuras-críticas.",
     "title": "Análisis y visualizaciones",
-    "section": "Pregunta 2: ¿Qué diferencias existen entre tumores y órganos de riesgo?",
-    "text": "Pregunta 2: ¿Qué diferencias existen entre tumores y órganos de riesgo?\nSe compara la dosis media entre estructuras objetivo y órganos sanos."
+    "section": "La visualización muestra cómo se distribuye la dosis media entre los pacientes para distintas estructuras anatómicas del dataset OpenKBP. Los volúmenes objetivo (PTV70, PTV63 y PTV56) reciben las dosis más altas, con valores aproximados entre 67–74 Gy para PTV70, 63–71 Gy para PTV63 y 53–65 Gy para PTV56, lo cual es consistente con su función terapéutica en radioterapia. En contraste, los órganos de riesgo presentan dosis menores: Brainstem se sitúa aproximadamente entre 0 y 30 Gy, mientras que SpinalCord se mantiene entre 5 y 30 Gy. Las glándulas parótidas (LeftParotid y RightParotid) muestran mayor variabilidad, con valores entre 20 y 60 Gy, reflejando diferencias anatómicas y de planificación entre pacientes. Estos resultados evidencian cómo la radiación se concentra en los volúmenes tumorales mientras se intenta limitar la exposición en estructuras críticas.",
+    "text": "La visualización muestra cómo se distribuye la dosis media entre los pacientes para distintas estructuras anatómicas del dataset OpenKBP. Los volúmenes objetivo (PTV70, PTV63 y PTV56) reciben las dosis más altas, con valores aproximados entre 67–74 Gy para PTV70, 63–71 Gy para PTV63 y 53–65 Gy para PTV56, lo cual es consistente con su función terapéutica en radioterapia. En contraste, los órganos de riesgo presentan dosis menores: Brainstem se sitúa aproximadamente entre 0 y 30 Gy, mientras que SpinalCord se mantiene entre 5 y 30 Gy. Las glándulas parótidas (LeftParotid y RightParotid) muestran mayor variabilidad, con valores entre 20 y 60 Gy, reflejando diferencias anatómicas y de planificación entre pacientes. Estos resultados evidencian cómo la radiación se concentra en los volúmenes tumorales mientras se intenta limitar la exposición en estructuras críticas."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo",
+    "href": "visualizations.html#pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 3: ¿Qué diferencias existen entre tumores y órganos de riesgo?",
+    "text": "Pregunta 3: ¿Qué diferencias existen entre tumores y órganos de riesgo?\nSe compara la dosis media entre estructuras objetivo y órganos sanos.\n** Interpretación **\nLa visualización busca mostrar si el tratamiento logra priorizar la dosis sobre el tumor mientras limita la exposición de tejidos sanos."
   },
   {
     "objectID": "visualizations.html#interpretación-1",
     "href": "visualizations.html#interpretación-1",
     "title": "Análisis y visualizaciones",
     "section": "Interpretación",
-    "text": "Interpretación\nEsta gráfica permite identificar cuáles estructuras reciben mayores niveles de radiación y cuánta variabilidad existe entre pacientes."
+    "text": "Interpretación\nEste análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis."
   },
   {
-    "objectID": "visualizations.html#pregunta-3-cómo-varía-la-dosis-entre-pacientes",
-    "href": "visualizations.html#pregunta-3-cómo-varía-la-dosis-entre-pacientes",
+    "objectID": "visualizations.html#pregunta-4-cómo-varía-la-dosis-entre-pacientes",
+    "href": "visualizations.html#pregunta-4-cómo-varía-la-dosis-entre-pacientes",
     "title": "Análisis y visualizaciones",
-    "section": "Pregunta 3: ¿Cómo varía la dosis entre pacientes?",
-    "text": "Pregunta 3: ¿Cómo varía la dosis entre pacientes?\nSe explora la variabilidad inter-paciente mediante una visualización comparativa."
+    "section": "Pregunta 4: ¿Cómo varía la dosis entre pacientes?",
+    "text": "Pregunta 4: ¿Cómo varía la dosis entre pacientes?\nSe explora la variabilidad inter-paciente mediante una visualización comparativa.\n** Interpretación **\nEsto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación."
   },
   {
     "objectID": "visualizations.html#interpretación-2",
     "href": "visualizations.html#interpretación-2",
     "title": "Análisis y visualizaciones",
     "section": "Interpretación",
-    "text": "Interpretación\nLa visualización busca mostrar si el tratamiento logra priorizar la dosis sobre el tumor mientras limita la exposición de tejidos sanos."
+    "text": "Interpretación\nEsto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación."
   },
   {
-    "objectID": "visualizations.html#pregunta-4-existe-relación-entre-volumen-y-dosis",
-    "href": "visualizations.html#pregunta-4-existe-relación-entre-volumen-y-dosis",
+    "objectID": "visualizations.html#pregunta-5-existe-relación-entre-volumen-y-dosis",
+    "href": "visualizations.html#pregunta-5-existe-relación-entre-volumen-y-dosis",
     "title": "Análisis y visualizaciones",
-    "section": "Pregunta 4: ¿Existe relación entre volumen y dosis?",
-    "text": "Pregunta 4: ¿Existe relación entre volumen y dosis?\nSe analiza la relación entre el tamaño de una estructura y la dosis media recibida."
+    "section": "Pregunta 5: ¿Existe relación entre volumen y dosis?",
+    "text": "Pregunta 5: ¿Existe relación entre volumen y dosis?\nSe analiza la relación entre el tamaño de una estructura y la dosis media recibida.\n** Interpretación **\nEste análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis."
   },
   {
     "objectID": "visualizations.html#interpretación-3",
     "href": "visualizations.html#interpretación-3",
     "title": "Análisis y visualizaciones",
     "section": "Interpretación",
-    "text": "Interpretación\nEsto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación."
+    "text": "Interpretación\nEste análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-2",
+    "href": "visualizations.html#pregunta-2",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 2",
+    "text": "Pregunta 2\n¿Cómo se distribuye la dosis media entre las distintas estructuras anatómicas?\nPara responder esta pregunta se utiliza un gráfico de dispersión donde cada punto representa la dosis media recibida por una estructura anatómica específica en un paciente. Esto permite comparar las dosis administradas entre diferentes estructuras y observar la variabilidad existente entre pacientes.\n\n\n\n\n\n\n\n\n** Interpretación **\nLa visualización muestra cómo se distribuye la dosis media entre los pacientes para distintas estructuras anatómicas del dataset OpenKBP. Los volúmenes objetivo (PTV70, PTV63 y PTV56) reciben las dosis más altas, con valores aproximados entre 67–74 Gy para PTV70, 63–71 Gy para PTV63 y 53–65 Gy para PTV56, lo cual es consistente con su función terapéutica en radioterapia. En contraste, los órganos de riesgo presentan dosis menores: Brainstem se sitúa aproximadamente entre 0 y 30 Gy, mientras que SpinalCord se mantiene entre 5 y 30 Gy. Las glándulas parótidas (LeftParotid y RightParotid) muestran mayor variabilidad, con valores entre 20 y 60 Gy, reflejando diferencias anatómicas y de planificación entre pacientes. Estos resultados evidencian cómo la radiación se concentra en los volúmenes tumorales mientras se intenta limitar la exposición en estructuras críticas."
   },
   {
     "objectID": "index.html",
@@ -75,6 +89,20 @@
     "title": "Análisis visual de la distribución de dosis en radioterapia",
     "section": "",
     "text": "En radioterapia, el objetivo es administrar suficiente dosis al tumor mientras se protege a los órganos sanos cercanos.\nEste proyecto utiliza el dataset OpenKBP para explorar visualmente cómo se distribuye la dosis entre distintas estructuras anatómicas."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-2-cómo-se-distribuye-la-dosis-media-entre-las-distintas-estructuras-anatómicas",
+    "href": "visualizations.html#pregunta-2-cómo-se-distribuye-la-dosis-media-entre-las-distintas-estructuras-anatómicas",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 2: ¿Cómo se distribuye la dosis media entre las distintas estructuras anatómicas?",
+    "text": "Pregunta 2: ¿Cómo se distribuye la dosis media entre las distintas estructuras anatómicas?\nPara responder esta pregunta se utiliza un gráfico de dispersión donde cada punto representa la dosis media recibida por una estructura anatómica específica en un paciente. Esto permite comparar las dosis administradas entre diferentes estructuras y observar la variabilidad existente entre pacientes.\n\n\n        mean_dose    max_dose\ncount  607.000000  607.000000\nmean    39.430358   59.050962\nstd     23.904836   18.010520\nmin      0.013746    0.164000\n25%     18.466570   41.763500\n50%     36.267778   70.000000\n75%     61.457235   72.985000\nmax     73.940502   79.977000\nstructure\nPTV70           100\nRightParotid     99\nLeftParotid      98\nPTV56            91\nBrainstem        89\nSpinalCord       88\nPTV63            42\nName: count, dtype: int64\n\n\n\n\n\n\n\n\n** Interpretación **\nLa visualización muestra cómo se distribuye la dosis media entre los pacientes para distintas estructuras anatómicas del dataset OpenKBP. Los volúmenes objetivo (PTV70, PTV63 y PTV56) reciben las dosis más altas, con valores aproximados entre 67–74 Gy para PTV70, 63–71 Gy para PTV63 y 53–65 Gy para PTV56, lo cual es consistente con su función terapéutica en radioterapia. En contraste, los órganos de riesgo presentan dosis menores: Brainstem se sitúa aproximadamente entre 0 y 30 Gy, mientras que SpinalCord se mantiene entre 5 y 30 Gy. Las glándulas parótidas (LeftParotid y RightParotid) muestran mayor variabilidad, con valores entre 20 y 60 Gy, reflejando diferencias anatómicas y de planificación entre pacientes. Estos resultados evidencian cómo la radiación se concentra en los volúmenes tumorales mientras se intenta limitar la exposición en estructuras críticas."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-1",
+    "href": "visualizations.html#pregunta-1",
+    "title": "Análisis y visualizaciones",
+    "section": "",
+    "text": "¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?\nPara responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.\n\n\nNúmero de Pacientes : 204"
   },
   {
     "objectID": "data_cleaning.html",
@@ -123,48 +151,13 @@
     "href": "data_cleaning.html#justificación",
     "title": "Limpieza y preparación de datos",
     "section": "Justificación",
-    "text": "Justificación\nEstas decisiones permiten transformar datos médicos complejos en una estructura adecuada para análisis visual y comparación entre pacientes."
+    "text": "Justificación\n\nimport os\nimport pandas as pd\nimport numpy as np\nfrom pathlib import Path\n\nruta_base = Path(r\"C:\\Users\\psiqg\\.virtual_documents\\data_visualization\\Data Visualization\\Data-visualisation\\Data-visualisation\\data\\raw\\openkbp\\provided-data\\test-pats\")\nsalida = Path(r\"C:\\Users\\psiqg\\.virtual_documents\\data_visualization\\Data Visualization\\Data-visualisation\\Data-visualisation\\data\\processed\\openkbp_structure_doses.csv\")\n\nprint(\"Ruta usada:\", ruta_base)\nprint(\"Existe:\", os.path.exists(ruta_base))\n\nN_VOXELS = 128 * 128 * 128\n\nestructuras = [\n    \"Brainstem\",\n    \"SpinalCord\",\n    \"LeftParotid\",\n    \"RightParotid\",\n    \"PTV56\",\n    \"PTV63\",\n    \"PTV70\"\n]\n\nsalida.parent.mkdir(parents=True, exist_ok=True)\n\ndef cargar_sparse_csv(path, n_voxels=N_VOXELS, default_value=0.0):\n    df = pd.read_csv(path, index_col=0)\n\n    arr = np.full(n_voxels, default_value, dtype=float)\n\n    if \"data\" in df.columns:\n        indices = df.index.astype(int).to_numpy()\n        valores = df[\"data\"].fillna(1).astype(float).to_numpy()\n        arr[indices] = valores\n    else:\n        indices = df.index.astype(int).to_numpy()\n        arr[indices] = 1.0\n\n    return arr\n\nresultados = []\n\nfor paciente in os.listdir(ruta_base):\n    carpeta_paciente = ruta_base / paciente\n\n    if not carpeta_paciente.is_dir():\n        continue\n\n    dose_path = carpeta_paciente / \"dose.csv\"\n    if not dose_path.exists():\n        continue\n\n    dose = cargar_sparse_csv(dose_path, default_value=0.0)\n\n    for estructura in estructuras:\n        estructura_path = carpeta_paciente / f\"{estructura}.csv\"\n\n        if not estructura_path.exists():\n            continue\n\n        mask = cargar_sparse_csv(estructura_path, default_value=0.0)\n        voxels = dose[mask &gt; 0]\n\n        if len(voxels) == 0:\n            continue\n\n        resultados.append({\n            \"patient\": paciente,\n            \"structure\": estructura,\n            \"mean_dose\": float(np.mean(voxels)),\n            \"max_dose\": float(np.max(voxels))\n        })\n\ndf_total = pd.DataFrame(resultados)\ndf_total.to_csv(salida, index=False)\n\nprint(\"Archivo creado:\", salida.exists())\nprint(\"Archivo guardado en:\", salida)\nprint(df_total.head())\nprint(df_total.shape)\n\nRuta usada: C:\\Users\\psiqg\\.virtual_documents\\data_visualization\\Data Visualization\\Data-visualisation\\Data-visualisation\\data\\raw\\openkbp\\provided-data\\test-pats\nExiste: True\nArchivo creado: True\nArchivo guardado en: C:\\Users\\psiqg\\.virtual_documents\\data_visualization\\Data Visualization\\Data-visualisation\\Data-visualisation\\data\\processed\\openkbp_structure_doses.csv\n  patient     structure  mean_dose  max_dose\n0  pt_241     Brainstem   3.661239    25.675\n1  pt_241    SpinalCord  19.096967    34.281\n2  pt_241   LeftParotid  27.276652    59.921\n3  pt_241  RightParotid  25.205656    57.650\n4  pt_241         PTV56  59.478529    65.504\n(607, 4)"
   },
   {
-    "objectID": "visualizations.html#pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia",
-    "href": "visualizations.html#pregunta-1-existe-una-relación-entre-la-dosis-media-administrada-a-un-paciente-y-la-dosis-máxima-recibida-durante-el-tratamiento-de-radioterapia",
+    "objectID": "visualizations.html#pregunta-3",
+    "href": "visualizations.html#pregunta-3",
     "title": "Análisis y visualizaciones",
-    "section": "",
-    "text": "Para responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.\n\n\n\n\n\n\n\n\n\n\nLa visualización sugiere una relación positiva moderada entre la dosis media y la dosis máxima. En general, los pacientes con mayor dosis media tienden a presentar valores más altos de dosis máxima. La línea de tendencia resume este patrón general, mientras que la banda sombreada ayuda a representar la incertidumbre alrededor de la regresión. Además, se destacan los pacientes con valores extremos, lo que facilita identificar posibles casos atípicos dentro del conjunto analizado."
-  },
-  {
-    "objectID": "visualizations.html#pregunta-2-cómo-se-distribuye-la-dosis-entre-los-pacientes",
-    "href": "visualizations.html#pregunta-2-cómo-se-distribuye-la-dosis-entre-los-pacientes",
-    "title": "Análisis y visualizaciones",
-    "section": "Pregunta 2: ¿Cómo se distribuye la dosis entre los pacientes?",
-    "text": "Pregunta 2: ¿Cómo se distribuye la dosis entre los pacientes?\nAquí se presenta una visualización comparando la dosis media entre diferentes estructuras anatómicas."
-  },
-  {
-    "objectID": "visualizations.html#pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo",
-    "href": "visualizations.html#pregunta-3-qué-diferencias-existen-entre-tumores-y-órganos-de-riesgo",
-    "title": "Análisis y visualizaciones",
-    "section": "Pregunta 3: ¿Qué diferencias existen entre tumores y órganos de riesgo?",
-    "text": "Pregunta 3: ¿Qué diferencias existen entre tumores y órganos de riesgo?\nSe compara la dosis media entre estructuras objetivo y órganos sanos."
-  },
-  {
-    "objectID": "visualizations.html#pregunta-4-cómo-varía-la-dosis-entre-pacientes",
-    "href": "visualizations.html#pregunta-4-cómo-varía-la-dosis-entre-pacientes",
-    "title": "Análisis y visualizaciones",
-    "section": "Pregunta 4: ¿Cómo varía la dosis entre pacientes?",
-    "text": "Pregunta 4: ¿Cómo varía la dosis entre pacientes?\nSe explora la variabilidad inter-paciente mediante una visualización comparativa."
-  },
-  {
-    "objectID": "visualizations.html#pregunta-5-existe-relación-entre-volumen-y-dosis",
-    "href": "visualizations.html#pregunta-5-existe-relación-entre-volumen-y-dosis",
-    "title": "Análisis y visualizaciones",
-    "section": "Pregunta 5: ¿Existe relación entre volumen y dosis?",
-    "text": "Pregunta 5: ¿Existe relación entre volumen y dosis?\nSe analiza la relación entre el tamaño de una estructura y la dosis media recibida."
-  },
-  {
-    "objectID": "visualizations.html#interpretación-4",
-    "href": "visualizations.html#interpretación-4",
-    "title": "Análisis y visualizaciones",
-    "section": "Interpretación",
-    "text": "Interpretación\nEste análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis."
+    "section": "Pregunta 3",
+    "text": "Pregunta 3\n¿Cómo se distribuye espacialmente la dosis de radioterapia en distintos cortes tomográficos del paciente?\nEsta visualización presenta una exploración espacial de la dosis sobre la anatomía del paciente, mostrando cortes sagital y transversal con curvas de isodosis superpuestas.\n\n\nC:\\Users\\psiqg\\AppData\\Local\\Temp\\ipykernel_20616\\567491621.py:163: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.\n  plt.tight_layout()\n\n\n\n\n\n\n\n\n\n** Interpretación **\nLa visualización muestra dos cortes tomográficos del paciente, uno sagital y otro transversal, con curvas de isodosis superpuestas. En ambas vistas se observa que las regiones de mayor dosis se concentran en la zona objetivo del tratamiento, mientras que la intensidad disminuye hacia los tejidos circundantes. Esto permite analizar la distribución espacial de la radiación y verificar que el tratamiento busca maximizar la dosis en el tumor y limitar la exposición de estructuras sanas."
   }
 ]

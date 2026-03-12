@@ -3,7 +3,9 @@ title: "Análisis y visualizaciones"
 ---
 
 
-## Pregunta 1: ¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?
+## Pregunta 1
+
+¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?
 
 
 Para responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.
@@ -12,10 +14,58 @@ Para responder esta pregunta se utiliza un gráfico de dispersión, ya que permi
 
 ```{python}
 #| echo: false
+
+import os
+import numpy as np
 import pandas as pd
 import altair as alt
 
-df = pd.read_csv("data/processed/dose_summary.csv")
+data_dir = r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\raw\openkbp\provided-data\train-pats"
+
+print("Número de Pacientes :", len(os.listdir(data_dir)))
+
+results = []
+
+for patient in os.listdir(data_dir):
+
+    patient_path = os.path.join(data_dir, patient)
+
+    if not os.path.isdir(patient_path):
+        continue
+
+    for file in os.listdir(patient_path):
+
+        if "dose.csv" in file:
+
+            dose_path = os.path.join(patient_path, file)
+
+            dose = pd.read_csv(dose_path)
+
+            mean_dose = dose.values.mean()
+            max_dose = dose.values.max()
+
+            results.append({
+                "patient": patient,
+                "mean_dose": mean_dose,
+                "max_dose": max_dose
+            })
+
+
+df = pd.DataFrame(results)
+
+df.to_csv(r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\processed\dose_summary.csv", index=False)
+
+df.head()
+
+df["mean_dose"] = df["mean_dose"] / 10000
+df["max_dose"] = df["max_dose"] / 10000
+
+df.to_csv(r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\processed\dose_summary.csv", index=False)
+
+import os
+os.listdir(r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\processed")
+
+
 
 # extremos
 max_point = df.loc[df["max_dose"].idxmax()]
@@ -33,17 +83,31 @@ df["tipo"] = df["tipo"].replace({
 })
 
 base = alt.Chart(df).encode(
-    x=alt.X("mean_dose:Q", title="Dosis media (cGy)", scale=alt.Scale(domain=[52, 60])),
-    y=alt.Y("max_dose:Q", title="Dosis máxima (cGy)", scale=alt.Scale(domain=[145,170]))
+    x=alt.X(
+        "mean_dose:Q",
+        title="Dosis media (cGy)",
+        scale=alt.Scale(domain=[52, 60])
+    ),
+    y=alt.Y(
+        "max_dose:Q",
+        title="Dosis máxima (cGy)",
+        scale=alt.Scale(domain=[145,170])
+    )
 )
 
-points = base.mark_circle(size=80).encode(
+# puntos
+points = base.mark_circle().encode(
+    size=alt.condition(
+        alt.datum.tipo != "Normal",   # extremos más grandes
+        alt.value(220),
+        alt.value(80)
+    ),
     color=alt.Color(
         "tipo:N",
         title="Dato",
         scale=alt.Scale(
-            domain=["Normal","Máximo","Mínimo"],
-            range=["steelblue","red","green"]
+            domain=["Normal", "Máximo", "Mínimo"],
+            range=["steelblue", "red", "green"]
         )
     ),
     tooltip=[
@@ -53,15 +117,24 @@ points = base.mark_circle(size=80).encode(
     ]
 )
 
+# intervalo de confianza
 confidence = base.transform_regression(
-    "mean_dose","max_dose",extent=[52,60]
-).mark_area(opacity=0.18,color="gray")
+    "mean_dose", "max_dose", extent=[52, 60]
+).mark_area(
+    opacity=0.18,
+    color="gray"
+)
 
+# línea de tendencia
 trend = base.transform_regression(
-    "mean_dose","max_dose",extent=[52,60]
-).mark_line(color="black",size=3)
+    "mean_dose", "max_dose", extent=[52, 60]
+).mark_line(
+    color="black",
+    size=3
+)
 
-labels = alt.Chart(df[df["tipo"]!="Normal"]).mark_text(
+# etiquetas para extremos
+labels = alt.Chart(df[df["tipo"] != "Normal"]).mark_text(
     dx=7,
     dy=-7,
     fontSize=12,
@@ -78,30 +151,436 @@ chart = alt.layer(confidence, points, trend, labels).properties(
     height=450
 ).interactive()
 
+
+
 chart
+
 ```
 
-### Interpretación
+## Pregunta 2
 
-La visualización sugiere una relación positiva moderada entre la dosis media y la dosis máxima. En general, los pacientes con mayor dosis media tienden a presentar valores más altos de dosis máxima. La línea de tendencia resume este patrón general, mientras que la banda sombreada ayuda a representar la incertidumbre alrededor de la regresión. Además, se destacan los pacientes con valores extremos, lo que facilita identificar posibles casos atípicos dentro del conjunto analizado.
+¿Cómo se distribuye la dosis media entre las distintas estructuras anatómicas?
 
-## Pregunta 2: ¿Cómo se distribuye la dosis entre los pacientes?
+Para responder esta pregunta se utiliza un gráfico de dispersión donde cada punto representa la dosis media recibida por una estructura anatómica específica en un paciente. Esto permite comparar las dosis administradas entre diferentes estructuras y observar la variabilidad existente entre pacientes.
 
-Aquí se presenta una visualización comparando la dosis media entre diferentes estructuras anatómicas.
 
-## Interpretación
+```{python}
+#| echo: false
 
-Esta gráfica permite identificar cuáles estructuras reciben mayores niveles de radiación y cuánta variabilidad existe entre pacientes.
+import os
+import pandas as pd
+import numpy as np
+
+ruta_base = r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\raw\openkbp\provided-data\test-pats"
+
+estructuras = [
+    "Brainstem",
+    "SpinalCord",
+    "LeftParotid",
+    "RightParotid",
+    "PTV56",
+    "PTV63",
+    "PTV70"
+]
+
+N_VOXELS = 128 * 128 * 128
+
+def cargar_sparse_csv(path, n_voxels=N_VOXELS, default_value=0.0):
+    """
+    Lee un CSV sparse de OpenKBP.
+    Devuelve un vector plano de longitud n_voxels.
+    """
+    df = pd.read_csv(path, index_col=0)
+
+    arr = np.full(n_voxels, default_value, dtype=float)
+
+    # Si existe columna 'data', usarla
+    if "data" in df.columns:
+        indices = df.index.astype(int).to_numpy()
+        valores = df["data"].fillna(1).astype(float).to_numpy()
+        arr[indices] = valores
+    else:
+        # por si el csv solo trae índices
+        indices = df.index.astype(int).to_numpy()
+        arr[indices] = 1.0
+
+    return arr
+
+resultados = []
+
+for paciente in os.listdir(ruta_base):
+    carpeta_paciente = os.path.join(ruta_base, paciente)
+
+    if not os.path.isdir(carpeta_paciente):
+        continue
+
+    dose_path = os.path.join(carpeta_paciente, "dose.csv")
+    if not os.path.exists(dose_path):
+        continue
+
+    dose = cargar_sparse_csv(dose_path, default_value=0.0)
+
+    for estructura in estructuras:
+        estructura_path = os.path.join(carpeta_paciente, f"{estructura}.csv")
+        if not os.path.exists(estructura_path):
+            continue
+
+        mask = cargar_sparse_csv(estructura_path, default_value=0.0)
+
+        voxels = dose[mask > 0]
+
+        if len(voxels) == 0:
+            continue
+
+        resultados.append({
+            "patient": paciente,
+            "structure": estructura,
+            "mean_dose": float(np.mean(voxels)),
+            "max_dose": float(np.max(voxels))
+        })
+
+df_total = pd.DataFrame(resultados)
+
+
+
+df_total = df_total.dropna()
+
+df_total = df_total.dropna(subset=["mean_dose", "max_dose"])
+
+
+df_total["mean_dose"] = pd.to_numeric(df_total["mean_dose"], errors="coerce")
+df_total["max_dose"] = pd.to_numeric(df_total["max_dose"], errors="coerce")
+
+df_total = df_total[df_total["mean_dose"] >= 0]
+
+#print(df_total.describe())
+
+#print(df_total["structure"].value_counts())
+
+orden = [
+    "PTV70",
+    "PTV63",
+    "PTV56",
+    "LeftParotid",
+    "RightParotid",
+    "Brainstem",
+    "SpinalCord"
+]
+
+
+df_plot = df_total.copy()
+df_plot["mean_dose"] = pd.to_numeric(df_plot["mean_dose"], errors="coerce")
+df_plot["max_dose"] = pd.to_numeric(df_plot["max_dose"], errors="coerce")
+df_plot = df_plot.dropna(subset=["patient", "structure", "mean_dose", "max_dose"])
+
+orden = [
+    "PTV70", "PTV63", "PTV56",
+    "LeftParotid", "RightParotid",
+    "Brainstem", "SpinalCord"
+]
+
+# Clasificación para enriquecer tooltip e interpretación
+df_plot["tipo_estructura"] = df_plot["structure"].apply(
+    lambda x: "Tumor objetivo (PTV)" if x.startswith("PTV") else "Órgano de riesgo"
+)
+
+selector = alt.selection_point(
+    name="selector_estructura_openkbp",
+    fields=["structure"],
+    bind="legend"
+)
+
+# Base de puntos con pequeño jitter horizontal
+points = alt.Chart(df_plot).mark_circle(size=70).encode(
+    x=alt.X(
+        "structure:N",
+        sort=orden,
+        title="Estructura anatómica",
+        axis=alt.Axis(labelAngle=-30)
+    ),
+    xOffset=alt.XOffset("patient:N"),  # ayuda a separar un poco los puntos
+    y=alt.Y(
+        "mean_dose:Q",
+        title="Dosis media (Gy)"
+    ),
+    color=alt.Color(
+        "structure:N",
+        title="Estructura anatómica",
+        sort=orden
+    ),
+    opacity=alt.condition(selector, alt.value(0.9), alt.value(0.15)),
+    tooltip=[
+        alt.Tooltip("patient:N", title="Paciente"),
+        alt.Tooltip("structure:N", title="Estructura"),
+        alt.Tooltip("tipo_estructura:N", title="Tipo"),
+        alt.Tooltip("mean_dose:Q", title="Dosis media (Gy)", format=".2f"),
+        alt.Tooltip("max_dose:Q", title="Dosis máxima (Gy)", format=".2f")
+    ]
+).add_params(selector)
+
+# Media por estructura
+mean_points = alt.Chart(df_plot).mark_point(
+    shape="diamond",
+    size=180,
+    filled=True,
+    color="black"
+).encode(
+    x=alt.X("structure:N", sort=orden),
+    y=alt.Y("mean(mean_dose):Q"),
+    tooltip=[
+        alt.Tooltip("structure:N", title="Estructura"),
+        alt.Tooltip("mean(mean_dose):Q", title="Promedio de dosis media", format=".2f")
+    ]
+)
+
+# Texto con la media
+mean_labels = alt.Chart(df_plot).mark_text(
+    dy=-12,
+    color="black",
+    fontSize=11,
+    fontWeight="bold"
+).encode(
+    x=alt.X("structure:N", sort=orden),
+    y=alt.Y("mean(mean_dose):Q"),
+    text=alt.Text("mean(mean_dose):Q", format=".1f")
+)
+
+# Conteo por estructura
+counts = alt.Chart(df_plot).mark_text(
+    dy=18,
+    color="black",
+    fontSize=11
+).encode(
+    x=alt.X("structure:N", sort=orden),
+    y=alt.value(8),   # ajusta este valor si quieres más arriba o más abajo
+    text=alt.Text("count():Q", format="d")
+)
+
+# Etiqueta fija "n="
+count_labels = alt.Chart(pd.DataFrame({"label": ["n="] * len(orden), "structure": orden})).mark_text(
+    dy=18,
+    dx=-12,
+    color="black",
+    fontSize=11
+).encode(
+    x=alt.X("structure:N", sort=orden),
+    y=alt.value(8),
+    text="label:N"
+)
+
+chart = (points + mean_points + mean_labels + counts + count_labels).properties(
+    title="Dosis media por estructura anatómica",
+    width=750,
+    height=450
+)
+
+chart
+
+
+```
+
+
+
+** Interpretación **
+
+La visualización muestra cómo se distribuye la dosis media entre los pacientes para distintas estructuras anatómicas del dataset OpenKBP. Los volúmenes objetivo (PTV70, PTV63 y PTV56) reciben las dosis más altas, con valores aproximados entre 67–74 Gy para PTV70, 63–71 Gy para PTV63 y 53–65 Gy para PTV56, lo cual es consistente con su función terapéutica en radioterapia. En contraste, los órganos de riesgo presentan dosis menores: Brainstem se sitúa aproximadamente entre 0 y 30 Gy, mientras que SpinalCord se mantiene entre 5 y 30 Gy. Las glándulas parótidas (LeftParotid y RightParotid) muestran mayor variabilidad, con valores entre 20 y 60 Gy, reflejando diferencias anatómicas y de planificación entre pacientes. Estos resultados evidencian cómo la radiación se concentra en los volúmenes tumorales mientras se intenta limitar la exposición en estructuras críticas.
+
 
 ---
 
-## Pregunta 3: ¿Qué diferencias existen entre tumores y órganos de riesgo?
+## Pregunta 3
+¿Cómo se distribuye espacialmente la dosis de radioterapia en distintos cortes tomográficos del paciente?
 
-Se compara la dosis media entre estructuras objetivo y órganos sanos.
+Esta visualización presenta una exploración espacial de la dosis sobre la anatomía del paciente, mostrando cortes sagital y transversal con curvas de isodosis superpuestas.
 
-## Interpretación
 
-La visualización busca mostrar si el tratamiento logra priorizar la dosis sobre el tumor mientras limita la exposición de tejidos sanos.
+
+
+```{python}
+#| echo: false
+
+import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def load_sparse_csv_linear(path, shape=(128, 128, 128), dtype=float):
+    df = pd.read_csv(path)
+
+    if "Unnamed: 0" not in df.columns or "data" not in df.columns:
+        raise ValueError(
+            f"Formato inesperado en {path}. Columnas encontradas: {list(df.columns)}"
+        )
+
+    linear_idx = df["Unnamed: 0"].to_numpy(dtype=int)
+    values = df["data"].to_numpy(dtype=dtype)
+
+    volume = np.zeros(np.prod(shape), dtype=dtype)
+    volume[linear_idx] = values
+    volume = volume.reshape(shape)
+
+    return volume
+
+def load_openkbp_patient(patient_path, shape=(128, 128, 128)):
+    ct = load_sparse_csv_linear(os.path.join(patient_path, "ct.csv"), shape=shape)
+    dose = load_sparse_csv_linear(os.path.join(patient_path, "dose.csv"), shape=shape)
+
+    structure_names = [
+        "PTV70", "PTV63", "PTV56",
+        "LeftParotid", "RightParotid",
+        "Brainstem", "SpinalCord"
+    ]
+
+    masks = {}
+    for s in structure_names:
+        file_path = os.path.join(patient_path, f"{s}.csv")
+        if os.path.exists(file_path):
+            masks[s] = load_sparse_csv_linear(file_path, shape=shape)
+
+    return ct, dose, masks
+
+def get_slice(volume, slice_index, axis):
+    if axis == "axial":
+        return volume[slice_index, :, :]
+    elif axis == "coronal":
+        return volume[:, slice_index, :]
+    elif axis == "sagittal":
+        return volume[:, :, slice_index]
+    raise ValueError("axis debe ser 'axial', 'coronal' o 'sagittal'")
+
+def best_slice(volume, axis):
+    if axis == "axial":
+        scores = volume.sum(axis=(1, 2))
+    elif axis == "sagittal":
+        scores = volume.sum(axis=(0, 1))
+    elif axis == "coronal":
+        scores = volume.sum(axis=(0, 2))
+    else:
+        raise ValueError("axis debe ser 'axial', 'coronal' o 'sagittal'")
+    return int(np.argmax(scores))
+
+def prepare_view(ct, dose, axis, slice_index, pad=5):
+    ct_slice = get_slice(ct, slice_index, axis)
+    dose_slice = get_slice(dose, slice_index, axis)
+
+    ct_show = np.rot90(ct_slice)
+    dose_show = np.rot90(dose_slice)
+
+    mask_crop = (ct_show != 0) | (dose_show > 0)
+    coords = np.argwhere(mask_crop)
+
+    if coords.size > 0:
+        ymin, xmin = coords.min(axis=0)
+        ymax, xmax = coords.max(axis=0) + 1
+
+        ymin = max(0, ymin - pad)
+        xmin = max(0, xmin - pad)
+        ymax = min(ct_show.shape[0], ymax + pad)
+        xmax = min(ct_show.shape[1], xmax + pad)
+
+        ct_show = ct_show[ymin:ymax, xmin:xmax]
+        dose_show = dose_show[ymin:ymax, xmin:xmax]
+
+    return ct_show, dose_show
+
+def plot_openkbp_multiview_isodose(
+    ct,
+    dose,
+    patient_id=None,
+    prescription_dose=70.0,
+    isodose_percents=(20, 40, 60, 80, 95),
+    ct_window=(-200, 300),
+    figsize=(13, 6),
+    dose_alpha=0.22
+):
+    axial_index = best_slice(dose, "axial")
+    sagittal_index = best_slice(dose, "sagittal")
+
+    sag_ct, sag_dose = prepare_view(ct, dose, "sagittal", sagittal_index)
+    ax_ct, ax_dose = prepare_view(ct, dose, "axial", axial_index)
+
+    levels = [prescription_dose * p / 100.0 for p in isodose_percents]
+
+    fig, axes = plt.subplots(1, 2, figsize=figsize)
+
+    axes[0].imshow(
+        sag_ct,
+        cmap="gray",
+        origin="lower",
+        vmin=ct_window[0],
+        vmax=ct_window[1],
+        interpolation="bilinear"
+    )
+    dose_im0 = axes[0].imshow(
+        sag_dose,
+        cmap="inferno",
+        alpha=dose_alpha,
+        origin="lower",
+        interpolation="bilinear"
+    )
+    cs0 = axes[0].contour(
+        sag_dose,
+        levels=levels,
+        cmap="plasma",
+        linewidths=2
+    )
+    axes[0].clabel(cs0, inline=True, fontsize=7, fmt=lambda x: f"{x:.0f} Gy")
+    axes[0].set_title(f"Corte sagital (slice {sagittal_index})")
+    axes[0].axis("off")
+
+    axes[1].imshow(
+        ax_ct,
+        cmap="gray",
+        origin="lower",
+        vmin=ct_window[0],
+        vmax=ct_window[1],
+        interpolation="bilinear"
+    )
+    dose_im1 = axes[1].imshow(
+        ax_dose,
+        cmap="inferno",
+        alpha=dose_alpha,
+        origin="lower",
+        interpolation="bilinear"
+    )
+    cs1 = axes[1].contour(
+        ax_dose,
+        levels=levels,
+        cmap="plasma",
+        linewidths=2
+    )
+    axes[1].clabel(cs1, inline=True, fontsize=7, fmt=lambda x: f"{x:.0f} Gy")
+    axes[1].set_title(f"Corte transversal (slice {axial_index})")
+    axes[1].axis("off")
+
+    title = "Tomografía con isodosis"
+    if patient_id:
+        title = f"{patient_id} - {title}"
+    fig.suptitle(title, fontsize=14)
+
+    cbar = fig.colorbar(dose_im1, ax=axes, fraction=0.03, pad=0.02)
+    cbar.set_label("Dosis (Gy)")
+
+    plt.tight_layout()
+    plt.show()
+
+patient_path = r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\raw\openkbp\provided-data\test-pats\pt_241"
+
+ct, dose, masks = load_openkbp_patient(patient_path)
+
+plot_openkbp_multiview_isodose(
+    ct=ct,
+    dose=dose,
+    patient_id="pt_241",
+    prescription_dose=70.0
+)
+
+
+```
+
+** Interpretación **
+
+La visualización muestra dos cortes tomográficos del paciente, uno sagital y otro transversal, con curvas de isodosis superpuestas. En ambas vistas se observa que las regiones de mayor dosis se concentran en la zona objetivo del tratamiento, mientras que la intensidad disminuye hacia los tejidos circundantes. Esto permite analizar la distribución espacial de la radiación y verificar que el tratamiento busca maximizar la dosis en el tumor y limitar la exposición de estructuras sanas.
 
 ---
 
@@ -109,7 +588,7 @@ La visualización busca mostrar si el tratamiento logra priorizar la dosis sobre
 
 Se explora la variabilidad inter-paciente mediante una visualización comparativa.
 
-## Interpretación
+** Interpretación **
 
 Esto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación.
 
@@ -119,6 +598,6 @@ Esto permite evaluar si existen patrones consistentes o diferencias importantes 
 
 Se analiza la relación entre el tamaño de una estructura y la dosis media recibida.
 
-## Interpretación
+** Interpretación **
 
 Este análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis.
