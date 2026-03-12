@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Análisis y visualizaciones – OpenKBP Data Visualization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">OpenKBP Data Visualization</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./data_cleaning.html"> 
+<span class="menu-text">Limpieza de datos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./visualizations.html" aria-current="page"> 
+<span class="menu-text">Visualizaciones</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pregunta-1" id="toc-pregunta-1" class="nav-link active" data-scroll-target="#pregunta-1">Pregunta 1</a></li>
+  <li><a href="#pregunta-2" id="toc-pregunta-2" class="nav-link" data-scroll-target="#pregunta-2">Pregunta 2</a></li>
+  <li><a href="#pregunta-3" id="toc-pregunta-3" class="nav-link" data-scroll-target="#pregunta-3">Pregunta 3</a></li>
+  <li><a href="#pregunta-4-cómo-varía-la-dosis-entre-pacientes" id="toc-pregunta-4-cómo-varía-la-dosis-entre-pacientes" class="nav-link" data-scroll-target="#pregunta-4-cómo-varía-la-dosis-entre-pacientes">Pregunta 4: ¿Cómo varía la dosis entre pacientes?</a></li>
+  <li><a href="#pregunta-5-existe-relación-entre-volumen-y-dosis" id="toc-pregunta-5-existe-relación-entre-volumen-y-dosis" class="nav-link" data-scroll-target="#pregunta-5-existe-relación-entre-volumen-y-dosis">Pregunta 5: ¿Existe relación entre volumen y dosis?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Análisis y visualizaciones</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pregunta-1" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-1">Pregunta 1</h2>
+<p>¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?</p>
+<p>Para responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.</p>
+<div id="ef18516b" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
+<pre><code>Número de Pacientes : 204</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+
+<style>
+  #altair-viz-acd580941d2742fbaa07da5a899edabf.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-acd580941d2742fbaa07da5a899edabf.vega-embed details,
+  #altair-viz-acd580941d2742fbaa07da5a899edabf.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-acd580941d2742fbaa07da5a899edabf"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-acd580941d2742fbaa07da5a899edabf") {
+      outputDiv = document.getElementById("altair-viz-acd580941d2742fbaa07da5a899edabf");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-8f114064424822b49ddebf1c98efe769"}, "mark": {"type": "area", "color": "gray", "opacity": 0.18}, "encoding": {"x": {"field": "mean_dose", "scale": {"domain": [52, 60]}, "title": "Dosis media (cGy)", "type": "quantitative"}, "y": {"field": "max_dose", "scale": {"domain": [145, 170]}, "title": "Dosis m\u00e1xima (cGy)", "type": "quantitative"}}, "name": "view_53372c081f7bedc9_0", "transform": [{"on": "mean_dose", "regression": "max_dose", "extent": [52, 60]}]}, {"data": {"name": "data-8f114064424822b49ddebf1c98efe769"}, "mark": {"type": "circle"}, "encoding": {"color": {"field": "tipo", "scale": {"domain": ["Normal", "M\u00e1ximo", "M\u00ednimo"], "range": ["steelblue", "red", "green"]}, "title": "Dato", "type": "nominal"}, "size": {"condition": {"test": "(datum.tipo !== 'Normal')", "value": 220}, "value": 80}, "tooltip": [{"field": "patient", "title": "Paciente", "type": "nominal"}, {"field": "mean_dose", "format": ".2f", "title": "Dosis media (cGy)", "type": "quantitative"}, {"field": "max_dose", "format": ".2f", "title": "Dosis m\u00e1xima (cGy)", "type": "quantitative"}], "x": {"field": "mean_dose", "scale": {"domain": [52, 60]}, "title": "Dosis media (cGy)", "type": "quantitative"}, "y": {"field": "max_dose", "scale": {"domain": [145, 170]}, "title": "Dosis m\u00e1xima (cGy)", "type": "quantitative"}}}, {"data": {"name": "data-8f114064424822b49ddebf1c98efe769"}, "mark": {"type": "line", "color": "black", "size": 3}, "encoding": {"x": {"field": "mean_dose", "scale": {"domain": [52, 60]}, "title": "Dosis media (cGy)", "type": "quantitative"}, "y": {"field": "max_dose", "scale": {"domain": [145, 170]}, "title": "Dosis m\u00e1xima (cGy)", "type": "quantitative"}}, "transform": [{"on": "mean_dose", "regression": "max_dose", "extent": [52, 60]}]}, {"data": {"name": "data-5a6ea0873854eafa00e103e24d75b110"}, "mark": {"type": "text", "dx": 7, "dy": -7, "fontSize": 12, "fontWeight": "bold"}, "encoding": {"text": {"field": "patient", "type": "nominal"}, "x": {"field": "mean_dose", "type": "quantitative"}, "y": {"field": "max_dose", "type": "quantitative"}}}], "height": 450, "params": [{"name": "param_1e9efca18e7a2868", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales", "views": ["view_53372c081f7bedc9_0"]}], "title": "Relaci\u00f3n entre dosis media y dosis m\u00e1xima por paciente", "width": 650, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-8f114064424822b49ddebf1c98efe769": [{"patient": "pt_1", "mean_dose": 53.332157141773855, "max_dose": 149.9941, "tipo": "Normal"}, {"patient": "pt_10", "mean_dose": 57.046847854939045, "max_dose": 165.0903, "tipo": "Normal"}, {"patient": "pt_100", "mean_dose": 55.7034777638584, "max_dose": 148.7599, "tipo": "Normal"}, {"patient": "pt_101", "mean_dose": 55.170392566731955, "max_dose": 148.7457, "tipo": "Normal"}, {"patient": "pt_102", "mean_dose": 56.18890983515018, "max_dose": 165.1824, "tipo": "Normal"}, {"patient": "pt_103", "mean_dose": 53.975452694399, "max_dose": 159.8379, "tipo": "Normal"}, {"patient": "pt_104", "mean_dose": 54.16460816998261, "max_dose": 153.2449, "tipo": "Normal"}, {"patient": "pt_105", "mean_dose": 55.26698541097816, "max_dose": 158.1536, "tipo": "Normal"}, {"patient": "pt_106", "mean_dose": 57.98707772158355, "max_dose": 160.379, "tipo": "Normal"}, {"patient": "pt_107", "mean_dose": 55.53586116808237, "max_dose": 151.9468, "tipo": "Normal"}, {"patient": "pt_108", "mean_dose": 54.81074406605593, "max_dose": 156.4971, "tipo": "Normal"}, {"patient": "pt_109", "mean_dose": 57.366594804818185, "max_dose": 158.0906, "tipo": "Normal"}, {"patient": "pt_11", "mean_dose": 52.99482386598459, "max_dose": 151.5821, "tipo": "Normal"}, {"patient": "pt_110", "mean_dose": 56.165154651015115, "max_dose": 158.6687, "tipo": "Normal"}, {"patient": "pt_111", "mean_dose": 53.17453260234721, "max_dose": 154.9097, "tipo": "Normal"}, {"patient": "pt_112", "mean_dose": 56.533485961746806, "max_dose": 157.7592, "tipo": "Normal"}, {"patient": "pt_113", "mean_dose": 54.49158133765137, "max_dose": 153.6445, "tipo": "Normal"}, {"patient": "pt_114", "mean_dose": 56.690629145113625, "max_dose": 150.5006, "tipo": "Normal"}, {"patient": "pt_115", "mean_dose": 56.18731030729954, "max_dose": 156.9393, "tipo": "Normal"}, {"patient": "pt_116", "mean_dose": 54.55972760212727, "max_dose": 151.8954, "tipo": "Normal"}, {"patient": "pt_117", "mean_dose": 55.12492825937604, "max_dose": 148.4543, "tipo": "Normal"}, {"patient": "pt_118", "mean_dose": 54.22102175987554, "max_dose": 153.2583, "tipo": "Normal"}, {"patient": "pt_119", "mean_dose": 54.74517867623494, "max_dose": 145.3675, "tipo": "Normal"}, {"patient": "pt_12", "mean_dose": 54.45277147602982, "max_dose": 153.4933, "tipo": "Normal"}, {"patient": "pt_120", "mean_dose": 53.13305730942696, "max_dose": 154.91, "tipo": "Normal"}, {"patient": "pt_121", "mean_dose": 53.65086042957648, "max_dose": 156.5353, "tipo": "Normal"}, {"patient": "pt_122", "mean_dose": 56.19597613976847, "max_dose": 153.2761, "tipo": "Normal"}, {"patient": "pt_123", "mean_dose": 54.39930305317091, "max_dose": 151.7661, "tipo": "Normal"}, {"patient": "pt_124", "mean_dose": 55.12561010325478, "max_dose": 145.2259, "tipo": "Normal"}, {"patient": "pt_125", "mean_dose": 55.084943884392594, "max_dose": 151.4495, "tipo": "Normal"}, {"patient": "pt_126", "mean_dose": 55.297386845882414, "max_dose": 145.3287, "tipo": "Normal"}, {"patient": "pt_127", "mean_dose": 55.989914335838755, "max_dose": 151.5876, "tipo": "Normal"}, {"patient": "pt_128", "mean_dose": 54.10563794103744, "max_dose": 161.4377, "tipo": "Normal"}, {"patient": "pt_129", "mean_dose": 55.34796446276552, "max_dose": 158.2432, "tipo": "Normal"}, {"patient": "pt_13", "mean_dose": 54.346422471965454, "max_dose": 143.7812, "tipo": "Normal"}, {"patient": "pt_130", "mean_dose": 53.78418985171291, "max_dose": 153.3917, "tipo": "Normal"}, {"patient": "pt_131", "mean_dose": 56.82160962897531, "max_dose": 156.6817, "tipo": "Normal"}, {"patient": "pt_132", "mean_dose": 54.978590652176806, "max_dose": 143.7811, "tipo": "Normal"}, {"patient": "pt_133", "mean_dose": 54.81680000041862, "max_dose": 156.9126, "tipo": "Normal"}, {"patient": "pt_134", "mean_dose": 55.68575624836462, "max_dose": 157.0175, "tipo": "Normal"}, {"patient": "pt_135", "mean_dose": 55.240711464186234, "max_dose": 160.4694, "tipo": "Normal"}, {"patient": "pt_136", "mean_dose": 54.53583144905105, "max_dose": 155.5303, "tipo": "Normal"}, {"patient": "pt_137", "mean_dose": 51.98521932702585, "max_dose": 149.969, "tipo": "Normal"}, {"patient": "pt_138", "mean_dose": 56.001884012950505, "max_dose": 165.0047, "tipo": "Normal"}, {"patient": "pt_139", "mean_dose": 55.25078725918259, "max_dose": 143.8463, "tipo": "Normal"}, {"patient": "pt_14", "mean_dose": 55.02205587510654, "max_dose": 157.1426, "tipo": "Normal"}, {"patient": "pt_140", "mean_dose": 56.29367241625909, "max_dose": 156.3884, "tipo": "Normal"}, {"patient": "pt_141", "mean_dose": 55.599774476483496, "max_dose": 151.9593, "tipo": "Normal"}, {"patient": "pt_142", "mean_dose": 55.59429914146843, "max_dose": 158.6541, "tipo": "Normal"}, {"patient": "pt_143", "mean_dose": 55.86500423373864, "max_dose": 130.3498, "tipo": "M\u00ednimo"}, {"patient": "pt_144", "mean_dose": 54.91951563363323, "max_dose": 148.6064, "tipo": "Normal"}, {"patient": "pt_145", "mean_dose": 55.49712124529475, "max_dose": 155.2238, "tipo": "Normal"}, {"patient": "pt_146", "mean_dose": 54.1625941766976, "max_dose": 149.9618, "tipo": "Normal"}, {"patient": "pt_147", "mean_dose": 56.47853133537631, "max_dose": 155.5284, "tipo": "Normal"}, {"patient": "pt_148", "mean_dose": 54.968702321211005, "max_dose": 155.0932, "tipo": "Normal"}, {"patient": "pt_149", "mean_dose": 53.025263198155365, "max_dose": 153.2581, "tipo": "Normal"}, {"patient": "pt_15", "mean_dose": 58.32564530931397, "max_dose": 173.2606, "tipo": "Normal"}, {"patient": "pt_150", "mean_dose": 54.36480987654935, "max_dose": 145.5602, "tipo": "Normal"}, {"patient": "pt_151", "mean_dose": 54.00067085183668, "max_dose": 164.6051, "tipo": "Normal"}, {"patient": "pt_152", "mean_dose": 54.99012293724264, "max_dose": 140.6577, "tipo": "Normal"}, {"patient": "pt_153", "mean_dose": 55.9843570980051, "max_dose": 156.9762, "tipo": "Normal"}, {"patient": "pt_154", "mean_dose": 54.05391362163101, "max_dose": 154.9102, "tipo": "Normal"}, {"patient": "pt_155", "mean_dose": 55.42784422413399, "max_dose": 151.7414, "tipo": "Normal"}, {"patient": "pt_156", "mean_dose": 52.2308694187202, "max_dose": 146.7052, "tipo": "Normal"}, {"patient": "pt_157", "mean_dose": 55.60850751773439, "max_dose": 147.0951, "tipo": "Normal"}, {"patient": "pt_158", "mean_dose": 53.04177790857239, "max_dose": 149.9944, "tipo": "Normal"}, {"patient": "pt_159", "mean_dose": 51.42031736490848, "max_dose": 164.676, "tipo": "Normal"}, {"patient": "pt_16", "mean_dose": 52.73253216243802, "max_dose": 151.6078, "tipo": "Normal"}, {"patient": "pt_160", "mean_dose": 55.64916376391094, "max_dose": 159.9359, "tipo": "Normal"}, {"patient": "pt_161", "mean_dose": 57.630172059836354, "max_dose": 161.906, "tipo": "Normal"}, {"patient": "pt_162", "mean_dose": 55.90993789548122, "max_dose": 158.7666, "tipo": "Normal"}, {"patient": "pt_163", "mean_dose": 52.74715735019663, "max_dose": 149.9948, "tipo": "Normal"}, {"patient": "pt_164", "mean_dose": 53.60416624597219, "max_dose": 153.1817, "tipo": "Normal"}, {"patient": "pt_165", "mean_dose": 54.020483688786605, "max_dose": 154.7949, "tipo": "Normal"}, {"patient": "pt_166", "mean_dose": 52.44858107207429, "max_dose": 150.0073, "tipo": "Normal"}, {"patient": "pt_167", "mean_dose": 53.45446472029754, "max_dose": 158.1355, "tipo": "Normal"}, {"patient": "pt_168", "mean_dose": 55.09589839265888, "max_dose": 147.9151, "tipo": "Normal"}, {"patient": "pt_169", "mean_dose": 52.07096738163223, "max_dose": 151.6327, "tipo": "Normal"}, {"patient": "pt_17", "mean_dose": 58.95068046004905, "max_dose": 166.6558, "tipo": "Normal"}, {"patient": "pt_170", "mean_dose": 53.15375793766831, "max_dose": 136.9793, "tipo": "Normal"}, {"patient": "pt_171", "mean_dose": 53.73817594427089, "max_dose": 154.8074, "tipo": "Normal"}, {"patient": "pt_172", "mean_dose": 56.059066237077445, "max_dose": 148.7216, "tipo": "Normal"}, {"patient": "pt_173", "mean_dose": 53.981684041313045, "max_dose": 150.2559, "tipo": "Normal"}, {"patient": "pt_174", "mean_dose": 56.17999245106747, "max_dose": 160.1023, "tipo": "Normal"}, {"patient": "pt_175", "mean_dose": 56.3880641105509, "max_dose": 159.9103, "tipo": "Normal"}, {"patient": "pt_176", "mean_dose": 55.499555215899086, "max_dose": 151.7779, "tipo": "Normal"}, {"patient": "pt_177", "mean_dose": 53.510874032574016, "max_dose": 151.6762, "tipo": "Normal"}, {"patient": "pt_178", "mean_dose": 53.444211572186205, "max_dose": 151.6074, "tipo": "Normal"}, {"patient": "pt_179", "mean_dose": 58.090021663226196, "max_dose": 170.2243, "tipo": "Normal"}, {"patient": "pt_18", "mean_dose": 53.557974290918615, "max_dose": 154.9219, "tipo": "Normal"}, {"patient": "pt_180", "mean_dose": 55.29914360206689, "max_dose": 155.1316, "tipo": "Normal"}, {"patient": "pt_181", "mean_dose": 52.8067515261341, "max_dose": 149.9935, "tipo": "Normal"}, {"patient": "pt_182", "mean_dose": 56.67122088691158, "max_dose": 149.8469, "tipo": "Normal"}, {"patient": "pt_183", "mean_dose": 54.722926011282134, "max_dose": 158.1869, "tipo": "Normal"}, {"patient": "pt_184", "mean_dose": 54.10445819743016, "max_dose": 147.0964, "tipo": "Normal"}, {"patient": "pt_185", "mean_dose": 55.26604083088942, "max_dose": 161.5712, "tipo": "Normal"}, {"patient": "pt_186", "mean_dose": 57.00133064034997, "max_dose": 161.6511, "tipo": "Normal"}, {"patient": "pt_187", "mean_dose": 54.89770186583706, "max_dose": 148.7975, "tipo": "Normal"}, {"patient": "pt_188", "mean_dose": 53.38909775217018, "max_dose": 153.2204, "tipo": "Normal"}, {"patient": "pt_189", "mean_dose": 53.378978085213774, "max_dose": 148.3434, "tipo": "Normal"}, {"patient": "pt_19", "mean_dose": 55.57684217014059, "max_dose": 153.7137, "tipo": "Normal"}, {"patient": "pt_190", "mean_dose": 54.66261710599853, "max_dose": 146.9675, "tipo": "Normal"}, {"patient": "pt_191", "mean_dose": 55.93771481622113, "max_dose": 155.4687, "tipo": "Normal"}, {"patient": "pt_192", "mean_dose": 54.638382972174185, "max_dose": 159.7353, "tipo": "Normal"}, {"patient": "pt_193", "mean_dose": 55.66360960165908, "max_dose": 148.7214, "tipo": "Normal"}, {"patient": "pt_194", "mean_dose": 53.67602834268781, "max_dose": 159.9189, "tipo": "Normal"}, {"patient": "pt_195", "mean_dose": 53.53636447838815, "max_dose": 151.569, "tipo": "Normal"}, {"patient": "pt_196", "mean_dose": 54.198801633406454, "max_dose": 151.6198, "tipo": "Normal"}, {"patient": "pt_197", "mean_dose": 53.244124280381925, "max_dose": 149.9537, "tipo": "Normal"}, {"patient": "pt_198", "mean_dose": 54.06128695206249, "max_dose": 154.8457, "tipo": "Normal"}, {"patient": "pt_199", "mean_dose": 56.48737937027301, "max_dose": 150.497, "tipo": "Normal"}, {"patient": "pt_2", "mean_dose": 56.749702846159764, "max_dose": 158.7146, "tipo": "Normal"}, {"patient": "pt_20", "mean_dose": 56.568559317844155, "max_dose": 146.8773, "tipo": "Normal"}, {"patient": "pt_200", "mean_dose": 56.382436809455, "max_dose": 158.6798, "tipo": "Normal"}, {"patient": "pt_21", "mean_dose": 55.16756819381156, "max_dose": 148.4768, "tipo": "Normal"}, {"patient": "pt_22", "mean_dose": 54.77728481622685, "max_dose": 151.8942, "tipo": "Normal"}, {"patient": "pt_23", "mean_dose": 56.64069697113204, "max_dose": 156.8767, "tipo": "Normal"}, {"patient": "pt_24", "mean_dose": 54.95848547584636, "max_dose": 148.6817, "tipo": "Normal"}, {"patient": "pt_25", "mean_dose": 55.69443448191464, "max_dose": 159.8377, "tipo": "Normal"}, {"patient": "pt_26", "mean_dose": 54.87042046575828, "max_dose": 146.8765, "tipo": "Normal"}, {"patient": "pt_27", "mean_dose": 55.284486963055855, "max_dose": 147.3535, "tipo": "Normal"}, {"patient": "pt_28", "mean_dose": 55.330445665159, "max_dose": 158.383, "tipo": "Normal"}, {"patient": "pt_29", "mean_dose": 54.909728989604176, "max_dose": 156.644, "tipo": "Normal"}, {"patient": "pt_3", "mean_dose": 55.24723776850019, "max_dose": 151.8203, "tipo": "Normal"}, {"patient": "pt_30", "mean_dose": 54.738603981198125, "max_dose": 148.541, "tipo": "Normal"}, {"patient": "pt_31", "mean_dose": 55.28555606118932, "max_dose": 145.2257, "tipo": "Normal"}, {"patient": "pt_32", "mean_dose": 56.21185119901466, "max_dose": 170.3396, "tipo": "Normal"}, {"patient": "pt_33", "mean_dose": 54.14655252523699, "max_dose": 153.246, "tipo": "Normal"}, {"patient": "pt_34", "mean_dose": 54.93340254703018, "max_dose": 153.5344, "tipo": "Normal"}, {"patient": "pt_35", "mean_dose": 55.59910821763422, "max_dose": 155.1727, "tipo": "Normal"}, {"patient": "pt_36", "mean_dose": 53.840802432745356, "max_dose": 154.8841, "tipo": "Normal"}, {"patient": "pt_37", "mean_dose": 53.09129966568504, "max_dose": 151.6455, "tipo": "Normal"}, {"patient": "pt_38", "mean_dose": 54.327502452158896, "max_dose": 209.4591, "tipo": "M\u00e1ximo"}, {"patient": "pt_39", "mean_dose": 55.682749500715566, "max_dose": 160.0229, "tipo": "Normal"}, {"patient": "pt_4", "mean_dose": 55.86907591746852, "max_dose": 157.016, "tipo": "Normal"}, {"patient": "pt_40", "mean_dose": 53.67639870425756, "max_dose": 147.1065, "tipo": "Normal"}, {"patient": "pt_41", "mean_dose": 55.280240843314644, "max_dose": 157.0405, "tipo": "Normal"}, {"patient": "pt_42", "mean_dose": 54.92405803213852, "max_dose": 145.3385, "tipo": "Normal"}, {"patient": "pt_43", "mean_dose": 54.46324446496367, "max_dose": 152.1749, "tipo": "Normal"}, {"patient": "pt_44", "mean_dose": 57.0688678064689, "max_dose": 170.2885, "tipo": "Normal"}, {"patient": "pt_45", "mean_dose": 54.8130773479728, "max_dose": 150.0381, "tipo": "Normal"}, {"patient": "pt_46", "mean_dose": 55.178465352663885, "max_dose": 152.0767, "tipo": "Normal"}, {"patient": "pt_47", "mean_dose": 56.4724477487071, "max_dose": 161.3602, "tipo": "Normal"}, {"patient": "pt_48", "mean_dose": 54.53273175569542, "max_dose": 159.774, "tipo": "Normal"}, {"patient": "pt_49", "mean_dose": 55.11903275264251, "max_dose": 153.2842, "tipo": "Normal"}, {"patient": "pt_5", "mean_dose": 52.15156387270721, "max_dose": 143.3299, "tipo": "Normal"}, {"patient": "pt_50", "mean_dose": 56.73486629786338, "max_dose": 166.718, "tipo": "Normal"}, {"patient": "pt_51", "mean_dose": 53.53028697851357, "max_dose": 141.7781, "tipo": "Normal"}, {"patient": "pt_52", "mean_dose": 53.672097411936264, "max_dose": 157.9222, "tipo": "Normal"}, {"patient": "pt_53", "mean_dose": 55.430184832422704, "max_dose": 156.9627, "tipo": "Normal"}, {"patient": "pt_54", "mean_dose": 55.06221976321355, "max_dose": 148.8497, "tipo": "Normal"}, {"patient": "pt_55", "mean_dose": 54.779320294062366, "max_dose": 152.1371, "tipo": "Normal"}, {"patient": "pt_56", "mean_dose": 55.02701142800466, "max_dose": 150.3077, "tipo": "Normal"}, {"patient": "pt_57", "mean_dose": 53.269531849239755, "max_dose": 149.9432, "tipo": "Normal"}, {"patient": "pt_58", "mean_dose": 54.73937745800283, "max_dose": 150.538, "tipo": "Normal"}, {"patient": "pt_59", "mean_dose": 55.6243556414813, "max_dose": 146.8275, "tipo": "Normal"}, {"patient": "pt_6", "mean_dose": 55.569029611486, "max_dose": 174.5069, "tipo": "Normal"}, {"patient": "pt_60", "mean_dose": 55.80137398504701, "max_dose": 160.0883, "tipo": "Normal"}, {"patient": "pt_61", "mean_dose": 55.86124989244888, "max_dose": 148.7475, "tipo": "Normal"}, {"patient": "pt_62", "mean_dose": 55.289515595654386, "max_dose": 150.0899, "tipo": "Normal"}, {"patient": "pt_63", "mean_dose": 56.220423516471485, "max_dose": 157.0047, "tipo": "Normal"}, {"patient": "pt_64", "mean_dose": 52.1480199627003, "max_dose": 153.1987, "tipo": "Normal"}, {"patient": "pt_65", "mean_dose": 55.29465568739836, "max_dose": 155.3513, "tipo": "Normal"}, {"patient": "pt_66", "mean_dose": 55.53228351806423, "max_dose": 145.5337, "tipo": "Normal"}, {"patient": "pt_67", "mean_dose": 55.18157916834146, "max_dose": 174.987, "tipo": "Normal"}, {"patient": "pt_68", "mean_dose": 55.424503663550816, "max_dose": 146.929, "tipo": "Normal"}, {"patient": "pt_69", "mean_dose": 56.18253140376194, "max_dose": 165.0417, "tipo": "Normal"}, {"patient": "pt_7", "mean_dose": 55.29595265311103, "max_dose": 147.8258, "tipo": "Normal"}, {"patient": "pt_70", "mean_dose": 53.69364504776511, "max_dose": 154.9227, "tipo": "Normal"}, {"patient": "pt_71", "mean_dose": 53.21141976595952, "max_dose": 151.8677, "tipo": "Normal"}, {"patient": "pt_72", "mean_dose": 54.25121525433727, "max_dose": 147.0299, "tipo": "Normal"}, {"patient": "pt_73", "mean_dose": 56.28668732255659, "max_dose": 159.5775, "tipo": "Normal"}, {"patient": "pt_74", "mean_dose": 53.043797883012545, "max_dose": 154.935, "tipo": "Normal"}, {"patient": "pt_75", "mean_dose": 56.560447853319076, "max_dose": 153.6236, "tipo": "Normal"}, {"patient": "pt_76", "mean_dose": 55.032586708135284, "max_dose": 156.6683, "tipo": "Normal"}, {"patient": "pt_77", "mean_dose": 52.67054765201051, "max_dose": 151.6068, "tipo": "Normal"}, {"patient": "pt_78", "mean_dose": 54.418059017197706, "max_dose": 150.4872, "tipo": "Normal"}, {"patient": "pt_79", "mean_dose": 53.19212117582651, "max_dose": 156.5229, "tipo": "Normal"}, {"patient": "pt_8", "mean_dose": 55.169312770852514, "max_dose": 155.0688, "tipo": "Normal"}, {"patient": "pt_80", "mean_dose": 53.184465130547586, "max_dose": 151.646, "tipo": "Normal"}, {"patient": "pt_81", "mean_dose": 55.77812202979643, "max_dose": 158.3729, "tipo": "Normal"}, {"patient": "pt_82", "mean_dose": 55.551533537968204, "max_dose": 147.2231, "tipo": "Normal"}, {"patient": "pt_83", "mean_dose": 55.79038618390132, "max_dose": 156.7093, "tipo": "Normal"}, {"patient": "pt_84", "mean_dose": 55.07338806415422, "max_dose": 141.9629, "tipo": "Normal"}, {"patient": "pt_85", "mean_dose": 52.48000474872666, "max_dose": 192.5672, "tipo": "Normal"}, {"patient": "pt_86", "mean_dose": 53.62620533071726, "max_dose": 153.233, "tipo": "Normal"}, {"patient": "pt_87", "mean_dose": 55.880140292141526, "max_dose": 148.5291, "tipo": "Normal"}, {"patient": "pt_88", "mean_dose": 55.936344124566226, "max_dose": 171.5805, "tipo": "Normal"}, {"patient": "pt_89", "mean_dose": 57.23104089236773, "max_dose": 148.2957, "tipo": "Normal"}, {"patient": "pt_9", "mean_dose": 55.85956198873276, "max_dose": 155.4392, "tipo": "Normal"}, {"patient": "pt_90", "mean_dose": 53.09351241913324, "max_dose": 151.6463, "tipo": "Normal"}, {"patient": "pt_91", "mean_dose": 54.423477419978, "max_dose": 149.9179, "tipo": "Normal"}, {"patient": "pt_92", "mean_dose": 54.81485892692663, "max_dose": 159.8378, "tipo": "Normal"}, {"patient": "pt_93", "mean_dose": 52.94028403680208, "max_dose": 154.8974, "tipo": "Normal"}, {"patient": "pt_94", "mean_dose": 54.43942626723498, "max_dose": 154.9784, "tipo": "Normal"}, {"patient": "pt_95", "mean_dose": 56.44545531286796, "max_dose": 155.0323, "tipo": "Normal"}, {"patient": "pt_96", "mean_dose": 55.076626316963505, "max_dose": 145.6358, "tipo": "Normal"}, {"patient": "pt_97", "mean_dose": 54.04201647876991, "max_dose": 159.786, "tipo": "Normal"}, {"patient": "pt_98", "mean_dose": 55.21577305087023, "max_dose": 156.926, "tipo": "Normal"}, {"patient": "pt_99", "mean_dose": 55.92727651386184, "max_dose": 165.9736, "tipo": "Normal"}], "data-5a6ea0873854eafa00e103e24d75b110": [{"patient": "pt_143", "mean_dose": 55.86500423373864, "max_dose": 130.3498, "tipo": "M\u00ednimo"}, {"patient": "pt_38", "mean_dose": 54.327502452158896, "max_dose": 209.4591, "tipo": "M\u00e1ximo"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</section>
+<section id="pregunta-2" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-2">Pregunta 2</h2>
+<p>¿Cómo se distribuye la dosis media entre las distintas estructuras anatómicas?</p>
+<p>Para responder esta pregunta se utiliza un gráfico de dispersión donde cada punto representa la dosis media recibida por una estructura anatómica específica en un paciente. Esto permite comparar las dosis administradas entre diferentes estructuras y observar la variabilidad existente entre pacientes.</p>
+<div id="fec16ebb" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+
+<style>
+  #altair-viz-b048a79d34a846af9b9f64d91612e3f6.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-b048a79d34a846af9b9f64d91612e3f6.vega-embed details,
+  #altair-viz-b048a79d34a846af9b9f64d91612e3f6.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-b048a79d34a846af9b9f64d91612e3f6"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-b048a79d34a846af9b9f64d91612e3f6") {
+      outputDiv = document.getElementById("altair-viz-b048a79d34a846af9b9f64d91612e3f6");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.1.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.1.0"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"mark": {"type": "circle", "size": 70}, "encoding": {"color": {"field": "structure", "sort": ["PTV70", "PTV63", "PTV56", "LeftParotid", "RightParotid", "Brainstem", "SpinalCord"], "title": "Estructura anat\u00f3mica", "type": "nominal"}, "opacity": {"condition": {"param": "selector_estructura_openkbp", "value": 0.9}, "value": 0.15}, "tooltip": [{"field": "patient", "title": "Paciente", "type": "nominal"}, {"field": "structure", "title": "Estructura", "type": "nominal"}, {"field": "tipo_estructura", "title": "Tipo", "type": "nominal"}, {"field": "mean_dose", "format": ".2f", "title": "Dosis media (Gy)", "type": "quantitative"}, {"field": "max_dose", "format": ".2f", "title": "Dosis m\u00e1xima (Gy)", "type": "quantitative"}], "x": {"axis": {"labelAngle": -30}, "field": "structure", "sort": ["PTV70", "PTV63", "PTV56", "LeftParotid", "RightParotid", "Brainstem", "SpinalCord"], "title": "Estructura anat\u00f3mica", "type": "nominal"}, "xOffset": {"field": "patient", "type": "nominal"}, "y": {"field": "mean_dose", "title": "Dosis media (Gy)", "type": "quantitative"}}, "name": "view_c46be3632c97ca3f_0"}, {"mark": {"type": "point", "color": "black", "filled": true, "shape": "diamond", "size": 180}, "encoding": {"tooltip": [{"field": "structure", "title": "Estructura", "type": "nominal"}, {"aggregate": "mean", "field": "mean_dose", "format": ".2f", "title": "Promedio de dosis media", "type": "quantitative"}], "x": {"field": "structure", "sort": ["PTV70", "PTV63", "PTV56", "LeftParotid", "RightParotid", "Brainstem", "SpinalCord"], "type": "nominal"}, "y": {"aggregate": "mean", "field": "mean_dose", "type": "quantitative"}}}, {"mark": {"type": "text", "color": "black", "dy": -12, "fontSize": 11, "fontWeight": "bold"}, "encoding": {"text": {"aggregate": "mean", "field": "mean_dose", "format": ".1f", "type": "quantitative"}, "x": {"field": "structure", "sort": ["PTV70", "PTV63", "PTV56", "LeftParotid", "RightParotid", "Brainstem", "SpinalCord"], "type": "nominal"}, "y": {"aggregate": "mean", "field": "mean_dose", "type": "quantitative"}}}, {"mark": {"type": "text", "color": "black", "dy": 18, "fontSize": 11}, "encoding": {"text": {"aggregate": "count", "format": "d", "type": "quantitative"}, "x": {"field": "structure", "sort": ["PTV70", "PTV63", "PTV56", "LeftParotid", "RightParotid", "Brainstem", "SpinalCord"], "type": "nominal"}, "y": {"value": 8}}}, {"data": {"name": "data-3ca0da631369cc74d5a9a1a1f1794a0e"}, "mark": {"type": "text", "color": "black", "dx": -12, "dy": 18, "fontSize": 11}, "encoding": {"text": {"field": "label", "type": "nominal"}, "x": {"field": "structure", "sort": ["PTV70", "PTV63", "PTV56", "LeftParotid", "RightParotid", "Brainstem", "SpinalCord"], "type": "nominal"}, "y": {"value": 8}}}], "data": {"name": "data-19c6f8e63f6a907840053f7a3b628ae7"}, "height": 450, "params": [{"name": "selector_estructura_openkbp", "select": {"type": "point", "fields": ["structure"]}, "bind": "legend", "views": ["view_c46be3632c97ca3f_0"]}], "title": "Dosis media por estructura anat\u00f3mica", "width": 750, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-19c6f8e63f6a907840053f7a3b628ae7": [{"patient": "pt_241", "structure": "Brainstem", "mean_dose": 3.661238622386224, "max_dose": 25.675, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_241", "structure": "SpinalCord", "mean_dose": 19.096967238689547, "max_dose": 34.281, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_241", "structure": "LeftParotid", "mean_dose": 27.27665168539326, "max_dose": 59.921, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_241", "structure": "RightParotid", "mean_dose": 25.20565613608748, "max_dose": 57.65, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_241", "structure": "PTV56", "mean_dose": 59.47852863908497, "max_dose": 65.504, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_241", "structure": "PTV63", "mean_dose": 64.36497236693091, "max_dose": 70.477, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_241", "structure": "PTV70", "mean_dose": 70.95248474493532, "max_dose": 72.119, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_242", "structure": "Brainstem", "mean_dose": 7.544115207373272, "max_dose": 31.07, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_242", "structure": "SpinalCord", "mean_dose": 11.304072124756335, "max_dose": 29.34, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_242", "structure": "LeftParotid", "mean_dose": 14.646281954887218, "max_dose": 26.516, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_242", "structure": "RightParotid", "mean_dose": 45.23291916167665, "max_dose": 66.084, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_242", "structure": "PTV56", "mean_dose": 59.74356693797362, "max_dose": 70.921, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_242", "structure": "PTV70", "mean_dose": 71.46655025906735, "max_dose": 72.173, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_243", "structure": "Brainstem", "mean_dose": 10.050925432756323, "max_dose": 41.384, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_243", "structure": "SpinalCord", "mean_dose": 11.000815094339623, "max_dose": 35.124, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_243", "structure": "LeftParotid", "mean_dose": 24.625075278810407, "max_dose": 63.462, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_243", "structure": "RightParotid", "mean_dose": 22.798271159874606, "max_dose": 62.088, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_243", "structure": "PTV56", "mean_dose": 60.80820393647081, "max_dose": 73.498, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_243", "structure": "PTV63", "mean_dose": 68.73190322580645, "max_dose": 70.916, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_243", "structure": "PTV70", "mean_dose": 73.31785355191256, "max_dose": 78.808, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_244", "structure": "Brainstem", "mean_dose": 16.469433497536947, "max_dose": 50.537, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_244", "structure": "SpinalCord", "mean_dose": 18.0741981981982, "max_dose": 44.801, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_244", "structure": "LeftParotid", "mean_dose": 54.94047282608695, "max_dose": 72.107, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_244", "structure": "RightParotid", "mean_dose": 38.103646112600536, "max_dose": 58.179, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_244", "structure": "PTV56", "mean_dose": 60.74348503246479, "max_dose": 71.967, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_244", "structure": "PTV70", "mean_dose": 71.38579927785985, "max_dose": 74.359, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_245", "structure": "SpinalCord", "mean_dose": 28.545002702702703, "max_dose": 43.266, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_245", "structure": "LeftParotid", "mean_dose": 51.685254290171606, "max_dose": 74.581, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_245", "structure": "RightParotid", "mean_dose": 48.27749565217392, "max_dose": 74.506, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_245", "structure": "PTV56", "mean_dose": 62.518043983550875, "max_dose": 73.616, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_245", "structure": "PTV63", "mean_dose": 68.21952851182198, "max_dose": 73.971, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_245", "structure": "PTV70", "mean_dose": 71.9710403492752, "max_dose": 76.27, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_246", "structure": "Brainstem", "mean_dose": 9.41872583201268, "max_dose": 47.012, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_246", "structure": "SpinalCord", "mean_dose": 15.331805755395685, "max_dose": 43.683, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_246", "structure": "LeftParotid", "mean_dose": 23.07190464547677, "max_dose": 56.295, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_246", "structure": "RightParotid", "mean_dose": 58.64221404109589, "max_dose": 74.681, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_246", "structure": "PTV56", "mean_dose": 60.77745554365292, "max_dose": 71.869, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_246", "structure": "PTV63", "mean_dose": 69.41149129852744, "max_dose": 75.696, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_246", "structure": "PTV70", "mean_dose": 73.83667112357126, "max_dose": 77.169, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_247", "structure": "Brainstem", "mean_dose": 3.0978112676056337, "max_dose": 32.318, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_247", "structure": "SpinalCord", "mean_dose": 21.875026809651477, "max_dose": 35.056, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_247", "structure": "LeftParotid", "mean_dose": 39.02508659793815, "max_dose": 71.683, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_247", "structure": "RightParotid", "mean_dose": 45.45015, "max_dose": 72.529, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_247", "structure": "PTV56", "mean_dose": 59.27783655227454, "max_dose": 72.113, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_247", "structure": "PTV70", "mean_dose": 71.0398952999618, "max_dose": 74.459, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_248", "structure": "Brainstem", "mean_dose": 8.057337950138505, "max_dose": 44.69, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_248", "structure": "SpinalCord", "mean_dose": 30.575954337899542, "max_dose": 45.901, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_248", "structure": "LeftParotid", "mean_dose": 44.48218997361477, "max_dose": 60.506, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_248", "structure": "RightParotid", "mean_dose": 42.76270157068063, "max_dose": 60.385, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_248", "structure": "PTV56", "mean_dose": 58.756713910378046, "max_dose": 71.107, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_248", "structure": "PTV70", "mean_dose": 70.8472146389713, "max_dose": 71.312, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_249", "structure": "Brainstem", "mean_dose": 21.398403174603175, "max_dose": 45.63, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_249", "structure": "SpinalCord", "mean_dose": 8.52269644012945, "max_dose": 27.723, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_249", "structure": "LeftParotid", "mean_dose": 14.530145317545749, "max_dose": 47.773, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_249", "structure": "RightParotid", "mean_dose": 35.826633416458854, "max_dose": 70.015, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_249", "structure": "PTV56", "mean_dose": 56.43555213476619, "max_dose": 69.166, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_249", "structure": "PTV70", "mean_dose": 71.11162521533161, "max_dose": 79.499, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_250", "structure": "SpinalCord", "mean_dose": 16.361832191780824, "max_dose": 47.172, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_250", "structure": "LeftParotid", "mean_dose": 50.6867072368421, "max_dose": 72.506, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_250", "structure": "RightParotid", "mean_dose": 31.80241554054054, "max_dose": 63.2, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_250", "structure": "PTV56", "mean_dose": 61.60595199390398, "max_dose": 72.829, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_250", "structure": "PTV70", "mean_dose": 71.86935522034901, "max_dose": 72.512, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_251", "structure": "Brainstem", "mean_dose": 1.615048275862069, "max_dose": 20.098, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_251", "structure": "SpinalCord", "mean_dose": 24.074007194244608, "max_dose": 34.181, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_251", "structure": "LeftParotid", "mean_dose": 14.355942224953901, "max_dose": 56.891, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_251", "structure": "RightParotid", "mean_dose": 29.633858040201005, "max_dose": 72.654, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_251", "structure": "PTV56", "mean_dose": 59.93008624820316, "max_dose": 71.022, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_251", "structure": "PTV63", "mean_dose": 66.27045990383124, "max_dose": 72.052, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_251", "structure": "PTV70", "mean_dose": 71.74165056030847, "max_dose": 72.886, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_252", "structure": "Brainstem", "mean_dose": 15.13724168126095, "max_dose": 46.756, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_252", "structure": "LeftParotid", "mean_dose": 36.713716101694914, "max_dose": 70.859, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_252", "structure": "RightParotid", "mean_dose": 33.412703549060545, "max_dose": 70.152, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_252", "structure": "PTV56", "mean_dose": 57.543050059594755, "max_dose": 69.39, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_252", "structure": "PTV70", "mean_dose": 69.88036698526483, "max_dose": 73.93, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_253", "structure": "Brainstem", "mean_dose": 9.21163307086614, "max_dose": 41.54, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_253", "structure": "SpinalCord", "mean_dose": 12.89901845637584, "max_dose": 30.847, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_253", "structure": "LeftParotid", "mean_dose": 31.82243609022556, "max_dose": 61.536, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_253", "structure": "RightParotid", "mean_dose": 36.14446283783784, "max_dose": 70.526, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_253", "structure": "PTV56", "mean_dose": 60.665124058380414, "max_dose": 72.431, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_253", "structure": "PTV63", "mean_dose": 68.3926166751398, "max_dose": 74.147, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_253", "structure": "PTV70", "mean_dose": 72.29217698343506, "max_dose": 74.858, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_254", "structure": "Brainstem", "mean_dose": 7.403305248618785, "max_dose": 35.253, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_254", "structure": "SpinalCord", "mean_dose": 8.283639804639805, "max_dose": 32.042, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_254", "structure": "LeftParotid", "mean_dose": 17.637833333333333, "max_dose": 53.428, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_254", "structure": "RightParotid", "mean_dose": 30.823720108695653, "max_dose": 70.566, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_254", "structure": "PTV56", "mean_dose": 59.96323665128544, "max_dose": 74.823, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_254", "structure": "PTV70", "mean_dose": 72.67420143884893, "max_dose": 76.569, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_255", "structure": "Brainstem", "mean_dose": 21.453547899159666, "max_dose": 41.926, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_255", "structure": "LeftParotid", "mean_dose": 31.699832205683354, "max_dose": 71.507, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_255", "structure": "RightParotid", "mean_dose": 18.41444097616345, "max_dose": 53.355, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_255", "structure": "PTV56", "mean_dose": 57.23869841693348, "max_dose": 65.839, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_255", "structure": "PTV70", "mean_dose": 70.4013415897126, "max_dose": 73.487, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_256", "structure": "Brainstem", "mean_dose": 1.8788128342245987, "max_dose": 22.563, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_256", "structure": "SpinalCord", "mean_dose": 21.346825949367087, "max_dose": 33.536, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_256", "structure": "LeftParotid", "mean_dose": 26.202317073170732, "max_dose": 59.935, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_256", "structure": "RightParotid", "mean_dose": 26.295474820143884, "max_dose": 60.495, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_256", "structure": "PTV56", "mean_dose": 59.7666205506118, "max_dose": 71.873, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_256", "structure": "PTV70", "mean_dose": 71.77633619948409, "max_dose": 73.511, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_257", "structure": "Brainstem", "mean_dose": 0.9805931899641578, "max_dose": 20.225, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_257", "structure": "SpinalCord", "mean_dose": 16.87538676470588, "max_dose": 36.329, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_257", "structure": "LeftParotid", "mean_dose": 19.87876593720266, "max_dose": 58.497, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_257", "structure": "RightParotid", "mean_dose": 21.84381599123768, "max_dose": 58.83, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_257", "structure": "PTV56", "mean_dose": 59.807297859830676, "max_dose": 70.57, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_257", "structure": "PTV63", "mean_dose": 68.216788, "max_dose": 71.095, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_257", "structure": "PTV70", "mean_dose": 71.03998217317488, "max_dose": 71.738, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_258", "structure": "Brainstem", "mean_dose": 3.121378419452888, "max_dose": 26.368, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_258", "structure": "SpinalCord", "mean_dose": 11.785583333333333, "max_dose": 34.183, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_258", "structure": "LeftParotid", "mean_dose": 40.26618285714286, "max_dose": 71.249, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_258", "structure": "RightParotid", "mean_dose": 26.459257225433525, "max_dose": 58.259, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_258", "structure": "PTV56", "mean_dose": 59.73460777385159, "max_dose": 70.504, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_258", "structure": "PTV70", "mean_dose": 69.41497108953614, "max_dose": 71.5, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_259", "structure": "Brainstem", "mean_dose": 9.797555555555556, "max_dose": 26.507, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_259", "structure": "LeftParotid", "mean_dose": 27.757711786372006, "max_dose": 70.122, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_259", "structure": "RightParotid", "mean_dose": 21.982416282642088, "max_dose": 59.576, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_259", "structure": "PTV56", "mean_dose": 58.86007042520881, "max_dose": 63.337, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_259", "structure": "PTV63", "mean_dose": 63.9081550486521, "max_dose": 71.386, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_259", "structure": "PTV70", "mean_dose": 71.01803047945205, "max_dose": 72.462, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_260", "structure": "Brainstem", "mean_dose": 1.075588996763754, "max_dose": 19.428, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_260", "structure": "SpinalCord", "mean_dose": 12.959635486160398, "max_dose": 43.943, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_260", "structure": "LeftParotid", "mean_dose": 36.54660130718954, "max_dose": 64.485, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_260", "structure": "RightParotid", "mean_dose": 50.654498269896195, "max_dose": 75.579, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_260", "structure": "PTV56", "mean_dose": 60.54707829181495, "max_dose": 72.221, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_260", "structure": "PTV70", "mean_dose": 72.59262489672267, "max_dose": 75.95, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_261", "structure": "Brainstem", "mean_dose": 15.233499351491567, "max_dose": 31.608, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_261", "structure": "SpinalCord", "mean_dose": 10.70623684210526, "max_dose": 30.489, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_261", "structure": "LeftParotid", "mean_dose": 42.14047531319086, "max_dose": 71.501, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_261", "structure": "RightParotid", "mean_dose": 27.82788589211618, "max_dose": 71.025, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_261", "structure": "PTV56", "mean_dose": 60.50377628716461, "max_dose": 73.871, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_261", "structure": "PTV63", "mean_dose": 67.22307171955403, "max_dose": 76.487, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_261", "structure": "PTV70", "mean_dose": 71.82925574712642, "max_dose": 77.018, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_262", "structure": "Brainstem", "mean_dose": 11.436904124860646, "max_dose": 43.321, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_262", "structure": "LeftParotid", "mean_dose": 32.438957116788316, "max_dose": 72.304, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_262", "structure": "RightParotid", "mean_dose": 23.814443157894736, "max_dose": 56.379, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_262", "structure": "PTV56", "mean_dose": 57.94156874132054, "max_dose": 70.184, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_262", "structure": "PTV70", "mean_dose": 70.4560373379043, "max_dose": 73.955, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_263", "structure": "Brainstem", "mean_dose": 0.01374581939799331, "max_dose": 0.164, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_263", "structure": "SpinalCord", "mean_dose": 24.12230344827586, "max_dose": 36.11, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_263", "structure": "LeftParotid", "mean_dose": 24.992797752808986, "max_dose": 58.06, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_263", "structure": "RightParotid", "mean_dose": 23.23080540540541, "max_dose": 57.267, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_263", "structure": "PTV56", "mean_dose": 59.91048685415304, "max_dose": 71.804, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_263", "structure": "PTV70", "mean_dose": 71.51210644257702, "max_dose": 72.389, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_264", "structure": "Brainstem", "mean_dose": 2.3771444043321304, "max_dose": 40.051, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_264", "structure": "SpinalCord", "mean_dose": 12.21850386597938, "max_dose": 35.493, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_264", "structure": "LeftParotid", "mean_dose": 39.76682178217822, "max_dose": 73.483, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_264", "structure": "RightParotid", "mean_dose": 37.32872848948375, "max_dose": 67.81, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_264", "structure": "PTV56", "mean_dose": 60.35863692136084, "max_dose": 70.67, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_264", "structure": "PTV63", "mean_dose": 66.98135270979022, "max_dose": 72.928, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_264", "structure": "PTV70", "mean_dose": 72.16922796632464, "max_dose": 75.099, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_265", "structure": "Brainstem", "mean_dose": 3.341850724637681, "max_dose": 19.376, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_265", "structure": "SpinalCord", "mean_dose": 15.858873885350318, "max_dose": 36.098, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_265", "structure": "LeftParotid", "mean_dose": 35.55035064935065, "max_dose": 72.53, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_265", "structure": "RightParotid", "mean_dose": 35.788042979942695, "max_dose": 58.578, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_265", "structure": "PTV56", "mean_dose": 58.87138792067307, "max_dose": 70.642, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_265", "structure": "PTV70", "mean_dose": 71.62695066694897, "max_dose": 75.832, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_266", "structure": "Brainstem", "mean_dose": 8.75268129330254, "max_dose": 39.895, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_266", "structure": "LeftParotid", "mean_dose": 18.55881560283688, "max_dose": 56.775, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_266", "structure": "RightParotid", "mean_dose": 37.42943482587065, "max_dose": 72.604, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_266", "structure": "PTV56", "mean_dose": 57.56515800984144, "max_dose": 69.56, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_266", "structure": "PTV70", "mean_dose": 71.01147064656881, "max_dose": 74.445, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_267", "structure": "Brainstem", "mean_dose": 7.365734693877551, "max_dose": 19.739, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_267", "structure": "SpinalCord", "mean_dose": 21.82049561403509, "max_dose": 40.671, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_267", "structure": "LeftParotid", "mean_dose": 43.16053723404255, "max_dose": 70.624, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_267", "structure": "RightParotid", "mean_dose": 20.996852398523984, "max_dose": 55.18, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_267", "structure": "PTV56", "mean_dose": 60.86316842475387, "max_dose": 72.658, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_267", "structure": "PTV70", "mean_dose": 72.18761601085481, "max_dose": 73.829, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_268", "structure": "Brainstem", "mean_dose": 7.177116851168513, "max_dose": 30.694, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_268", "structure": "SpinalCord", "mean_dose": 8.749566188197766, "max_dose": 29.67, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_268", "structure": "LeftParotid", "mean_dose": 41.9406827242525, "max_dose": 73.396, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_268", "structure": "RightParotid", "mean_dose": 44.53269485903814, "max_dose": 73.927, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_268", "structure": "PTV56", "mean_dose": 61.67305655686762, "max_dose": 76.153, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_268", "structure": "PTV63", "mean_dose": 67.5357389380531, "max_dose": 74.863, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_268", "structure": "PTV70", "mean_dose": 72.4268468274476, "max_dose": 79.793, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_269", "structure": "Brainstem", "mean_dose": 2.5586104868913857, "max_dose": 31.082, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_269", "structure": "SpinalCord", "mean_dose": 19.46436026936027, "max_dose": 34.462, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_269", "structure": "LeftParotid", "mean_dose": 42.59209536784742, "max_dose": 68.697, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_269", "structure": "RightParotid", "mean_dose": 21.236695238095237, "max_dose": 59.815, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_269", "structure": "PTV56", "mean_dose": 65.23403921568628, "max_dose": 69.336, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_269", "structure": "PTV70", "mean_dose": 68.11009333049222, "max_dose": 72.859, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_270", "structure": "SpinalCord", "mean_dose": 24.74143457943925, "max_dose": 39.825, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_270", "structure": "LeftParotid", "mean_dose": 27.03272236503856, "max_dose": 72.302, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_270", "structure": "RightParotid", "mean_dose": 30.27010505050505, "max_dose": 73.528, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_270", "structure": "PTV56", "mean_dose": 60.47839023580205, "max_dose": 73.774, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_270", "structure": "PTV70", "mean_dose": 72.58487532289313, "max_dose": 76.429, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_271", "structure": "SpinalCord", "mean_dose": 24.795515418502205, "max_dose": 33.244, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_271", "structure": "LeftParotid", "mean_dose": 14.478603658536585, "max_dose": 57.977, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_271", "structure": "RightParotid", "mean_dose": 27.251903703703704, "max_dose": 72.789, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_271", "structure": "PTV56", "mean_dose": 59.48696697490092, "max_dose": 71.158, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_271", "structure": "PTV63", "mean_dose": 67.53310211733567, "max_dose": 72.646, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_271", "structure": "PTV70", "mean_dose": 72.11826836211806, "max_dose": 74.524, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_272", "structure": "Brainstem", "mean_dose": 19.68131100478469, "max_dose": 43.356, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_272", "structure": "LeftParotid", "mean_dose": 36.32667509481669, "max_dose": 71.819, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_272", "structure": "RightParotid", "mean_dose": 27.95290600522193, "max_dose": 67.264, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_272", "structure": "PTV56", "mean_dose": 58.85485058562836, "max_dose": 69.028, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_272", "structure": "PTV70", "mean_dose": 69.51192595863351, "max_dose": 71.876, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_273", "structure": "Brainstem", "mean_dose": 22.746073878627964, "max_dose": 35.874, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_273", "structure": "SpinalCord", "mean_dose": 13.87674449339207, "max_dose": 31.454, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_273", "structure": "LeftParotid", "mean_dose": 39.31763977485929, "max_dose": 72.94, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_273", "structure": "RightParotid", "mean_dose": 23.43166109785203, "max_dose": 69.178, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_273", "structure": "PTV70", "mean_dose": 71.47336225622561, "max_dose": 75.52, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_274", "structure": "Brainstem", "mean_dose": 25.076455719557195, "max_dose": 52.957, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_274", "structure": "LeftParotid", "mean_dose": 35.17326814098134, "max_dose": 71.839, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_274", "structure": "RightParotid", "mean_dose": 32.34619340974212, "max_dose": 70.747, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_274", "structure": "PTV56", "mean_dose": 56.92604164539421, "max_dose": 71.079, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_274", "structure": "PTV70", "mean_dose": 69.5975324060879, "max_dose": 72.965, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_275", "structure": "Brainstem", "mean_dose": 7.938121028744327, "max_dose": 32.175, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_275", "structure": "SpinalCord", "mean_dose": 10.420475386779184, "max_dose": 29.24, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_275", "structure": "LeftParotid", "mean_dose": 6.9349886547812, "max_dose": 14.014, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_275", "structure": "RightParotid", "mean_dose": 36.84290224032586, "max_dose": 71.035, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_275", "structure": "PTV56", "mean_dose": 61.53250443018637, "max_dose": 72.158, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_275", "structure": "PTV63", "mean_dose": 68.72091025641026, "max_dose": 72.296, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_275", "structure": "PTV70", "mean_dose": 71.78740926204819, "max_dose": 74.037, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_276", "structure": "Brainstem", "mean_dose": 15.717115566037734, "max_dose": 53.223, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_276", "structure": "SpinalCord", "mean_dose": 15.924159090909093, "max_dose": 43.598, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_276", "structure": "LeftParotid", "mean_dose": 24.944505747126435, "max_dose": 54.66, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_276", "structure": "RightParotid", "mean_dose": 47.44925746268656, "max_dose": 70.074, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_276", "structure": "PTV56", "mean_dose": 59.863642445582585, "max_dose": 70.956, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_276", "structure": "PTV63", "mean_dose": 63.290523182040026, "max_dose": 68.632, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_276", "structure": "PTV70", "mean_dose": 70.47425744917851, "max_dose": 73.276, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_277", "structure": "Brainstem", "mean_dose": 3.3629308072487643, "max_dose": 25.738, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_277", "structure": "SpinalCord", "mean_dose": 19.681159638554217, "max_dose": 30.787, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_277", "structure": "LeftParotid", "mean_dose": 33.955530418250945, "max_dose": 72.998, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_277", "structure": "RightParotid", "mean_dose": 24.602495689655175, "max_dose": 56.978, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_277", "structure": "PTV56", "mean_dose": 59.30147216299455, "max_dose": 72.505, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_277", "structure": "PTV70", "mean_dose": 71.06381355932203, "max_dose": 74.686, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_278", "structure": "Brainstem", "mean_dose": 4.114704, "max_dose": 36.775, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_278", "structure": "SpinalCord", "mean_dose": 7.884025423728813, "max_dose": 34.328, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_278", "structure": "LeftParotid", "mean_dose": 13.576967418546369, "max_dose": 56.328, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_278", "structure": "RightParotid", "mean_dose": 42.94564241164241, "max_dose": 74.632, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_278", "structure": "PTV56", "mean_dose": 60.436209486166014, "max_dose": 74.697, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_278", "structure": "PTV63", "mean_dose": 69.46634083333333, "max_dose": 76.162, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_278", "structure": "PTV70", "mean_dose": 72.44684667061846, "max_dose": 76.904, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_279", "structure": "Brainstem", "mean_dose": 5.553982832618026, "max_dose": 43.67, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_279", "structure": "SpinalCord", "mean_dose": 22.840767253044657, "max_dose": 42.125, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_279", "structure": "LeftParotid", "mean_dose": 27.45876759259259, "max_dose": 70.61, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_279", "structure": "RightParotid", "mean_dose": 33.27934110535406, "max_dose": 71.441, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_279", "structure": "PTV56", "mean_dose": 59.346410768614895, "max_dose": 70.316, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_279", "structure": "PTV63", "mean_dose": 64.40912252578757, "max_dose": 70.799, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_279", "structure": "PTV70", "mean_dose": 70.5041589068826, "max_dose": 72.97, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_280", "structure": "Brainstem", "mean_dose": 20.88478448275862, "max_dose": 34.705, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_280", "structure": "SpinalCord", "mean_dose": 14.122603691639522, "max_dose": 32.122, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_280", "structure": "LeftParotid", "mean_dose": 14.47100867888139, "max_dose": 52.365, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_280", "structure": "RightParotid", "mean_dose": 18.098418739635157, "max_dose": 55.897, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_280", "structure": "PTV56", "mean_dose": 60.09160665255106, "max_dose": 73.824, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_280", "structure": "PTV70", "mean_dose": 72.22155526141628, "max_dose": 75.718, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_281", "structure": "Brainstem", "mean_dose": 6.350734545454545, "max_dose": 31.256, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_281", "structure": "SpinalCord", "mean_dose": 20.393420977011495, "max_dose": 31.426, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_281", "structure": "LeftParotid", "mean_dose": 25.365210803689063, "max_dose": 71.225, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_281", "structure": "RightParotid", "mean_dose": 20.044878481012656, "max_dose": 58.334, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_281", "structure": "PTV56", "mean_dose": 59.47475699632772, "max_dose": 73.584, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_281", "structure": "PTV70", "mean_dose": 71.0893653316037, "max_dose": 75.524, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_282", "structure": "Brainstem", "mean_dose": 0.7255242290748898, "max_dose": 12.064, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_282", "structure": "SpinalCord", "mean_dose": 15.225630662020906, "max_dose": 31.871, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_282", "structure": "LeftParotid", "mean_dose": 21.122785326086955, "max_dose": 69.185, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_282", "structure": "RightParotid", "mean_dose": 28.235769578313253, "max_dose": 72.166, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_282", "structure": "PTV70", "mean_dose": 69.70629318365697, "max_dose": 74.645, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_283", "structure": "SpinalCord", "mean_dose": 10.433936095172921, "max_dose": 40.964, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_283", "structure": "LeftParotid", "mean_dose": 40.9215337995338, "max_dose": 65.943, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_283", "structure": "RightParotid", "mean_dose": 54.13906095238095, "max_dose": 72.564, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_283", "structure": "PTV56", "mean_dose": 59.28873765765767, "max_dose": 68.364, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_283", "structure": "PTV63", "mean_dose": 66.37778487958542, "max_dose": 76.809, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_283", "structure": "PTV70", "mean_dose": 70.43454932866315, "max_dose": 74.263, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_284", "structure": "Brainstem", "mean_dose": 8.482765237020315, "max_dose": 37.157, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_284", "structure": "LeftParotid", "mean_dose": 35.052099999999996, "max_dose": 68.754, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_284", "structure": "RightParotid", "mean_dose": 43.883407480314965, "max_dose": 70.483, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_284", "structure": "PTV56", "mean_dose": 58.0350117669387, "max_dose": 65.944, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_284", "structure": "PTV70", "mean_dose": 69.02632923996018, "max_dose": 72.261, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_285", "structure": "Brainstem", "mean_dose": 11.15804033970276, "max_dose": 40.24, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_285", "structure": "SpinalCord", "mean_dose": 21.58392233009709, "max_dose": 45.386, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_285", "structure": "LeftParotid", "mean_dose": 58.98515899581591, "max_dose": 70.44, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_285", "structure": "RightParotid", "mean_dose": 57.383676991150445, "max_dose": 64.068, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_285", "structure": "PTV56", "mean_dose": 59.93175759348902, "max_dose": 72.092, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_285", "structure": "PTV70", "mean_dose": 71.78668495821726, "max_dose": 72.499, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_286", "structure": "Brainstem", "mean_dose": 7.54857805907173, "max_dose": 31.425, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_286", "structure": "SpinalCord", "mean_dose": 18.767031971580817, "max_dose": 31.665, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_286", "structure": "LeftParotid", "mean_dose": 32.346577319587624, "max_dose": 68.158, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_286", "structure": "RightParotid", "mean_dose": 25.194037037037035, "max_dose": 55.54, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_286", "structure": "PTV56", "mean_dose": 57.913998804304505, "max_dose": 61.528, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_286", "structure": "PTV70", "mean_dose": 72.42240929122292, "max_dose": 76.814, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_287", "structure": "Brainstem", "mean_dose": 13.142828264758498, "max_dose": 33.928, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_287", "structure": "SpinalCord", "mean_dose": 11.641967948717946, "max_dose": 36.466, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_287", "structure": "LeftParotid", "mean_dose": 22.092914705882354, "max_dose": 59.195, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_287", "structure": "RightParotid", "mean_dose": 34.68549144008056, "max_dose": 72.363, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_287", "structure": "PTV56", "mean_dose": 60.34744776410858, "max_dose": 73.939, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_287", "structure": "PTV63", "mean_dose": 68.58017647058823, "max_dose": 73.446, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_287", "structure": "PTV70", "mean_dose": 72.66825408890396, "max_dose": 77.24, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_288", "structure": "SpinalCord", "mean_dose": 17.967023323615162, "max_dose": 30.577, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_288", "structure": "LeftParotid", "mean_dose": 36.946636363636365, "max_dose": 70.038, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_288", "structure": "RightParotid", "mean_dose": 20.841463700234193, "max_dose": 60.311, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_288", "structure": "PTV56", "mean_dose": 59.17973498233215, "max_dose": 66.743, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_288", "structure": "PTV63", "mean_dose": 66.21228985091743, "max_dose": 72.725, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_288", "structure": "PTV70", "mean_dose": 72.45384, "max_dose": 72.996, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_289", "structure": "Brainstem", "mean_dose": 3.809521861777151, "max_dose": 33.237, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_289", "structure": "SpinalCord", "mean_dose": 12.690521317829457, "max_dose": 33.332, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_289", "structure": "LeftParotid", "mean_dose": 27.81157613814757, "max_dose": 70.0, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_289", "structure": "RightParotid", "mean_dose": 17.153119250425895, "max_dose": 49.516, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_289", "structure": "PTV56", "mean_dose": 58.66517918692002, "max_dose": 71.388, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_289", "structure": "PTV63", "mean_dose": 67.17518421052633, "max_dose": 75.148, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_289", "structure": "PTV70", "mean_dose": 72.3233005803482, "max_dose": 76.272, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_290", "structure": "Brainstem", "mean_dose": 5.786253180661578, "max_dose": 39.533, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_290", "structure": "SpinalCord", "mean_dose": 10.990233657858136, "max_dose": 29.256, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_290", "structure": "LeftParotid", "mean_dose": 27.378193113772458, "max_dose": 73.715, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_290", "structure": "RightParotid", "mean_dose": 36.40020193861066, "max_dose": 73.353, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_290", "structure": "PTV56", "mean_dose": 62.52916646754282, "max_dose": 74.312, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_290", "structure": "PTV63", "mean_dose": 68.57273863636364, "max_dose": 74.257, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_290", "structure": "PTV70", "mean_dose": 72.8378717053797, "max_dose": 77.638, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_291", "structure": "Brainstem", "mean_dose": 0.34225526315789473, "max_dose": 11.833, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_291", "structure": "SpinalCord", "mean_dose": 17.26744481605351, "max_dose": 42.388, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_291", "structure": "LeftParotid", "mean_dose": 23.505092457420925, "max_dose": 58.206, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_291", "structure": "RightParotid", "mean_dose": 17.459876404494384, "max_dose": 51.366, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_291", "structure": "PTV56", "mean_dose": 59.43615516508431, "max_dose": 71.06, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_291", "structure": "PTV70", "mean_dose": 71.52060710915383, "max_dose": 72.472, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_292", "structure": "Brainstem", "mean_dose": 7.555689354275741, "max_dose": 37.884, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_292", "structure": "SpinalCord", "mean_dose": 28.919737463126847, "max_dose": 36.361, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_292", "structure": "LeftParotid", "mean_dose": 36.38411267605634, "max_dose": 74.124, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_292", "structure": "RightParotid", "mean_dose": 37.25182427745665, "max_dose": 74.417, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_292", "structure": "PTV56", "mean_dose": 61.07411482922612, "max_dose": 73.334, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_292", "structure": "PTV70", "mean_dose": 72.15310952040086, "max_dose": 75.453, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_293", "structure": "Brainstem", "mean_dose": 6.810860643185299, "max_dose": 39.209, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_293", "structure": "SpinalCord", "mean_dose": 26.241317991631796, "max_dose": 35.837, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_293", "structure": "LeftParotid", "mean_dose": 49.17093359374999, "max_dose": 73.144, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_293", "structure": "RightParotid", "mean_dose": 35.1216850921273, "max_dose": 73.112, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_293", "structure": "PTV70", "mean_dose": 71.6954332664325, "max_dose": 73.815, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_294", "structure": "Brainstem", "mean_dose": 8.332194078947369, "max_dose": 43.181, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_294", "structure": "SpinalCord", "mean_dose": 22.270398148148146, "max_dose": 48.023, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_294", "structure": "LeftParotid", "mean_dose": 32.32010793650793, "max_dose": 71.111, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_294", "structure": "RightParotid", "mean_dose": 36.48883681214421, "max_dose": 63.769, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_294", "structure": "PTV56", "mean_dose": 58.9478814700789, "max_dose": 70.237, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_294", "structure": "PTV70", "mean_dose": 70.3680677764566, "max_dose": 71.445, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_295", "structure": "Brainstem", "mean_dose": 0.980328125, "max_dose": 7.887, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_295", "structure": "SpinalCord", "mean_dose": 9.78776661514683, "max_dose": 28.374, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_295", "structure": "LeftParotid", "mean_dose": 39.61458673469388, "max_dose": 71.996, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_295", "structure": "RightParotid", "mean_dose": 33.922541666666675, "max_dose": 58.728, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_295", "structure": "PTV56", "mean_dose": 61.134321309285234, "max_dose": 73.424, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_295", "structure": "PTV70", "mean_dose": 72.48886272923409, "max_dose": 75.669, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_296", "structure": "Brainstem", "mean_dose": 2.7494125000000005, "max_dose": 25.486, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_296", "structure": "SpinalCord", "mean_dose": 23.770706451612902, "max_dose": 44.629, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_296", "structure": "LeftParotid", "mean_dose": 28.984204697986577, "max_dose": 56.154, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_296", "structure": "RightParotid", "mean_dose": 46.97562898550725, "max_dose": 72.311, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_296", "structure": "PTV56", "mean_dose": 59.82743298555377, "max_dose": 72.348, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_296", "structure": "PTV70", "mean_dose": 71.72619080604534, "max_dose": 74.494, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_297", "structure": "Brainstem", "mean_dose": 20.469336294416244, "max_dose": 43.065, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_297", "structure": "SpinalCord", "mean_dose": 11.088735555555557, "max_dose": 40.275, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_297", "structure": "LeftParotid", "mean_dose": 40.5770482686254, "max_dose": 76.621, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_297", "structure": "RightParotid", "mean_dose": 25.34341232227488, "max_dose": 63.723, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_297", "structure": "PTV56", "mean_dose": 64.20059628438727, "max_dose": 76.619, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_297", "structure": "PTV63", "mean_dose": 70.49940840840841, "max_dose": 77.387, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_297", "structure": "PTV70", "mean_dose": 73.55566261061946, "max_dose": 78.632, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_298", "structure": "Brainstem", "mean_dose": 12.383593679458238, "max_dose": 29.812, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_298", "structure": "SpinalCord", "mean_dose": 9.872150537634408, "max_dose": 32.46, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_298", "structure": "LeftParotid", "mean_dose": 51.52200936329588, "max_dose": 75.824, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_298", "structure": "RightParotid", "mean_dose": 26.82287524366472, "max_dose": 59.61, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_298", "structure": "PTV56", "mean_dose": 62.61432465569365, "max_dose": 73.989, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_298", "structure": "PTV70", "mean_dose": 73.17852678571428, "max_dose": 76.056, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_299", "structure": "Brainstem", "mean_dose": 2.743259375, "max_dose": 33.934, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_299", "structure": "SpinalCord", "mean_dose": 22.11274278215223, "max_dose": 35.819, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_299", "structure": "LeftParotid", "mean_dose": 42.068852713178295, "max_dose": 70.279, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_299", "structure": "RightParotid", "mean_dose": 29.03122413793103, "max_dose": 52.711, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_299", "structure": "PTV56", "mean_dose": 59.060581757508345, "max_dose": 71.431, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_299", "structure": "PTV70", "mean_dose": 72.07973668551027, "max_dose": 73.832, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_300", "structure": "Brainstem", "mean_dose": 8.435380200860834, "max_dose": 36.632, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_300", "structure": "SpinalCord", "mean_dose": 9.812933453237411, "max_dose": 33.793, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_300", "structure": "LeftParotid", "mean_dose": 24.081727989487515, "max_dose": 66.483, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_300", "structure": "RightParotid", "mean_dose": 23.034401920438956, "max_dose": 58.437, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_300", "structure": "PTV56", "mean_dose": 61.297449264136326, "max_dose": 74.244, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_300", "structure": "PTV63", "mean_dose": 68.75620501930501, "max_dose": 75.615, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_300", "structure": "PTV70", "mean_dose": 72.84308086717138, "max_dose": 76.364, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_301", "structure": "Brainstem", "mean_dose": 3.631599781897492, "max_dose": 32.284, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_301", "structure": "SpinalCord", "mean_dose": 13.580329113924053, "max_dose": 32.203, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_301", "structure": "LeftParotid", "mean_dose": 29.237045312499998, "max_dose": 68.63, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_301", "structure": "RightParotid", "mean_dose": 22.650740121580547, "max_dose": 47.869, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_301", "structure": "PTV56", "mean_dose": 57.85396430834212, "max_dose": 62.847, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_301", "structure": "PTV63", "mean_dose": 67.17788797942002, "max_dose": 73.039, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_301", "structure": "PTV70", "mean_dose": 71.18944597803502, "max_dose": 74.183, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_302", "structure": "Brainstem", "mean_dose": 29.400657142857145, "max_dose": 46.171, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_302", "structure": "SpinalCord", "mean_dose": 12.897871035940804, "max_dose": 33.733, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_302", "structure": "LeftParotid", "mean_dose": 29.888128000000002, "max_dose": 75.238, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_302", "structure": "RightParotid", "mean_dose": 22.863445217391305, "max_dose": 50.712, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_302", "structure": "PTV56", "mean_dose": 60.07421136141038, "max_dose": 75.887, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_302", "structure": "PTV63", "mean_dose": 71.0122716535433, "max_dose": 76.947, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_302", "structure": "PTV70", "mean_dose": 73.78927298136647, "max_dose": 78.763, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_303", "structure": "SpinalCord", "mean_dose": 17.451449515905946, "max_dose": 35.747, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_303", "structure": "LeftParotid", "mean_dose": 30.01188613861386, "max_dose": 65.835, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_303", "structure": "RightParotid", "mean_dose": 22.67126851851852, "max_dose": 55.348, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_303", "structure": "PTV56", "mean_dose": 58.824848599545795, "max_dose": 71.679, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_303", "structure": "PTV63", "mean_dose": 67.78135655737704, "max_dose": 71.918, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_303", "structure": "PTV70", "mean_dose": 71.72306605922552, "max_dose": 72.682, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_304", "structure": "Brainstem", "mean_dose": 6.916571428571429, "max_dose": 34.75, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_304", "structure": "SpinalCord", "mean_dose": 20.549857321652063, "max_dose": 43.873, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_304", "structure": "LeftParotid", "mean_dose": 40.77692637215529, "max_dose": 73.679, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_304", "structure": "RightParotid", "mean_dose": 22.767600938967135, "max_dose": 60.322, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_304", "structure": "PTV56", "mean_dose": 59.13783427124367, "max_dose": 70.918, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_304", "structure": "PTV70", "mean_dose": 72.15657501805055, "max_dose": 75.503, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_305", "structure": "Brainstem", "mean_dose": 12.299919517102614, "max_dose": 33.358, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_305", "structure": "SpinalCord", "mean_dose": 10.781434504792331, "max_dose": 31.161, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_305", "structure": "LeftParotid", "mean_dose": 5.879872093023256, "max_dose": 16.182, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_305", "structure": "RightParotid", "mean_dose": 33.17256756756757, "max_dose": 72.279, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_305", "structure": "PTV56", "mean_dose": 62.53937153053132, "max_dose": 73.245, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_305", "structure": "PTV63", "mean_dose": 69.09085714285715, "max_dose": 72.974, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_305", "structure": "PTV70", "mean_dose": 72.47405065386525, "max_dose": 75.156, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_306", "structure": "Brainstem", "mean_dose": 3.735797839506173, "max_dose": 36.116, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_306", "structure": "SpinalCord", "mean_dose": 17.124423357664234, "max_dose": 34.235, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_306", "structure": "LeftParotid", "mean_dose": 34.14512334801762, "max_dose": 58.645, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_306", "structure": "RightParotid", "mean_dose": 48.048132673267325, "max_dose": 73.544, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_306", "structure": "PTV56", "mean_dose": 58.53300690713737, "max_dose": 71.343, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_306", "structure": "PTV70", "mean_dose": 71.76406546275395, "max_dose": 75.505, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_307", "structure": "Brainstem", "mean_dose": 6.627900510204081, "max_dose": 36.764, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_307", "structure": "SpinalCord", "mean_dose": 23.177708978328173, "max_dose": 37.824, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_307", "structure": "LeftParotid", "mean_dose": 26.461485507246376, "max_dose": 58.626, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_307", "structure": "RightParotid", "mean_dose": 41.461455947136564, "max_dose": 73.071, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_307", "structure": "PTV56", "mean_dose": 59.14791535060012, "max_dose": 72.205, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_307", "structure": "PTV70", "mean_dose": 72.47960727888278, "max_dose": 76.474, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_308", "structure": "Brainstem", "mean_dose": 6.087865786578658, "max_dose": 36.731, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_308", "structure": "SpinalCord", "mean_dose": 22.1358920056101, "max_dose": 41.02, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_308", "structure": "LeftParotid", "mean_dose": 38.88366710353866, "max_dose": 69.594, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_308", "structure": "RightParotid", "mean_dose": 40.45478003120125, "max_dose": 72.93, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_308", "structure": "PTV56", "mean_dose": 59.975401312289414, "max_dose": 71.509, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_308", "structure": "PTV63", "mean_dose": 66.65302232546135, "max_dose": 73.945, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_308", "structure": "PTV70", "mean_dose": 71.59396531859863, "max_dose": 73.798, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_309", "structure": "Brainstem", "mean_dose": 12.513101796407183, "max_dose": 51.214, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_309", "structure": "SpinalCord", "mean_dose": 22.54028698224852, "max_dose": 39.004, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_309", "structure": "LeftParotid", "mean_dose": 56.311636612021864, "max_dose": 70.642, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_309", "structure": "RightParotid", "mean_dose": 52.94351928783383, "max_dose": 70.237, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_309", "structure": "PTV56", "mean_dose": 63.92713278236914, "max_dose": 69.379, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_309", "structure": "PTV63", "mean_dose": 63.99083888888888, "max_dose": 68.62, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_309", "structure": "PTV70", "mean_dose": 68.99957191959172, "max_dose": 71.85, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_310", "structure": "Brainstem", "mean_dose": 19.188709401709406, "max_dose": 26.831, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_310", "structure": "SpinalCord", "mean_dose": 16.178976893453147, "max_dose": 34.522, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_310", "structure": "LeftParotid", "mean_dose": 32.775431404958674, "max_dose": 72.621, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_310", "structure": "RightParotid", "mean_dose": 37.96968839427663, "max_dose": 73.975, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_310", "structure": "PTV56", "mean_dose": 60.678402349486056, "max_dose": 73.043, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_310", "structure": "PTV63", "mean_dose": 67.99984985888995, "max_dose": 75.158, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_310", "structure": "PTV70", "mean_dose": 73.14847825389184, "max_dose": 75.895, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_311", "structure": "Brainstem", "mean_dose": 5.878131178707224, "max_dose": 33.625, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_311", "structure": "SpinalCord", "mean_dose": 21.009949458483757, "max_dose": 32.577, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_311", "structure": "LeftParotid", "mean_dose": 38.48698125, "max_dose": 67.112, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_311", "structure": "RightParotid", "mean_dose": 27.27716, "max_dose": 52.52, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_311", "structure": "PTV56", "mean_dose": 59.613073658843255, "max_dose": 72.392, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_311", "structure": "PTV70", "mean_dose": 71.82487390158173, "max_dose": 72.376, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_312", "structure": "Brainstem", "mean_dose": 5.506991389913899, "max_dose": 28.331, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_312", "structure": "SpinalCord", "mean_dose": 19.243576411960134, "max_dose": 28.403, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_312", "structure": "LeftParotid", "mean_dose": 18.518699145299145, "max_dose": 54.204, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_312", "structure": "RightParotid", "mean_dose": 30.366533333333333, "max_dose": 73.398, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_312", "structure": "PTV56", "mean_dose": 58.00489834660135, "max_dose": 71.367, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_312", "structure": "PTV70", "mean_dose": 71.39584385832705, "max_dose": 74.942, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_313", "structure": "Brainstem", "mean_dose": 1.332796918767507, "max_dose": 28.843, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_313", "structure": "SpinalCord", "mean_dose": 22.51204008016032, "max_dose": 35.042, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_313", "structure": "LeftParotid", "mean_dose": 45.758812169312165, "max_dose": 65.299, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_313", "structure": "RightParotid", "mean_dose": 38.32276341127923, "max_dose": 61.567, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_313", "structure": "PTV56", "mean_dose": 60.57050117441783, "max_dose": 72.33, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_313", "structure": "PTV63", "mean_dose": 63.20307911172797, "max_dose": 70.301, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_313", "structure": "PTV70", "mean_dose": 71.30090870045404, "max_dose": 73.46, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_314", "structure": "Brainstem", "mean_dose": 13.555579925650557, "max_dose": 32.037, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_314", "structure": "SpinalCord", "mean_dose": 23.110299270072993, "max_dose": 40.402, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_314", "structure": "LeftParotid", "mean_dose": 33.24513454545455, "max_dose": 59.053, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_314", "structure": "RightParotid", "mean_dose": 26.851436241610738, "max_dose": 59.402, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_314", "structure": "PTV56", "mean_dose": 60.78614296296297, "max_dose": 73.926, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_314", "structure": "PTV70", "mean_dose": 72.70256151711379, "max_dose": 75.389, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_315", "structure": "Brainstem", "mean_dose": 6.2040027247956395, "max_dose": 30.727, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_315", "structure": "SpinalCord", "mean_dose": 16.9981875, "max_dose": 32.846, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_315", "structure": "LeftParotid", "mean_dose": 15.339586813186811, "max_dose": 51.994, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_315", "structure": "RightParotid", "mean_dose": 25.464063063063065, "max_dose": 52.676, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_315", "structure": "PTV56", "mean_dose": 60.00350491026075, "max_dose": 72.141, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_315", "structure": "PTV70", "mean_dose": 71.93705637657361, "max_dose": 73.376, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_316", "structure": "Brainstem", "mean_dose": 9.391799152542372, "max_dose": 37.244, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_316", "structure": "SpinalCord", "mean_dose": 9.814920365535247, "max_dose": 31.329, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_316", "structure": "LeftParotid", "mean_dose": 26.01741214953271, "max_dose": 73.985, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_316", "structure": "RightParotid", "mean_dose": 23.683941247002398, "max_dose": 63.905, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_316", "structure": "PTV56", "mean_dose": 60.48630561674008, "max_dose": 77.051, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_316", "structure": "PTV70", "mean_dose": 72.13608931013053, "max_dose": 79.977, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_317", "structure": "Brainstem", "mean_dose": 19.670934782608697, "max_dose": 34.182, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_317", "structure": "SpinalCord", "mean_dose": 9.613408482142857, "max_dose": 31.798, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_317", "structure": "LeftParotid", "mean_dose": 18.07004404761905, "max_dose": 53.523, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_317", "structure": "RightParotid", "mean_dose": 28.342755555555556, "max_dose": 68.954, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_317", "structure": "PTV56", "mean_dose": 58.93723060259944, "max_dose": 72.376, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_317", "structure": "PTV63", "mean_dose": 67.71294705882353, "max_dose": 75.383, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_317", "structure": "PTV70", "mean_dose": 71.21509781985084, "max_dose": 77.761, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_318", "structure": "LeftParotid", "mean_dose": 12.715508005822416, "max_dose": 67.553, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_318", "structure": "RightParotid", "mean_dose": 23.237409090909093, "max_dose": 71.344, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_318", "structure": "PTV56", "mean_dose": 61.381965143299766, "max_dose": 72.194, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_318", "structure": "PTV63", "mean_dose": 68.37425339366516, "max_dose": 74.2, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_318", "structure": "PTV70", "mean_dose": 71.27315146579804, "max_dose": 74.339, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_319", "structure": "Brainstem", "mean_dose": 2.390531746031746, "max_dose": 27.752, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_319", "structure": "SpinalCord", "mean_dose": 15.340304130162702, "max_dose": 31.942, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_319", "structure": "LeftParotid", "mean_dose": 37.62510930576071, "max_dose": 70.264, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_319", "structure": "RightParotid", "mean_dose": 35.895325857519786, "max_dose": 69.232, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_319", "structure": "PTV70", "mean_dose": 67.47437125178486, "max_dose": 72.196, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_320", "structure": "Brainstem", "mean_dose": 11.416917127071825, "max_dose": 34.209, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_320", "structure": "SpinalCord", "mean_dose": 19.782695953757223, "max_dose": 37.533, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_320", "structure": "LeftParotid", "mean_dose": 40.70474641148326, "max_dose": 72.393, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_320", "structure": "RightParotid", "mean_dose": 20.032004999999998, "max_dose": 58.173, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_320", "structure": "PTV56", "mean_dose": 60.3440490611193, "max_dose": 73.016, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_320", "structure": "PTV70", "mean_dose": 70.53547305692913, "max_dose": 74.976, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_321", "structure": "Brainstem", "mean_dose": 4.0663517017828195, "max_dose": 40.617, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_321", "structure": "SpinalCord", "mean_dose": 10.924375000000001, "max_dose": 40.533, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_321", "structure": "RightParotid", "mean_dose": 6.131004237288135, "max_dose": 10.904, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_321", "structure": "PTV56", "mean_dose": 61.345630806845975, "max_dose": 71.295, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_321", "structure": "PTV63", "mean_dose": 67.25092602172789, "max_dose": 72.816, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_321", "structure": "PTV70", "mean_dose": 71.29435980810234, "max_dose": 73.887, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_322", "structure": "Brainstem", "mean_dose": 0.2308785942492013, "max_dose": 7.063, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_322", "structure": "SpinalCord", "mean_dose": 28.336600823045266, "max_dose": 42.272, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_322", "structure": "LeftParotid", "mean_dose": 21.14555696202531, "max_dose": 66.804, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_322", "structure": "RightParotid", "mean_dose": 41.473543209876546, "max_dose": 72.626, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_322", "structure": "PTV70", "mean_dose": 71.91799430929008, "max_dose": 75.78, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_323", "structure": "LeftParotid", "mean_dose": 21.537768851303735, "max_dose": 70.703, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_323", "structure": "RightParotid", "mean_dose": 28.95921552238806, "max_dose": 71.969, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_323", "structure": "PTV56", "mean_dose": 58.99160591569253, "max_dose": 69.565, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_323", "structure": "PTV70", "mean_dose": 71.40927872388102, "max_dose": 75.631, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_324", "structure": "Brainstem", "mean_dose": 5.977102189781023, "max_dose": 38.595, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_324", "structure": "SpinalCord", "mean_dose": 24.363965079365077, "max_dose": 41.601, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_324", "structure": "LeftParotid", "mean_dose": 30.036472093023256, "max_dose": 59.276, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_324", "structure": "RightParotid", "mean_dose": 46.322799031477, "max_dose": 72.595, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_324", "structure": "PTV56", "mean_dose": 59.041013291740136, "max_dose": 68.341, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_324", "structure": "PTV63", "mean_dose": 65.88192023205221, "max_dose": 72.132, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_324", "structure": "PTV70", "mean_dose": 71.86949271402551, "max_dose": 73.068, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_325", "structure": "Brainstem", "mean_dose": 21.317975563909776, "max_dose": 39.679, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_325", "structure": "LeftParotid", "mean_dose": 36.157393088552915, "max_dose": 71.935, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_325", "structure": "RightParotid", "mean_dose": 33.47793888888889, "max_dose": 72.214, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_325", "structure": "PTV56", "mean_dose": 57.10474231464738, "max_dose": 66.818, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_325", "structure": "PTV70", "mean_dose": 70.21575429918904, "max_dose": 74.135, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_326", "structure": "Brainstem", "mean_dose": 12.27511972318339, "max_dose": 32.351, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_326", "structure": "SpinalCord", "mean_dose": 9.755472861842104, "max_dose": 25.889, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_326", "structure": "LeftParotid", "mean_dose": 30.641004302925992, "max_dose": 69.229, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_326", "structure": "RightParotid", "mean_dose": 8.70047951977401, "max_dose": 17.519, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_326", "structure": "PTV56", "mean_dose": 61.028197345858494, "max_dose": 72.074, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_326", "structure": "PTV70", "mean_dose": 71.9867163938206, "max_dose": 73.466, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_327", "structure": "SpinalCord", "mean_dose": 19.733592760180994, "max_dose": 38.718, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_327", "structure": "LeftParotid", "mean_dose": 37.79594385964913, "max_dose": 58.927, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_327", "structure": "RightParotid", "mean_dose": 36.7950700280112, "max_dose": 72.431, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_327", "structure": "PTV56", "mean_dose": 58.93478346631206, "max_dose": 69.88, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_327", "structure": "PTV63", "mean_dose": 67.20407777322964, "max_dose": 72.13, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_327", "structure": "PTV70", "mean_dose": 71.79825796425797, "max_dose": 72.934, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_328", "structure": "Brainstem", "mean_dose": 0.8994646643109541, "max_dose": 23.436, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_328", "structure": "SpinalCord", "mean_dose": 26.63964262295082, "max_dose": 39.041, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_328", "structure": "LeftParotid", "mean_dose": 38.6765152027027, "max_dose": 69.962, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_328", "structure": "RightParotid", "mean_dose": 33.58692676056338, "max_dose": 62.668, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_328", "structure": "PTV56", "mean_dose": 60.25208620986485, "max_dose": 71.98, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_328", "structure": "PTV70", "mean_dose": 71.34477217391304, "max_dose": 74.086, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_329", "structure": "SpinalCord", "mean_dose": 4.828167381974249, "max_dose": 23.359, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_329", "structure": "PTV70", "mean_dose": 72.88910663983904, "max_dose": 74.605, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_330", "structure": "Brainstem", "mean_dose": 6.704080147965475, "max_dose": 22.97, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_330", "structure": "LeftParotid", "mean_dose": 20.85381753812636, "max_dose": 53.267, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_330", "structure": "RightParotid", "mean_dose": 13.148861800141745, "max_dose": 34.128, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_330", "structure": "PTV56", "mean_dose": 52.81501757377049, "max_dose": 71.043, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_330", "structure": "PTV63", "mean_dose": 62.303492406450594, "max_dose": 73.038, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_330", "structure": "PTV70", "mean_dose": 72.05211764705882, "max_dose": 73.88, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_331", "structure": "Brainstem", "mean_dose": 8.276339877300613, "max_dose": 36.57, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_331", "structure": "SpinalCord", "mean_dose": 7.440875613747954, "max_dose": 31.39, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_331", "structure": "LeftParotid", "mean_dose": 38.38266022727272, "max_dose": 73.333, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_331", "structure": "RightParotid", "mean_dose": 7.829582345191041, "max_dose": 16.141, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_331", "structure": "PTV56", "mean_dose": 60.497368888888886, "max_dose": 69.263, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_331", "structure": "PTV63", "mean_dose": 67.11818922345483, "max_dose": 72.203, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_331", "structure": "PTV70", "mean_dose": 71.43717649434574, "max_dose": 73.935, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_332", "structure": "Brainstem", "mean_dose": 6.854687388987567, "max_dose": 33.104, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_332", "structure": "SpinalCord", "mean_dose": 15.945850271528318, "max_dose": 39.606, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_332", "structure": "LeftParotid", "mean_dose": 36.267778202676865, "max_dose": 71.086, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_332", "structure": "RightParotid", "mean_dose": 30.54114847942755, "max_dose": 66.855, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_332", "structure": "PTV70", "mean_dose": 66.72317732669475, "max_dose": 72.073, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_333", "structure": "Brainstem", "mean_dose": 2.439012626262626, "max_dose": 30.27, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_333", "structure": "SpinalCord", "mean_dose": 18.399502392344495, "max_dose": 37.191, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_333", "structure": "LeftParotid", "mean_dose": 42.58003815261044, "max_dose": 73.125, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_333", "structure": "RightParotid", "mean_dose": 34.76528787878788, "max_dose": 58.458, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_333", "structure": "PTV56", "mean_dose": 59.54154489995119, "max_dose": 71.37, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_333", "structure": "PTV70", "mean_dose": 71.4070610964333, "max_dose": 74.018, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_334", "structure": "Brainstem", "mean_dose": 6.960248148148148, "max_dose": 39.191, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_334", "structure": "SpinalCord", "mean_dose": 21.146386740331494, "max_dose": 39.045, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_334", "structure": "LeftParotid", "mean_dose": 38.62493581081081, "max_dose": 58.556, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_334", "structure": "RightParotid", "mean_dose": 56.22403985507246, "max_dose": 71.672, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_334", "structure": "PTV56", "mean_dose": 60.17517441187813, "max_dose": 71.432, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_334", "structure": "PTV70", "mean_dose": 71.42809431219334, "max_dose": 72.086, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_335", "structure": "Brainstem", "mean_dose": 2.3931206896551727, "max_dose": 15.575, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_335", "structure": "SpinalCord", "mean_dose": 11.849830367734281, "max_dose": 32.43, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_335", "structure": "LeftParotid", "mean_dose": 14.557953488372092, "max_dose": 59.332, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_335", "structure": "RightParotid", "mean_dose": 36.75895, "max_dose": 73.643, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_335", "structure": "PTV56", "mean_dose": 60.83515872808165, "max_dose": 72.521, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_335", "structure": "PTV63", "mean_dose": 69.07183697813123, "max_dose": 73.438, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_335", "structure": "PTV70", "mean_dose": 72.65747090451826, "max_dose": 74.303, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_336", "structure": "Brainstem", "mean_dose": 7.319020220588236, "max_dose": 29.91, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_336", "structure": "SpinalCord", "mean_dose": 10.11862474226804, "max_dose": 27.113, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_336", "structure": "LeftParotid", "mean_dose": 17.532398656215005, "max_dose": 55.845, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_336", "structure": "RightParotid", "mean_dose": 48.78804388422035, "max_dose": 76.263, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_336", "structure": "PTV56", "mean_dose": 59.460706559839764, "max_dose": 73.329, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_336", "structure": "PTV63", "mean_dose": 69.44996078431373, "max_dose": 75.1, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_336", "structure": "PTV70", "mean_dose": 73.94050207900209, "max_dose": 77.993, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_337", "structure": "Brainstem", "mean_dose": 6.325209471766849, "max_dose": 37.639, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_337", "structure": "SpinalCord", "mean_dose": 15.337920408163267, "max_dose": 38.371, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_337", "structure": "LeftParotid", "mean_dose": 28.881183039462638, "max_dose": 72.693, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_337", "structure": "RightParotid", "mean_dose": 32.838678981937605, "max_dose": 71.988, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_337", "structure": "PTV70", "mean_dose": 71.6549063018614, "max_dose": 75.657, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_338", "structure": "Brainstem", "mean_dose": 9.863104859335039, "max_dose": 42.564, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_338", "structure": "SpinalCord", "mean_dose": 17.760577123050258, "max_dose": 37.307, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_338", "structure": "LeftParotid", "mean_dose": 33.343125344352615, "max_dose": 72.524, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_338", "structure": "RightParotid", "mean_dose": 33.04751702395965, "max_dose": 73.263, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_338", "structure": "PTV70", "mean_dose": 71.13249183872767, "max_dose": 76.345, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_339", "structure": "Brainstem", "mean_dose": 8.916765060240964, "max_dose": 51.186, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_339", "structure": "SpinalCord", "mean_dose": 23.902491525423727, "max_dose": 42.858, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_339", "structure": "LeftParotid", "mean_dose": 52.82608219178082, "max_dose": 74.055, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_339", "structure": "RightParotid", "mean_dose": 38.63822727272728, "max_dose": 68.353, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_339", "structure": "PTV56", "mean_dose": 60.21561093627066, "max_dose": 71.695, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_339", "structure": "PTV63", "mean_dose": 69.46938832997988, "max_dose": 74.563, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_339", "structure": "PTV70", "mean_dose": 72.62834421790379, "max_dose": 75.847, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_340", "structure": "Brainstem", "mean_dose": 6.750365808823529, "max_dose": 34.002, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_340", "structure": "SpinalCord", "mean_dose": 11.434150442477875, "max_dose": 29.998, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_340", "structure": "LeftParotid", "mean_dose": 22.207657794676805, "max_dose": 59.177, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_340", "structure": "RightParotid", "mean_dose": 20.593912541254124, "max_dose": 52.747, "tipo_estructura": "\u00d3rgano de riesgo"}, {"patient": "pt_340", "structure": "PTV56", "mean_dose": 59.43176392730146, "max_dose": 71.958, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_340", "structure": "PTV63", "mean_dose": 67.43317563739377, "max_dose": 72.181, "tipo_estructura": "Tumor objetivo (PTV)"}, {"patient": "pt_340", "structure": "PTV70", "mean_dose": 71.9857406060606, "max_dose": 74.744, "tipo_estructura": "Tumor objetivo (PTV)"}], "data-3ca0da631369cc74d5a9a1a1f1794a0e": [{"label": "n=", "structure": "PTV70"}, {"label": "n=", "structure": "PTV63"}, {"label": "n=", "structure": "PTV56"}, {"label": "n=", "structure": "LeftParotid"}, {"label": "n=", "structure": "RightParotid"}, {"label": "n=", "structure": "Brainstem"}, {"label": "n=", "structure": "SpinalCord"}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<p>** Interpretación **</p>
+<p>La visualización muestra cómo se distribuye la dosis media entre los pacientes para distintas estructuras anatómicas del dataset OpenKBP. Los volúmenes objetivo (PTV70, PTV63 y PTV56) reciben las dosis más altas, con valores aproximados entre 67–74 Gy para PTV70, 63–71 Gy para PTV63 y 53–65 Gy para PTV56, lo cual es consistente con su función terapéutica en radioterapia. En contraste, los órganos de riesgo presentan dosis menores: Brainstem se sitúa aproximadamente entre 0 y 30 Gy, mientras que SpinalCord se mantiene entre 5 y 30 Gy. Las glándulas parótidas (LeftParotid y RightParotid) muestran mayor variabilidad, con valores entre 20 y 60 Gy, reflejando diferencias anatómicas y de planificación entre pacientes. Estos resultados evidencian cómo la radiación se concentra en los volúmenes tumorales mientras se intenta limitar la exposición en estructuras críticas.</p>
+<hr>
+</section>
+<section id="pregunta-3" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-3">Pregunta 3</h2>
+<p>¿Cómo se distribuye espacialmente la dosis de radioterapia en distintos cortes tomográficos del paciente?</p>
+<p>Esta visualización presenta una exploración espacial de la dosis sobre la anatomía del paciente, mostrando cortes sagital y transversal con curvas de isodosis superpuestas.</p>
+<div id="0953685e" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\psiqg\AppData\Local\Temp\ipykernel_26356\567491621.py:163: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="visualizations_files/figure-html/cell-4-output-2.png" width="900" height="569" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>** Interpretación **</p>
+<p>La visualización muestra dos cortes tomográficos del paciente, uno sagital y otro transversal, con curvas de isodosis superpuestas. En ambas vistas se observa que las regiones de mayor dosis se concentran en la zona objetivo del tratamiento, mientras que la intensidad disminuye hacia los tejidos circundantes. Esto permite analizar la distribución espacial de la radiación y verificar que el tratamiento busca maximizar la dosis en el tumor y limitar la exposición de estructuras sanas.</p>
+<hr>
+</section>
+<section id="pregunta-4-cómo-varía-la-dosis-entre-pacientes" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-4-cómo-varía-la-dosis-entre-pacientes">Pregunta 4: ¿Cómo varía la dosis entre pacientes?</h2>
+<p>Se explora la variabilidad inter-paciente mediante una visualización comparativa.</p>
+<p>** Interpretación **</p>
+<p>Esto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación.</p>
+<hr>
+</section>
+<section id="pregunta-5-existe-relación-entre-volumen-y-dosis" class="level2">
+<h2 class="anchored" data-anchor-id="pregunta-5-existe-relación-entre-volumen-y-dosis">Pregunta 5: ¿Existe relación entre volumen y dosis?</h2>
+<p>Se analiza la relación entre el tamaño de una estructura y la dosis media recibida.</p>
+<p>** Interpretación **</p>
+<p>Este análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

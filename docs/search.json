@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "visualizations.html",
+    "href": "visualizations.html",
+    "title": "Análisis y visualizaciones",
+    "section": "",
+    "text": "¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?\nPara responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.\n\n\nNúmero de Pacientes : 204"
+  },
+  {
+    "objectID": "visualizations.html#pregunta-1",
+    "href": "visualizations.html#pregunta-1",
+    "title": "Análisis y visualizaciones",
+    "section": "",
+    "text": "¿Existe una relación entre la dosis media administrada a un paciente y la dosis máxima recibida durante el tratamiento de radioterapia?\nPara responder esta pregunta se utiliza un gráfico de dispersión, ya que permite observar la relación entre dos variables numéricas e identificar posibles patrones o valores atípicos.\n\n\nNúmero de Pacientes : 204"
+  },
+  {
+    "objectID": "visualizations.html#pregunta-2",
+    "href": "visualizations.html#pregunta-2",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 2",
+    "text": "Pregunta 2\n¿Cómo se distribuye la dosis media entre las distintas estructuras anatómicas?\nPara responder esta pregunta se utiliza un gráfico de dispersión donde cada punto representa la dosis media recibida por una estructura anatómica específica en un paciente. Esto permite comparar las dosis administradas entre diferentes estructuras y observar la variabilidad existente entre pacientes.\n\n\n\n\n\n\n\n\n** Interpretación **\nLa visualización muestra cómo se distribuye la dosis media entre los pacientes para distintas estructuras anatómicas del dataset OpenKBP. Los volúmenes objetivo (PTV70, PTV63 y PTV56) reciben las dosis más altas, con valores aproximados entre 67–74 Gy para PTV70, 63–71 Gy para PTV63 y 53–65 Gy para PTV56, lo cual es consistente con su función terapéutica en radioterapia. En contraste, los órganos de riesgo presentan dosis menores: Brainstem se sitúa aproximadamente entre 0 y 30 Gy, mientras que SpinalCord se mantiene entre 5 y 30 Gy. Las glándulas parótidas (LeftParotid y RightParotid) muestran mayor variabilidad, con valores entre 20 y 60 Gy, reflejando diferencias anatómicas y de planificación entre pacientes. Estos resultados evidencian cómo la radiación se concentra en los volúmenes tumorales mientras se intenta limitar la exposición en estructuras críticas."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-3",
+    "href": "visualizations.html#pregunta-3",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 3",
+    "text": "Pregunta 3\n¿Cómo se distribuye espacialmente la dosis de radioterapia en distintos cortes tomográficos del paciente?\nEsta visualización presenta una exploración espacial de la dosis sobre la anatomía del paciente, mostrando cortes sagital y transversal con curvas de isodosis superpuestas.\n\n\nC:\\Users\\psiqg\\AppData\\Local\\Temp\\ipykernel_26356\\567491621.py:163: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.\n  plt.tight_layout()\n\n\n\n\n\n\n\n\n\n** Interpretación **\nLa visualización muestra dos cortes tomográficos del paciente, uno sagital y otro transversal, con curvas de isodosis superpuestas. En ambas vistas se observa que las regiones de mayor dosis se concentran en la zona objetivo del tratamiento, mientras que la intensidad disminuye hacia los tejidos circundantes. Esto permite analizar la distribución espacial de la radiación y verificar que el tratamiento busca maximizar la dosis en el tumor y limitar la exposición de estructuras sanas."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-4-cómo-varía-la-dosis-entre-pacientes",
+    "href": "visualizations.html#pregunta-4-cómo-varía-la-dosis-entre-pacientes",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 4: ¿Cómo varía la dosis entre pacientes?",
+    "text": "Pregunta 4: ¿Cómo varía la dosis entre pacientes?\nSe explora la variabilidad inter-paciente mediante una visualización comparativa.\n** Interpretación **\nEsto permite evaluar si existen patrones consistentes o diferencias importantes en la planificación."
+  },
+  {
+    "objectID": "visualizations.html#pregunta-5-existe-relación-entre-volumen-y-dosis",
+    "href": "visualizations.html#pregunta-5-existe-relación-entre-volumen-y-dosis",
+    "title": "Análisis y visualizaciones",
+    "section": "Pregunta 5: ¿Existe relación entre volumen y dosis?",
+    "text": "Pregunta 5: ¿Existe relación entre volumen y dosis?\nSe analiza la relación entre el tamaño de una estructura y la dosis media recibida.\n** Interpretación **\nEste análisis ayuda a identificar si estructuras más grandes o más pequeñas presentan comportamientos distintos en la distribución de dosis."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Análisis visual de la distribución de dosis en radioterapia",
+    "section": "",
+    "text": "En radioterapia, el objetivo es administrar suficiente dosis al tumor mientras se protege a los órganos sanos cercanos.\nEste proyecto utiliza el dataset OpenKBP para explorar visualmente cómo se distribuye la dosis entre distintas estructuras anatómicas."
+  },
+  {
+    "objectID": "index.html#contexto-del-problema",
+    "href": "index.html#contexto-del-problema",
+    "title": "Análisis visual de la distribución de dosis en radioterapia",
+    "section": "",
+    "text": "En radioterapia, el objetivo es administrar suficiente dosis al tumor mientras se protege a los órganos sanos cercanos.\nEste proyecto utiliza el dataset OpenKBP para explorar visualmente cómo se distribuye la dosis entre distintas estructuras anatómicas."
+  },
+  {
+    "objectID": "data_cleaning.html",
+    "href": "data_cleaning.html",
+    "title": "Limpieza y preparación de datos",
+    "section": "",
+    "text": "En esta sección se documenta el proceso de preparación del dataset OpenKBP para el análisis visual."
+  },
+  {
+    "objectID": "data_cleaning.html#carga-del-dataset",
+    "href": "data_cleaning.html#carga-del-dataset",
+    "title": "Limpieza y preparación de datos",
+    "section": "",
+    "text": "En esta sección se documenta el proceso de preparación del dataset OpenKBP para el análisis visual."
+  },
+  {
+    "objectID": "data_cleaning.html#exploración-inicial",
+    "href": "data_cleaning.html#exploración-inicial",
+    "title": "Limpieza y preparación de datos",
+    "section": "Exploración inicial",
+    "text": "Exploración inicial\nPrimero identificamos:\n\npacientes disponibles\nestructuras anatómicas\nvariables relevantes\nformato original de los archivos"
+  },
+  {
+    "objectID": "data_cleaning.html#problemas-detectados",
+    "href": "data_cleaning.html#problemas-detectados",
+    "title": "Limpieza y preparación de datos",
+    "section": "Problemas detectados",
+    "text": "Problemas detectados\nAl trabajar con OpenKBP, los datos no están inicialmente en formato tabular listo para visualización. Fue necesario resumir información por paciente y por estructura anatómica."
+  },
+  {
+    "objectID": "data_cleaning.html#decisiones-de-limpieza",
+    "href": "data_cleaning.html#decisiones-de-limpieza",
+    "title": "Limpieza y preparación de datos",
+    "section": "Decisiones de limpieza",
+    "text": "Decisiones de limpieza\nSe realizaron las siguientes transformaciones:\n\nestandarización de nombres de estructuras\nseparación entre estructuras objetivo y órganos de riesgo\ncálculo de métricas resumidas:\n\ndosis media\ndosis máxima\nvolumen de la estructura"
+  },
+  {
+    "objectID": "data_cleaning.html#dataset-final",
+    "href": "data_cleaning.html#dataset-final",
+    "title": "Limpieza y preparación de datos",
+    "section": "Dataset final",
+    "text": "Dataset final\nEl resultado final es una tabla con variables como:\n\npatient_id\nstructure_name\nstructure_type\nvolume\nmean_dose\nmax_dose"
+  },
+  {
+    "objectID": "data_cleaning.html#justificación",
+    "href": "data_cleaning.html#justificación",
+    "title": "Limpieza y preparación de datos",
+    "section": "Justificación",
+    "text": "Justificación\n\nimport os\nimport pandas as pd\nimport numpy as np\nfrom pathlib import Path\n\nruta_base = Path(r\"C:\\Users\\psiqg\\.virtual_documents\\data_visualization\\Data Visualization\\Data-visualisation\\Data-visualisation\\data\\raw\\openkbp\\provided-data\\test-pats\")\nsalida = Path(r\"C:\\Users\\psiqg\\.virtual_documents\\data_visualization\\Data Visualization\\Data-visualisation\\Data-visualisation\\data\\processed\\openkbp_structure_doses.csv\")\n\nprint(\"Ruta usada:\", ruta_base)\nprint(\"Existe:\", os.path.exists(ruta_base))\n\nN_VOXELS = 128 * 128 * 128\n\nestructuras = [\n    \"Brainstem\",\n    \"SpinalCord\",\n    \"LeftParotid\",\n    \"RightParotid\",\n    \"PTV56\",\n    \"PTV63\",\n    \"PTV70\"\n]\n\nsalida.parent.mkdir(parents=True, exist_ok=True)\n\ndef cargar_sparse_csv(path, n_voxels=N_VOXELS, default_value=0.0):\n    df = pd.read_csv(path, index_col=0)\n\n    arr = np.full(n_voxels, default_value, dtype=float)\n\n    if \"data\" in df.columns:\n        indices = df.index.astype(int).to_numpy()\n        valores = df[\"data\"].fillna(1).astype(float).to_numpy()\n        arr[indices] = valores\n    else:\n        indices = df.index.astype(int).to_numpy()\n        arr[indices] = 1.0\n\n    return arr\n\nresultados = []\n\nfor paciente in os.listdir(ruta_base):\n    carpeta_paciente = ruta_base / paciente\n\n    if not carpeta_paciente.is_dir():\n        continue\n\n    dose_path = carpeta_paciente / \"dose.csv\"\n    if not dose_path.exists():\n        continue\n\n    dose = cargar_sparse_csv(dose_path, default_value=0.0)\n\n    for estructura in estructuras:\n        estructura_path = carpeta_paciente / f\"{estructura}.csv\"\n\n        if not estructura_path.exists():\n            continue\n\n        mask = cargar_sparse_csv(estructura_path, default_value=0.0)\n        voxels = dose[mask &gt; 0]\n\n        if len(voxels) == 0:\n            continue\n\n        resultados.append({\n            \"patient\": paciente,\n            \"structure\": estructura,\n            \"mean_dose\": float(np.mean(voxels)),\n            \"max_dose\": float(np.max(voxels))\n        })\n\ndf_total = pd.DataFrame(resultados)\ndf_total.to_csv(salida, index=False)\n\nprint(\"Archivo creado:\", salida.exists())\nprint(\"Archivo guardado en:\", salida)\nprint(df_total.head())\nprint(df_total.shape)\n\nRuta usada: C:\\Users\\psiqg\\.virtual_documents\\data_visualization\\Data Visualization\\Data-visualisation\\Data-visualisation\\data\\raw\\openkbp\\provided-data\\test-pats\nExiste: True\nArchivo creado: True\nArchivo guardado en: C:\\Users\\psiqg\\.virtual_documents\\data_visualization\\Data Visualization\\Data-visualisation\\Data-visualisation\\data\\processed\\openkbp_structure_doses.csv\n  patient     structure  mean_dose  max_dose\n0  pt_241     Brainstem   3.661239    25.675\n1  pt_241    SpinalCord  19.096967    34.281\n2  pt_241   LeftParotid  27.276652    59.921\n3  pt_241  RightParotid  25.205656    57.650\n4  pt_241         PTV56  59.478529    65.504\n(607, 4)"
+  }
+]

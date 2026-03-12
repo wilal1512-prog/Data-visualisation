@@ -1,0 +1,11 @@
+body {
+  line-height: 1.6;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+p {
+  text-align: justify;
+}
