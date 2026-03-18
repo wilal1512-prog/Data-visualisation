@@ -41,87 +41,25 @@ El resultado final es una tabla con variables como:
 - `mean_dose`
 - `max_dose`
 
+
+
 ## Justificación
 
-```{python}
-import os
-import pandas as pd
-import numpy as np
-from pathlib import Path
+La preparación de datos fue necesaria debido a que el dataset OpenKBP no se encuentra originalmente en un formato tabular adecuado para el análisis visual. La información está organizada por paciente y por estructura anatómica, y varios archivos se almacenan en formato **sparse**, lo que requiere reconstruir los datos antes de su análisis.
 
-ruta_base = Path(r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\raw\openkbp\provided-data\test-pats")
-salida = Path(r"C:\Users\psiqg\.virtual_documents\data_visualization\Data Visualization\Data-visualisation\Data-visualisation\data\processed\openkbp_structure_doses.csv")
+Para abordar este problema, se cargaron los archivos de dosis y las máscaras de estructuras anatómicas de cada paciente. A partir de estos datos, se identificaron los voxeles correspondientes a cada estructura y se calcularon métricas resumen relevantes, como la **dosis media**, la **dosis máxima** y el **volumen** (número de voxeles asociados a cada estructura).
 
-print("Ruta usada:", ruta_base)
-print("Existe:", os.path.exists(ruta_base))
+Además, se clasificaron las estructuras en dos grupos clínicamente relevantes: **volúmenes objetivo del tratamiento (PTV)** y **órganos de riesgo (OAR)**. Esta distinción permite interpretar los resultados en función del objetivo terapéutico, facilitando comparaciones entre estructuras que deben recibir alta dosis y aquellas que deben ser protegidas.
 
-N_VOXELS = 128 * 128 * 128
+Estas transformaciones permiten convertir datos volumétricos tridimensionales en una tabla estructurada, lo que simplifica su análisis y visualización. Como resultado, se obtiene un dataset limpio y organizado que resume la información más relevante por paciente y por estructura anatómica.
 
-estructuras = [
-    "Brainstem",
-    "SpinalCord",
-    "LeftParotid",
-    "RightParotid",
-    "PTV56",
-    "PTV63",
-    "PTV70"
-]
+Este dataset procesado constituye la base para las visualizaciones posteriores, permitiendo analizar patrones en la distribución de la dosis de radioterapia, comparar estructuras y explorar relaciones entre variables como dosis y volumen.
 
-salida.parent.mkdir(parents=True, exist_ok=True)
+## Resultado del procesamiento
 
-def cargar_sparse_csv(path, n_voxels=N_VOXELS, default_value=0.0):
-    df = pd.read_csv(path, index_col=0)
+El dataset final permite:
 
-    arr = np.full(n_voxels, default_value, dtype=float)
-
-    if "data" in df.columns:
-        indices = df.index.astype(int).to_numpy()
-        valores = df["data"].fillna(1).astype(float).to_numpy()
-        arr[indices] = valores
-    else:
-        indices = df.index.astype(int).to_numpy()
-        arr[indices] = 1.0
-
-    return arr
-
-resultados = []
-
-for paciente in os.listdir(ruta_base):
-    carpeta_paciente = ruta_base / paciente
-
-    if not carpeta_paciente.is_dir():
-        continue
-
-    dose_path = carpeta_paciente / "dose.csv"
-    if not dose_path.exists():
-        continue
-
-    dose = cargar_sparse_csv(dose_path, default_value=0.0)
-
-    for estructura in estructuras:
-        estructura_path = carpeta_paciente / f"{estructura}.csv"
-
-        if not estructura_path.exists():
-            continue
-
-        mask = cargar_sparse_csv(estructura_path, default_value=0.0)
-        voxels = dose[mask > 0]
-
-        if len(voxels) == 0:
-            continue
-
-        resultados.append({
-            "patient": paciente,
-            "structure": estructura,
-            "mean_dose": float(np.mean(voxels)),
-            "max_dose": float(np.max(voxels))
-        })
-
-df_total = pd.DataFrame(resultados)
-df_total.to_csv(salida, index=False)
-
-print("Archivo creado:", salida.exists())
-print("Archivo guardado en:", salida)
-print(df_total.head())
-print(df_total.shape)
-```
+- comparar la dosis entre estructuras anatómicas
+- resumir información por paciente
+- identificar diferencias entre volúmenes objetivo y órganos de riesgo
+- construir visualizaciones sobre relaciones entre dosis, volumen y anatomía
